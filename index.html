@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brenda Blanche | The Translation Diagnostic</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --red: #F61919;
-            --off-white: #EFEFEF;
-            --dark-gray: #161616;
+            --white: #EFEFEF;
+            --gray: #161616;
             --black: #000000;
             --warm: #2C2B2A;
-            --radius: 12px;
+            --radius: 16px;
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -20,186 +20,162 @@
 
         body {
             background-color: var(--black);
-            color: var(--off-white);
-            font-family: 'Inter', sans-serif;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            min-height: 100vh;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        /* ATMOSPHERE */
         .bg-glow {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at 5% 5%, rgba(246, 25, 25, 0.05) 0%, transparent 40%),
-                        radial-gradient(circle at 95% 95%, rgba(44, 43, 42, 0.15) 0%, transparent 40%);
+            background: radial-gradient(circle at 50% -10%, rgba(246, 25, 25, 0.08) 0%, transparent 60%);
             z-index: -1;
         }
 
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 60px 24px;
+            padding: 40px 20px;
         }
 
-        /* TYPOGRAPHY SCALE */
+        /* TYPOGRAPHY */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
         h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Refined size */
-            font-weight: 800;
-            line-height: 0.95;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-
-        h2.section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            line-height: 1;
-            margin-bottom: 1rem;
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            font-style: italic;
         }
 
         .red { color: var(--red); }
 
         .subhead {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            max-width: 650px;
-            margin-bottom: 3rem;
-            font-weight: 400;
-            border-left: 3px solid var(--red);
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #bbb;
+            border-left: 2px solid var(--red);
             padding-left: 20px;
-            color: #d1d1d1;
+            margin-bottom: 3rem;
         }
 
-        /* BUTTONS & CARDS */
+        /* NAVIGATION & BUTTONS */
+        .back-nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            width: fit-content;
+        }
+
+        .back-nav:hover { color: var(--red); }
+
         .btn-prime {
             background: var(--red);
-            color: var(--off-white);
-            padding: 22px 45px;
-            font-family: 'Syne', sans-serif;
-            font-size: 1.1rem;
+            color: var(--white);
+            padding: 22px 40px;
+            font-weight: 900;
             text-transform: uppercase;
+            letter-spacing: 2px;
             border: none;
-            cursor: pointer;
             border-radius: var(--radius);
+            cursor: pointer;
             transition: var(--transition);
-            text-decoration: none;
             display: inline-block;
-            font-weight: 800;
         }
 
         .btn-prime:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(246, 25, 25, 0.25);
-            background: #ff2e2e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(246, 25, 25, 0.3);
         }
 
+        /* OPTIONS */
         .option-card {
-            background: var(--dark-gray);
-            border: 1px solid var(--warm);
-            padding: 24px;
+            background: var(--gray);
+            border: 1px solid #222;
+            padding: 25px;
             border-radius: var(--radius);
             cursor: pointer;
             transition: var(--transition);
-            font-size: 1.1rem;
+            margin-bottom: 12px;
         }
 
-        .option-card:hover {
-            border-color: var(--red);
-            background: #1c1c1c;
-            transform: translateX(10px);
-        }
+        .option-card:hover { border-color: var(--red); padding-left: 35px; }
 
-        /* RESULTS FLOW */
-        .verdict-header {
-            margin-bottom: 4rem;
-            border-bottom: 1px solid var(--warm);
-            padding-bottom: 2rem;
+        /* RESULTS CONTENT */
+        .result-block {
+            margin-bottom: 2rem;
+            background: var(--gray);
+            padding: 30px;
+            border-radius: var(--radius);
         }
 
         .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
+            font-size: 0.7rem;
             color: var(--red);
             font-weight: 900;
-            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
             display: block;
         }
 
-        .strategy-block {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 3rem;
+        .before-after {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 40px 0;
         }
 
-        .info-card {
-            background: var(--dark-gray);
+        .ba-item {
             padding: 30px;
-            border-radius: var(--radius);
-            border: 1px solid #222;
-        }
-
-        /* TRANSCRIPTION BRIDGE */
-        .transcription-bridge {
-            text-align: center;
-            padding: 60px 0 20px;
-        }
-
-        .transcription-bridge h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .before-after-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 2rem 0;
-        }
-
-        .ba-box {
-            padding: 40px;
             border-radius: var(--radius);
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
         }
 
-        .ba-box.after {
-            border-color: var(--red);
-            background: rgba(246, 25, 25, 0.03);
+        .ba-item.after { border-color: var(--red); }
+
+        .cta-section {
+            background: var(--white);
+            color: var(--black);
+            padding: 60px 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 4rem;
         }
 
-        .analysis-text {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 20px;
-            line-height: 1.6;
+        /* MOBILE FIXES */
+        @media (max-width: 600px) {
+            h1 { font-size: 3.2rem; }
+            .container { padding: 30px 15px; }
+            .option-card { padding: 20px; font-size: 0.9rem; }
+            .result-block { padding: 20px; }
         }
 
-        /* UTILITY */
         .hidden { display: none; }
-        .fade { animation: fadeIn 0.8s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade { animation: fadeIn 0.6s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         footer {
-            padding: 80px 20px 40px;
+            padding: 60px 20px;
             text-align: center;
             font-size: 0.7rem;
-            letter-spacing: 0.3em;
             color: #444;
+            letter-spacing: 2px;
             text-transform: uppercase;
-        }
-
-        /* MOBILE ADJUSTMENTS */
-        @media (max-width: 768px) {
-            .strategy-block, .before-after-grid { grid-template-columns: 1fr; }
-            .container { padding: 40px 20px; }
-            h1 { line-height: 1.1; }
         }
     </style>
 </head>
@@ -209,189 +185,181 @@
 
 <div class="container">
     <div id="screen-welcome" class="fade">
-        <h1>YOU THINK <br><span class="red">CLEARLY.</span><br>THE MARKET <br>DOESN'T.</h1>
+        <h1 style="margin-top: 10vh;">You think <span class="red">clearly.</span><br>The market doesn't.</h1>
         <p class="subhead">Find out exactly why your message confuses buyers — and what must change to turn attention into paying conversations.</p>
         
-        <div style="margin-bottom: 3rem;">
-            <p style="font-weight: 700; font-size: 1.2rem; margin-bottom: 15px;">You’re smart. You’ve built things. You have ideas.</p>
-            <p style="color: #aaa; max-width: 600px;">But when you try to explain any of it, people nod, say “interesting” and never pay. That’s not a content problem. It’s a <strong>translation problem.</strong><br><br>
-            This quick diagnostic measures the exact place your message leaks value — the single reason you’re visible but unsellable.</p>
+        <div style="margin-bottom: 40px;">
+            <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 15px;">You’re smart. You’ve built things. You have ideas.</p>
+            <p style="color: #888;">But when you try to explain any of it, people nod, say “interesting” and never pay. That’s not a content problem. It’s a <strong>translation problem.</strong></p>
         </div>
 
-        <p style="font-weight: 800; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 1px;">20 questions — 5 minutes — a no-nonsense verdict.</p>
-
-        <button class="btn-prime" onclick="start()">START DIAGNOSTIC — SHOW ME WHAT'S BROKEN</button>
-        <br>
-        <a href="#" style="color: #444; text-decoration: none; font-size: 0.8rem; margin-top: 25px; display: inline-block; letter-spacing: 1px;">PREFER TO TALK? BOOK A 15-MIN CALL INSTEAD.</a>
+        <button class="btn-prime" onclick="start()">START DIAGNOSTIC</button>
+        <p style="margin-top: 20px; font-size: 0.7rem; color: #444;">© 2026 BRENDA BLANCHE</p>
     </div>
 
     <div id="screen-terminal" class="hidden">
-        <div style="width: 100%; height: 2px; background: #222; margin-bottom: 4rem;">
-            <div id="progress" style="height: 100%; background: var(--red); width: 0%; transition: 0.4s; box-shadow: 0 0 10px var(--red);"></div>
+        <div class="back-nav" onclick="back()">← BACK</div>
+        <div style="height: 2px; background: #222; margin-bottom: 40px;">
+            <div id="progress" style="height: 100%; background: var(--red); width: 0%; transition: 0.4s;"></div>
         </div>
-        <div class="fade">
+        
+        <div id="q-box" class="fade">
             <span id="q-num" class="label">QUESTION 01 / 20</span>
-            <h2 id="q-text" class="section-title" style="margin-top: 1rem;">Question loading...</h2>
-            <div id="options-grid" style="display: grid; gap: 15px; margin-top: 3rem;"></div>
+            <h2 id="q-text" style="font-size: 1.8rem; margin: 20px 0 40px; line-height: 1.2;">Question text?</h2>
+            <div id="options-grid"></div>
         </div>
     </div>
 
     <div id="screen-results" class="hidden">
-        <div class="verdict-header">
-            <span id="res-bp" class="label">BREAKPOINT ANALYSIS</span>
-            <h1 id="res-title">LOADING VERDICT...</h1>
-            <p id="res-tagline" class="subhead" style="border: none; padding: 0; color: var(--red); font-weight: 700;"></p>
+        <div class="back-nav" onclick="location.reload()">↺ RESTART DIAGNOSTIC</div>
+        
+        <span id="res-bp" class="label">BREAKPOINT VERIFIED</span>
+        <h1 id="res-title" style="margin: 10px 0;">TITLE</h1>
+        <p id="res-tagline" class="subhead" style="border: none; padding: 0; font-style: italic; color: var(--red);"></p>
+
+        <div class="result-block">
+            <span class="label">Definition</span>
+            <p id="res-def" style="font-family: 'Cormorant Garamond'; font-size: 1.4rem;"></p>
         </div>
 
-        <div class="strategy-block">
-            <div class="info-card">
-                <span class="label">The Definition</span>
-                <p id="res-def" style="color: #ccc;"></p>
-            </div>
-            <div class="info-card">
-                <span class="label">Symptoms</span>
-                <p id="res-symp" style="color: #ccc;"></p>
-            </div>
+        <div class="result-block">
+            <span class="label">Symptoms & Root Cause</span>
+            <p id="res-symp" style="margin-bottom: 20px; color: #ccc;"></p>
+            <p id="res-root" style="color: #888; border-top: 1px solid #333; pt-20px; margin-top: 20px; padding-top: 20px;"></p>
         </div>
 
-        <div class="strategy-block">
-            <div class="info-card">
-                <span class="label">Root Cause</span>
-                <p id="res-root" style="color: #ccc;"></p>
-            </div>
-            <div class="info-card">
-                <span class="label">Why Effort Fails</span>
-                <p id="res-fail" style="color: #ccc;"></p>
-            </div>
+        <div class="result-block" style="border-left: 4px solid var(--red);">
+            <span class="label">The Fix</span>
+            <p id="res-change" style="font-weight: 700; font-size: 1.1rem;"></p>
         </div>
 
-        <div class="info-card" style="margin-bottom: 4rem;">
-            <span class="label">What Must Change</span>
-            <p id="res-change" style="font-size: 1.2rem; font-weight: 600;"></p>
-        </div>
-
-        <div class="transcription-bridge">
+        <div style="text-align: center; margin: 60px 0 20px;">
             <span class="label">Transcription Analysis</span>
-            <h3>How your message is heard vs. handled.</h3>
-            <p style="color: #888;">Below is a direct transcription of your current message leak versus the translated version the market actually buys.</p>
+            <h2 style="font-size: 2rem;">How the market hears you.</h2>
         </div>
 
-        <div class="before-after-grid">
-            <div class="ba-box">
-                <span class="label">Was: Unsellable</span>
-                <p id="res-before" style="font-style: italic; color: #777;"></p>
+        <div class="before-after">
+            <div class="ba-item">
+                <span class="label" style="color: #666;">Was: Unsellable</span>
+                <p id="res-before" style="font-style: italic; color: #888;"></p>
             </div>
-            <div class="ba-box after">
+            <div class="ba-item after">
                 <span class="label">Now: Translated</span>
-                <p id="res-after" style="font-weight: 700; font-size: 1.1rem;"></p>
+                <p id="res-after" style="font-weight: 700;"></p>
             </div>
         </div>
 
-        <p id="res-analysis" class="analysis-text" style="text-align: center; max-width: 700px; margin: 0 auto 4rem;"></p>
-
-        <div style="background: var(--off-white); color: var(--black); padding: 60px 30px; border-radius: var(--radius); text-align: center;">
-            <p style="font-weight: 800; text-transform: uppercase; margin-bottom: 10px;">You’ve got the diagnosis. Don’t turn it into another spreadsheet. Fix it.</p>
-            <p style="margin-bottom: 30px; font-weight: 500;">Choose the fast route: do the Translation Sprint and have a market-ready sentence this week — or book a call.</p>
+        <div class="cta-section">
+            <p style="font-weight: 900; text-transform: uppercase; margin-bottom: 15px;">Fix the leak.</p>
+            <h2 style="font-size: 2.2rem; margin-bottom: 30px;">The 7-Day Translation Sprint</h2>
+            <button class="btn-prime" style="background: var(--black); width: 100%;">START THE SPRINT — $97</button>
+            <p style="font-size: 0.7rem; margin-top: 20px; font-weight: 700; opacity: 0.6;">FAST. TACTICAL. NO-BS. RISK-FREE GUARANTEE.</p>
             
-            <h2 style="font-family: 'Syne'; text-transform: uppercase; margin-bottom: 20px;">The 7-Day Translation Sprint</h2>
-            <button class="btn-prime" style="background: var(--black); width: 100%; max-width: 400px;">START THE SPRINT — $97</button>
-            <p style="font-size: 0.75rem; font-weight: 700; margin-top: 15px; opacity: 0.6;">Fast. Tactical. Converts attention into 1:1 conversations. Risk-free guarantee.</p>
-            <p style="color: var(--red); font-weight: 900; font-size: 0.7rem; margin-top: 10px;">* LIMITED SPOTS AVAILABLE PER WEEK</p>
+            <div style="height: 1px; background: #ddd; margin: 40px 0;"></div>
             
-            <div style="margin: 40px auto; width: 50px; height: 1px; background: #ddd;"></div>
-            
-            <button class="btn-prime" style="background: transparent; color: var(--black); border: 2px solid var(--black); padding: 15px 30px;">Book a 15-min Fit Call</button>
+            <button class="btn-prime" style="background: transparent; border: 2px solid #000; color: #000;" onclick="window.location.href='YOUR_CALENDLY'">Book a 15-min Fit Call</button>
         </div>
     </div>
 </div>
 
 <footer>
-    Brenda Blanche — Voice-First Personal Branding Strategist — © 2026
+    Brenda Blanche — Strategy & Branding — © 2026
 </footer>
 
 <script>
     const questions = [
         { bp: 1, q: "When someone asks “What do you do?” how long does it take you to explain it?", a: ["One sentence","2–3 sentences","A full paragraph","I ramble until they look lost"] },
         { bp: 1, q: "After you explain your work, can a stranger repeat it back in a single clear sentence?", a: ["Yes","Sometimes","Rarely","Never"] },
-        { bp: 1, q: "How often do you get “interesting” / “nice” instead of “how do we start?” on posts?", a: ["Almost never","Occasionally","Often","Almost always"] },
-        { bp: 1, q: "How long does it take you to finish your bio/about page?", a: ["Under 30 minutes","1–2 hours","Multiple sessions/days","I rewrite it constantly, never satisfied"] },
+        { bp: 1, q: "How often do you get “interesting” / “nice” instead of “how do we start?”", a: ["Almost never","Occasionally","Often","Almost always"] },
+        { bp: 1, q: "How long does it take you to finish your bio/about page?", a: ["Under 30 minutes","1–2 hours","Multiple sessions/days","I rewrite it constantly"] },
         { bp: 1, q: "When you post, do you need follow-up comments to clarify your main point?", a: ["Never","Sometimes","Often","Constantly"] },
-        { bp: 2, q: "What do people most often comment on when they engage with your content?", a: ["“How do I work with you?”","“Interesting”","“This resonates”","Generic praise / no follow-up"] },
+        { bp: 2, q: "What do people most often comment on when they engage with your content?", a: ["“How do I work with you?”","“Interesting”","“This resonates”","Generic praise"] },
         { bp: 2, q: "Do prospects compare you to other providers or ask “How are you different?”", a: ["Rarely","Sometimes","Frequently","Always"] },
-        { bp: 2, q: "When you read your content, who is it written for?", a: ["My ideal buyer","Someone like me","People already fluent in the topic","Mostly for me (insider language)"] },
-        { bp: 2, q: "Do outsiders (non-industry people) understand what you do?", a: ["Yes, easily","With a bit of explanation","Only if they’re familiar with the space","Almost never"] },
+        { bp: 2, q: "When you read your content, who is it written for?", a: ["My ideal buyer","Someone like me","Fluent experts","Mostly for me"] },
+        { bp: 2, q: "Do outsiders understand what you do?", a: ["Yes, easily","With explanation","Only experts","Almost never"] },
         { bp: 2, q: "Can you describe your results in plain language without jargon?", a: ["Yes, always","Mostly","Not really","No"] },
         { bp: 3, q: "When asked, do you lead with the outcome or the process?", a: ["Outcome first","Outcome, then process","Process first","Process only"] },
-        { bp: 3, q: "If someone followed your content for a month, could they state the transformation you deliver?", a: ["Absolutely","Probably","Maybe if they paid close attention","No"] },
-        { bp: 3, q: "When prospects DM, how often do they ask “What exactly do you help with?”", a: ["Almost never","Rarely","Sometimes","Often"] },
-        { bp: 3, q: "Does your bio list the result people get — or your credentials/process?", a: ["Results first","Result + some credentials","Mostly credentials","Only credentials/process"] },
-        { bp: 3, q: "When a new client signs, do they ask for a specific outcome or rave about your “approach”?", a: ["They ask for the outcome","Outcome but also mentions approach","Mix of both","Mostly “I like your vibe/approach”"] },
+        { bp: 3, q: "Could a follower state the transformation you deliver?", a: ["Absolutely","Probably","Maybe","No"] },
+        { bp: 3, q: "How often do DMs ask “What exactly do you help with?”", a: ["Almost never","Rarely","Sometimes","Often"] },
+        { bp: 3, q: "Does your bio list the result — or your credentials?", a: ["Results first","Mix","Mostly credentials","Only credentials"] },
+        { bp: 3, q: "When a client signs, do they ask for an outcome or rave about your “approach”?", a: ["Outcome","Mix","Mix","Vibe/Approach"] },
         { bp: 4, q: "What percentage of engaged people turn into paid conversations?", a: ["20%+","10–20%","5–10%","<5%"] },
-        { bp: 4, q: "Do people say “I’ll work with you someday” more than “How do we start?”", a: ["No — they ask how to start","About equal","More “someday”","Almost always “someday”"] },
-        { bp: 4, q: "Is your pricing visible and clear before a prospect asks?", a: ["Yes","Visible with digging","Not visible — they ask","I never list pricing"] },
-        { bp: 4, q: "When you write about your work, do you tie it to business outcomes (revenue, clients, time saved)?", a: ["Always","Often","Sometimes","Rarely"] },
-        { bp: 4, q: "Would a buyer leave your page knowing exactly what they’d be buying?", a: ["Yes","Mostly","Somewhat","No — they see me as a thought-leader, not a provider"] }
+        { bp: 4, q: "Do people say “I’ll work with you someday” more than “How do we start?”", a: ["No — they ask now","About equal","More “someday”","Always “someday”"] },
+        { bp: 4, q: "Is your pricing visible and clear before a prospect asks?", a: ["Yes","Visible with digging","Not visible","Never list it"] },
+        { bp: 4, q: "Do you tie your work to business outcomes?", a: ["Always","Often","Sometimes","Rarely"] },
+        { bp: 4, q: "Would a buyer know exactly what they’d be buying?", a: ["Yes","Mostly","Somewhat","No — thought-leader only"] }
     ];
 
     const resultsData = {
-        1: { title: "COGNITIVE OVERLOAD", tagline: "You’re brilliant — but you’re carrying too much into conversation.", def: "You compress years of thinking into a sentence that takes two minutes to explain. The market doesn’t have time for your thinking journey; it wants the destination.", symp: "People glaze over when you explain, your bio never “sticks,” you add follow-ups to posts.", root: "Depth without reduction — you show the thinking, not the outcome.", fail: "More journaling or posting amplifies the problem. You don’t need more thinking — you need ruthless reduction.", change: "Build one sellable sentence: buyer → transformation → timeframe. Say less. Sell more.", before: "I help people build authentic personal brands through strategic content and mindset.", after: "I turn experts into professionals who can explain what they do in one sentence and book discovery calls in 90 days.", analysis: "Micro-analysis: Removed fluff, added buyer, outcome, timeframe. Market understands, buys, asks next step." },
-        2: { title: "MARKET MISALIGNMENT", tagline: "You sound like your peers. Your buyers speak a different language.", def: "You write for other experts; buyers need plain language that addresses pain, not sophistication.", symp: "“Interesting” comments, prospects ask “how are you different?”, jargon usage.", root: "Mirror-to-peer writing — you’re optimizing for respect, not buying decisions.", fail: "More content keeps impressing peers, not buyers. You need to translate into buyer language.", change: "Extract buyer words from DMs and rewrite all messaging in those exact terms. Lead with pain.", before: "Strategic advisory for transformation-focused leaders navigating complexity.", after: "I help executives stuck with team resistance to get change adopted within 90 days.", analysis: "Micro-analysis: Swapped insider terms for buyer pain and a measurable outcome." },
-        3: { title: "OUTCOME BLUR", tagline: "You sell process. Buyers buy results.", def: "Your content explains how you work — not what it buys the client. Buyers care about change, not steps.", symp: "Prospects say “I like your approach” instead of buying; bio lists methods, not outcomes.", root: "Pride in methodology — you lead with how, not what changes for the buyer.", fail: "Teaching more frameworks only clarifies your method; it doesn’t create urgency.", change: "Market the result first; hide the process until they buy. Make the after state undeniable.", before: "I teach a 5-step framework for audience growth.", after: "I help people turn inconsistent posting into a 90-day funnel that books discovery calls.", analysis: "Micro-analysis: Outcome, timeframe, and monetizable action replace process jargon." },
-        4: { title: "ECONOMIC SILENCE", tagline: "You’ve got attention. You don’t have transactions.", def: "People like your content — but there’s no bridge from admiration to a sale. Your message never asks for money.", symp: "High engagement, near-zero conversions, “someday” DMs, invisible pricing.", root: "Comfort with being respected; avoidance of selling.", fail: "More “thought leadership” fills feeds without creating revenue. An audience without an offer is a hobby.", change: "Build a diagnostic, a low-ticket offer, and connect every insight to business outcomes.", before: "Here’s my 10-step framework for decisions.", after: "Here’s the diagnostic our clients use to make $50K decisions in 48 hours — DM DECIDE.", analysis: "Micro-analysis: Ties insight to economic outcome + a clear CTA to buy the diagnostic." }
+        1: { title: "Cognitive Overload", tagline: "You’re brilliant — but you’re carrying too much.", def: "You compress years of thinking into a sentence that takes two minutes to explain. The market wants the destination, not your thinking journey.", symp: "People glaze over, bio doesn't stick, constant follow-up needed.", root: "Depth without reduction — you show the thinking, not the outcome.", change: "Build one sellable sentence: buyer → transformation → timeframe. Say less. Sell more.", before: "I help people build personal brands through strategic content and mindset.", after: "I turn experts into professionals who book discovery calls in 90 days." },
+        2: { title: "Market Misalignment", tagline: "You sound like your peers. Your buyers speak a different language.", def: "You write for experts; buyers need plain language that addresses pain. You're optimizing for respect, not transactions.", symp: "“Interesting” comments, comparison to others, jargon usage.", root: "Mirror-to-peer writing.", change: "Extract buyer words from DMs and rewrite all messaging in those exact terms. Lead with pain.", before: "Strategic advisory for transformation-focused leaders.", after: "I help executives get change adopted by their team within 90 days." },
+        3: { title: "Outcome Blur", tagline: "You sell process. Buyers buy results.", def: "Your content explains HOW you work—not what it BUYS the client.", symp: "“I like your approach” but no sales; bio lists methods.", root: "Pride in methodology.", change: "Market the result first; hide the process until they buy.", before: "I teach a 5-step framework for audience growth.", after: "I turn inconsistent posting into a 90-day funnel." },
+        4: { title: "Economic Silence", tagline: "You’ve got attention. You don’t have transactions.", def: "There’s no bridge from admiration to a sale. Your message never asks for money.", symp: "High likes, zero leads, “someday” DMs.", root: "Avoidance of selling.", change: "Build a diagnostic and connect every insight to business outcomes.", before: "Here’s my 10-step framework for decisions.", after: "Our clients use this diagnostic to make $50k decisions. DM 'DECIDE'." }
     };
 
     let current = 0;
     let scores = {1:0, 2:0, 3:0, 4:0};
+    let history = [];
 
     function start() {
         document.getElementById('screen-welcome').classList.add('hidden');
         document.getElementById('screen-terminal').classList.remove('hidden');
-        renderQuestion();
+        render();
     }
 
-    function renderQuestion() {
-        const qData = questions[current];
+    function render() {
+        const q = questions[current];
         document.getElementById('q-num').innerText = `QUESTION ${String(current + 1).padStart(2, '0')} / 20`;
-        document.getElementById('q-text').innerText = qData.q;
+        document.getElementById('q-text').innerText = q.q;
         document.getElementById('progress').style.width = `${((current + 1) / 20) * 100}%`;
         
         const grid = document.getElementById('options-grid');
         grid.innerHTML = '';
-        qData.a.forEach((text, i) => {
+        q.a.forEach((text, i) => {
             const div = document.createElement('div');
-            div.className = 'option-card';
+            div.className = 'option-card fade';
             div.innerText = text;
-            div.onclick = () => handleAnswer(qData.bp, i);
+            div.onclick = () => handle(q.bp, i);
             grid.appendChild(div);
         });
     }
 
-    function handleAnswer(bp, pts) {
+    function handle(bp, pts) {
+        history.push({bp, pts});
         scores[bp] += pts;
         current++;
-        if (current < 20) renderQuestion();
-        else finish();
+        if (current < 20) render();
+        else showResults();
     }
 
-    function finish() {
+    function back() {
+        if (current === 0) {
+            document.getElementById('screen-welcome').classList.remove('hidden');
+            document.getElementById('screen-terminal').classList.add('hidden');
+        } else {
+            current--;
+            const last = history.pop();
+            scores[last.bp] -= last.pts;
+            render();
+        }
+    }
+
+    function showResults() {
         document.getElementById('screen-terminal').classList.add('hidden');
         document.getElementById('screen-results').classList.remove('hidden');
-        document.getElementById('screen-results').classList.add('fade');
         
-        const winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
-        const r = resultsData[winner];
+        const top = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+        const r = resultsData[top];
         
-        document.getElementById('res-bp').innerText = `BREAKPOINT 0${winner} VERIFIED`;
+        document.getElementById('res-bp').innerText = `BREAKPOINT 0${top} VERIFIED`;
         document.getElementById('res-title').innerText = r.title;
         document.getElementById('res-tagline').innerText = r.tagline;
         document.getElementById('res-def').innerText = r.def;
         document.getElementById('res-symp').innerText = r.symp;
         document.getElementById('res-root').innerText = r.root;
-        document.getElementById('res-fail').innerText = r.fail;
         document.getElementById('res-change').innerText = r.change;
         document.getElementById('res-before').innerText = r.before;
         document.getElementById('res-after').innerText = r.after;
-        document.getElementById('res-analysis').innerText = r.analysis;
         
         window.scrollTo(0,0);
     }
