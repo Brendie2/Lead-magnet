@@ -1,417 +1,370 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Voice Discovery Blueprint - Free Download</title>
-    <meta name="description" content="Get the complete 7-day framework to articulate your unique value and stop copying others.">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE DIAGNOSTIC | TRANSLATION TERMINAL</title>
     <style>
-        /* --- 1. Variables & Base Settings (Using your colors) --- */
         :root {
-            --color-primary: #FF4D00;
-            --color-secondary: #B28A5B;
-            --color-dark: #1A1A1A;
-            --color-light: #F4F0E8;
-            --font-heading: 'Inter Tight', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --red: #F61919;
+            --white: #EFEFEF;
+            --dark-gray: #161616;
+            --black: #000000;
+            --warm-gray: #2C2B2A;
+            --glow: rgba(246, 25, 25, 0.2);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            font-family: var(--font-body);
-            background-color: var(--color-light);
-            color: var(--color-dark);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            letter-spacing: -0.015em;
-        }
-
-        /* --- 2. Texture Overlay (The "Expensive" Feel) --- */
-        .noise-overlay {
+        /* EPIC ATMOSPHERE: SCANLINES & GLOW */
+        body::before {
+            content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            z-index: 10;
             pointer-events: none;
-            z-index: 50;
-            opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* --- 3. Text & Gradients --- */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+        .ambient-glow {
+            position: fixed;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 40%;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* MAIN CONTAINER */
+        .app-shell {
+            position: relative;
+            z-index: 20;
+            max-width: 500px; /* Mobile focused width */
+            margin: 0 auto;
+            padding: 40px 24px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 0%, #888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        /* --- 4. Buttons & Interactive Elements --- */
-        .cta-button {
-            background: var(--color-primary);
+        .red-accent { color: var(--red); -webkit-text-fill-color: var(--red); }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--white);
+            font-weight: 300;
+            border-left: 2px solid var(--red);
+            padding-left: 15px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* BUTTONS: THE TACTILE FEEL */
+        .btn-prime {
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 24px;
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
             position: relative;
+            transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 15px 30px rgba(255, 77, 0, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(246, 25, 25, 0.3);
         }
 
-        .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px rgba(255, 77, 0, 0.4);
-            background: #e64500; /* Darker orange on hover */
-        }
-        
-        .check-item {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-left-width: 4px;
-            border-left-color: var(--color-primary);
-        }
-        
-        .check-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .dark-bg-gradient {
-            background: linear-gradient(135deg, var(--color-dark) 0%, #2d1810 100%);
+        .btn-prime:active { transform: scale(0.96); background: #d11212; }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--warm-gray);
+            color: #888;
+            margin-top: 15px;
+            padding: 15px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
         }
 
-        /* --- 5. Scroll Reveal Animation --- */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.2, 0, 0, 1);
+        /* PROGRESS TRACKER */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: var(--red);
+            letter-spacing: 2px;
         }
 
-        .reveal-up.active {
-            opacity: 1;
-            transform: translateY(0);
+        .progress-line {
+            height: 2px;
+            background: var(--warm-gray);
+            flex-grow: 1;
+            margin: 0 15px;
+            position: relative;
         }
 
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
+        .progress-fill {
+            position: absolute;
+            height: 100%;
+            background: var(--red);
+            width: 0%;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px var(--red);
+        }
+
+        /* OPTIONS */
+        .option-card {
+            background: var(--dark-gray);
+            border: 1px solid var(--warm-gray);
+            padding: 20px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .option-card:hover { border-color: var(--red); }
+
+        .option-card.selected {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .option-card.selected .option-id { color: var(--red); }
+
+        .option-id {
+            font-family: monospace;
+            font-weight: 900;
+            margin-right: 15px;
+            color: var(--warm-gray);
+        }
+
+        /* RESULTS SCREEN */
+        .verdict-shell { text-align: left; }
+        .breakpoint-id {
+            background: var(--red);
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .result-box {
+            background: var(--dark-gray);
+            padding: 25px;
+            border-top: 1px solid var(--red);
+            margin-top: 30px;
+        }
+
+        .example-grid {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .eg-item {
+            padding: 15px;
+            background: var(--black);
+            border: 1px solid #333;
+        }
+
+        .eg-label { font-size: 0.6rem; text-transform: uppercase; color: var(--red); margin-bottom: 5px; font-weight: 800; }
+
+        .hidden { display: none; opacity: 0; }
+
+        /* FADE IN ANIMATION */
+        .fade-in { animation: fadeIn 0.6s forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body style="background: #F4F0E8;">
-    
-    <div class="noise-overlay"></div>
+<body>
 
-    <section class="min-h-[90vh] flex items-center py-20 px-6 dark-bg-gradient relative overflow-hidden">
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="mb-6 reveal-up">
-                <span class="text-sm font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-white/10 bg-white/5" style="color: var(--color-primary);">FREE 7-DAY FRAMEWORK</span>
+<div class="ambient-glow"></div>
+
+<div class="app-shell">
+    <div id="screen-start" class="fade-in">
+        <div style="margin-top: 20vh;">
+            <h1>YOU THINK CLEARLY. <span class="red-accent">THE MARKET DOESN'T.</span></h1>
+            <p class="tagline">Find out why your message confuses buyers — and what must change to turn attention into conversations.</p>
+            
+            <div style="color: #888; font-size: 0.9rem; margin-bottom: 40px; line-height: 1.6;">
+                Smart people fail because of <strong>Translation Problems</strong>, not content problems. In 20 questions, we identify your exact leak.
             </div>
+
+            <button class="btn-prime" onclick="initiateTerminal()">
+                START DIAGNOSTIC
+            </button>
+            <a href="#" class="btn-secondary">Prefer to talk? Book a 15-min call.</a>
+        </div>
+    </div>
+
+    <div id="screen-terminal" class="hidden">
+        <div class="status-bar">
+            <span>SYS_004 // TRANS_DIAG</span>
+            <div class="progress-line"><div id="p-bar" class="progress-fill"></div></div>
+            <span id="q-count">01/20</span>
+        </div>
+
+        <div id="q-content">
+            <h2 id="q-text" style="font-size: 1.8rem; margin-bottom: 30px; line-height: 1.2;">QUESTION TEXT</h2>
+            <div id="q-options"></div>
+        </div>
+    </div>
+
+    <div id="screen-verdict" class="hidden">
+        <div class="verdict-shell">
+            <div class="breakpoint-id" id="res-bp-label">BREAKPOINT 02 VERIFIED</div>
+            <h1 id="res-name">MARKET MISALIGNMENT</h1>
+            <p style="color: var(--red); font-weight: 800; margin-bottom: 30px;" id="res-tag">YOU SOUND LIKE YOUR PEERS. YOUR BUYERS SPEAK A DIFFERENT LANGUAGE.</p>
             
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] mb-6 text-white reveal-up stagger-1">
-                You Can't Articulate What Makes You Different.
-            </h1>
-            
-            <p class="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto reveal-up stagger-2" style="color: #F3FAF7;">
-                So you copy others, stay invisible, and feel like a fraud. **That ends today.**
-            </p>
-            
-            <div class="max-w-xl mx-auto p-8 rounded-2xl shadow-2xl reveal-up stagger-3" style="background: rgba(244, 240, 232, 0.95);">
-                <h2 class="text-2xl font-black mb-4" style="color: var(--color-dark);">
-                    Download The Voice Discovery Blueprint
-                </h2>
-                <p class="mb-6" style="color: var(--color-dark);">
-                    Get the complete 7-day framework to articulate your unique value.
-                </p>
-                
-                <form action="YOUR_EMAIL_SERVICE_URL" method="POST" class="space-y-4">
-                    <input 
-                        type="text" 
-                        name="first_name" 
-                        placeholder="First Name" 
-                        required 
-                        class="w-full px-6 py-4 rounded-lg text-lg focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition"
-                        style="background: white; color: var(--color-dark); border: 1px solid #ddd;"
-                    />
-                    <input 
-                        type="email" 
-                        name="email" 
-                        placeholder="Email Address" 
-                        required 
-                        class="w-full px-6 py-4 rounded-lg text-lg focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition"
-                        style="background: white; color: var(--color-dark); border: 1px solid #ddd;"
-                    />
-                    <button 
-                        type="submit" 
-                        class="cta-button w-full text-white px-8 py-5 rounded-lg font-bold text-xl inline-flex items-center justify-center group"
-                    >
-                        Send Me The Blueprint 
-                        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </button>
-                </form>
-                
-                <p class="text-sm mt-4" style="color: var(--color-secondary);">
-                    Instant access. No spam. Unsubscribe anytime.
-                </p>
+            <div class="section-h" style="font-size: 0.7rem; color: #555; text-transform: uppercase; letter-spacing: 2px;">The Diagnosis</div>
+            <p style="margin: 15px 0 30px; line-height: 1.6; color: #ccc;" id="res-def">Definition text here...</p>
+
+            <div class="example-grid">
+                <div class="eg-item">
+                    <div class="eg-label">From (Vague/Expert)</div>
+                    <div id="res-before" style="font-style: italic; color: #888;">Example Before</div>
+                </div>
+                <div class="eg-item" style="border-color: var(--red);">
+                    <div class="eg-label">To (Sellable)</div>
+                    <div id="res-after" style="font-weight: 700;">Example After</div>
+                </div>
+            </div>
+
+            <div class="result-box">
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">The Translation Sprint converts attention into conversations in 7 days.</p>
+                <button class="btn-prime" style="width: 100%;">START THE SPRINT — $97</button>
+                <a href="#" class="btn-secondary" style="border: none;">Or Book a 15-min Fit Call</a>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    ---
+<script>
+    const questions = [
+        { bp: 1, q: "When someone asks “What do you do?” how long does it take you to explain it?", a: ["One sentence","2–3 sentences","A full paragraph","I ramble until they look lost"] },
+        { bp: 1, q: "Can a stranger repeat your work back in a single clear sentence?", a: ["Yes","Sometimes","Rarely","Never"] },
+        { bp: 1, q: "How often do you get “interesting” instead of “how do we start?”", a: ["Almost never","Occasionally","Often","Almost always"] },
+        { bp: 1, q: "How long does it take you to finish your bio/about page?", a: ["Under 30 minutes","1–2 hours","Multiple days","I rewrite it constantly"] },
+        { bp: 1, q: "When you post, do you need follow-up comments to clarify your point?", a: ["Never","Sometimes","Often","Constantly"] },
+        { bp: 2, q: "What is the most common engagement on your content?", a: ["“How do I work with you?”","“Interesting”","“This resonates”","Generic praise / silence"] },
+        { bp: 2, q: "Do prospects ask “How are you different?” compared to others?", a: ["Rarely","Sometimes","Frequently","Always"] },
+        { bp: 2, q: "Who is your content primarily written for?", a: ["My ideal buyer","Someone like me","Industry peers","Myself"] },
+        { bp: 2, q: "Do outsiders (non-industry) understand what you do?", a: ["Yes, easily","With explanation","Only if expert","Almost never"] },
+        { bp: 2, q: "Can you describe your results without using jargon?", a: ["Yes, always","Mostly","Not really","No"] },
+        { bp: 3, q: "Do you lead with the outcome or your process?", a: ["Outcome first","Outcome, then process","Process first","Process only"] },
+        { bp: 3, q: "Could a follower state the transformation you deliver?", a: ["Absolutely","Probably","Maybe","No"] },
+        { bp: 3, q: "In DMs, do they ask “What exactly do you help with?”", a: ["Almost never","Rarely","Sometimes","Often"] },
+        { bp: 3, q: "Does your bio list the result — or your credentials?", a: ["Results first","Mix","Mostly credentials","Process only"] },
+        { bp: 3, q: "When a client signs, do they ask for an outcome or your vibe?", a: ["Outcome","Mostly outcome","Mix","Vibe/Approach"] },
+        { bp: 4, q: "What % of engaged people turn into paid calls?", a: ["20%+","10–20%","5–10%","<5%"] },
+        { bp: 4, q: "Do people say “someday” more than “how do we start?”", a: ["No — they ask now","About equal","More “someday”","Always “someday”"] },
+        { bp: 4, q: "Is your pricing visible before a prospect asks?", a: ["Yes","With digging","No — they ask","I never list it"] },
+        { bp: 4, q: "Do you tie your work to revenue/time outcomes?", a: ["Always","Often","Sometimes","Rarely"] },
+        { bp: 4, q: "Do buyers know exactly what they are buying?", a: ["Yes","Mostly","Somewhat","No — just a thought leader"] }
+    ];
 
-    <section class="py-24 px-6" style="background: white;">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-black mb-8 text-center reveal-up" style="color: var(--color-dark);">
-                Here's What's Really Happening
-            </h2>
-            
-            <p class="text-xl md:text-2xl font-semibold mb-12 text-center reveal-up stagger-1" style="color: var(--color-dark);">
-                You're stuck in the **Post → Compare → Copy → Repeat** cycle.
-            </p>
+    const results = {
+        1: { name: "COGNITIVE OVERLOAD", tag: "TOO MUCH THINKING. NOT ENOUGH BUYING.", def: "You compress years of depth into sentences that require a thinking journey the market doesn't have time for.", before: "I help people build personal brands through strategic content.", after: "I turn experts into professionals who book discovery calls in 90 days." },
+        2: { name: "MARKET MISALIGNMENT", tag: "YOU SOUND LIKE A PEER, NOT A SOLUTION.", def: "You are optimizing for respect from people like you, rather than making a buying decision easy for your client.", before: "Strategic advisory for transformation leaders.", after: "I help executives get change adopted by their team within 90 days." },
+        3: { name: "OUTCOME BLUR", tag: "YOU SELL THE PLANE. THEY BUY THE DESTINATION.", def: "You are leading with 'How' you do it. Buyers only care about 'What' changes for them. Hide the process.", before: "I teach a 5-step framework for growth.", after: "I turn inconsistent posting into a 90-day funnel." },
+        4: { name: "ECONOMIC SILENCE", tag: "YOU HAVE AN AUDIENCE, NOT A BUSINESS.", def: "You are comfortable being respected but avoid the bridge to a sale. Your message never asks for money.", before: "Here is my 10-step decision framework.", after: "This diagnostic makes $50k decisions in 48 hours. DM 'DECIDE'." }
+    };
 
-            <div class="grid md:grid-cols-2 gap-6 mb-12">
-                <div class="p-6 rounded-xl check-item reveal-up stagger-2" style="background: #F4F0E8;">
-                    <p style="color: var(--color-dark);">→ You **study successful people** in your space.</p>
-                </div>
-                <div class="p-6 rounded-xl check-item reveal-up stagger-3" style="background: #F4F0E8;">
-                    <p style="color: var(--color-dark);">→ You **copy their content style** and frameworks.</p>
-                </div>
-                <div class="p-6 rounded-xl check-item reveal-up stagger-4" style="background: #F4F0E8;">
-                    <p style="color: var(--color-dark);">→ Your posts **fall flat** because they lack your signature.</p>
-                </div>
-                <div class="p-6 rounded-xl check-item reveal-up stagger-5" style="background: #F4F0E8;">
-                    <p style="color: var(--color-dark);">→ You feel like a **fraud** every time you hit publish.</p>
-                </div>
+    let currentIdx = 0;
+    let scores = { 1:0, 2:0, 3:0, 4:0 };
+
+    function initiateTerminal() {
+        document.getElementById('screen-start').classList.add('hidden');
+        document.getElementById('screen-terminal').classList.remove('hidden');
+        renderQ();
+    }
+
+    function renderQ() {
+        const q = questions[currentIdx];
+        document.getElementById('q-text').innerText = q.q;
+        document.getElementById('q-count').innerText = `${String(currentIdx + 1).padStart(2, '0')}/20`;
+        document.getElementById('p-bar').style.width = `${((currentIdx + 1) / 20) * 100}%`;
+        
+        const optContainer = document.getElementById('q-options');
+        optContainer.innerHTML = q.a.map((text, i) => `
+            <div class="option-card" onclick="next(${q.bp}, ${i})">
+                <span class="option-id">0${i+1}</span>
+                <span>${text}</span>
             </div>
+        `).join('');
+    }
 
-            <div class="text-center p-10 rounded-2xl reveal-up" style="background: var(--color-dark); border: 1px solid #333;">
-                <p class="text-2xl font-bold" style="color: var(--color-light);">
-                    The root cause isn't your execution; it's a **Clarity Gap**.
-                </p>
-            </div>
-        </div>
-    </section>
+    function next(bp, pts) {
+        scores[bp] += pts;
+        currentIdx++;
+        if(currentIdx < 20) renderQ();
+        else showVerdict();
+    }
 
-    ---
+    function showVerdict() {
+        const top = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+        const r = results[top];
+        
+        document.getElementById('screen-terminal').classList.add('hidden');
+        document.getElementById('screen-verdict').classList.remove('hidden');
+        document.getElementById('screen-verdict').classList.add('fade-in');
 
-    <section class="py-24 px-6" style="background: #F3FAF7;">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-black mb-12 text-center reveal-up" style="color: var(--color-dark);">
-                The High Cost of Being Undefined
-            </h2>
+        document.getElementById('res-bp-label').innerText = `BREAKPOINT 0${top} VERIFIED`;
+        document.getElementById('res-name').innerText = r.name;
+        document.getElementById('res-tag').innerText = r.tag;
+        document.getElementById('res-def').innerText = r.def;
+        document.getElementById('res-before').innerText = r.before;
+        document.getElementById('res-after').innerText = r.after;
+        
+        window.scrollTo(0,0);
+    }
+</script>
 
-            <div class="space-y-6">
-                <div class="flex items-start gap-4 p-6 rounded-xl bg-white shadow-lg reveal-up stagger-1">
-                    <div class="text-3xl flex-shrink-0" style="color: var(--color-primary);">🔥</div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-1" style="color: var(--color-dark);">Your content sounds generic</h3>
-                        <p style="color: #4A4A4A;">You're creating "me too" posts that blend into the noise and get ignored.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-4 p-6 rounded-xl bg-white shadow-lg reveal-up stagger-2">
-                    <div class="text-3xl flex-shrink-0" style="color: var(--color-primary);">💸</div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-1" style="color: var(--color-dark);">You can't charge premium</h3>
-                        <p style="color: #4A4A4A;">Without unique value articulation, you can't defend higher rates. You stay capped.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-4 p-6 rounded-xl bg-white shadow-lg reveal-up stagger-3">
-                    <div class="text-3xl flex-shrink-0" style="color: var(--color-primary);">🛑</div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-1" style="color: var(--color-dark);">You attract wrong-fit clients</h3>
-                        <p style="color: #4A4A4A;">Your vague positioning attracts bargain hunters instead of true believers who value your difference.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    ---
-
-    <section class="py-24 px-6" style="background: white;">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-black mb-8 text-center reveal-up" style="color: var(--color-dark);">
-                The <span class="gradient-text">Only Solution</span> is VOICE
-            </h2>
-            
-            <div class="text-center mb-12 reveal-up stagger-1">
-                <div class="inline-block p-8 rounded-2xl border-2 border-orange-500/50" style="background: #F4F0E8;">
-                    <p class="text-2xl md:text-3xl font-black mb-2" style="color: var(--color-dark);">
-                        Discover Your **V.O.I.C.E.**
-                    </p>
-                    <p class="text-lg" style="color: var(--color-secondary);">
-                        (Your **V**ision + **O**rigin Story + **I**ntellectual Property + **C**larity + **E**xpertise)
-                    </p>
-                </div>
-            </div>
-
-            <div class="text-center p-10 rounded-2xl reveal-up stagger-2" style="background: var(--color-dark);">
-                <p class="text-2xl font-bold" style="color: var(--color-primary);">
-                    The Blueprint delivers the clarity that makes you UNREPEATABLE.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    ---
-
-    <section class="py-24 px-6" style="background: #F4F0E8;">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-black mb-4 text-center reveal-up" style="color: var(--color-dark);">
-                Inside The **Voice Discovery Blueprint**
-            </h2>
-            <p class="text-xl text-center mb-12 reveal-up stagger-1" style="color: var(--color-secondary);">
-                A complete 7-day framework sent straight to your inbox.
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                
-                <div class="p-8 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all reveal-up stagger-2">
-                    <div class="text-4xl font-black mb-4" style="color: var(--color-primary);">Day 1-2</div>
-                    <h3 class="text-xl font-bold mb-3" style="color: var(--color-dark);">Excavation: Story & Expertise</h3>
-                    <p style="color: #4A4A4A;">Identify your **signature origin story** and map the unique intersections of your **expertise** to create your uncopyable method.</p>
-                </div>
-
-                <div class="p-8 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all reveal-up stagger-3">
-                    <div class="text-4xl font-black mb-4" style="color: var(--color-primary);">Day 3-4</div>
-                    <h3 class="text-xl font-bold mb-3" style="color: var(--color-dark);">Integration: Vision & Statement</h3>
-                    <p style="color: #4A4A4A;">Define your **10-year vision** and combine all elements into your **Voice Statement**—your one-sentence clarity bomb.</p>
-                </div>
-
-                <div class="p-8 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all reveal-up stagger-4">
-                    <div class="text-4xl font-black mb-4" style="color: var(--color-primary);">Day 5-6</div>
-                    <h3 class="text-xl font-bold mb-3" style="color: var(--color-dark);">Validation: Differentiation Test</h3>
-                    <p style="color: #4A4A4A;">Run the **Differentiation Test** to confirm you are truly a **category-of-one** (not just "better") and immune to competition.</p>
-                </div>
-
-                <div class="p-8 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all reveal-up stagger-5">
-                    <div class="text-4xl font-black mb-4" style="color: var(--color-primary);">Day 7</div>
-                    <h3 class="text-xl font-bold mb-3" style="color: var(--color-dark);">Articulation: Content Flow</h3>
-                    <p style="color: #4A4A4A;">Turn your Voice Statement into repeatable **core messages** and a **content pillar map** for effortless creation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    ---
-
-    <section class="py-20 px-6 dark-bg-gradient">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-4xl md:text-6xl font-black mb-6 text-white reveal-up">
-                Stop Copying.<br/>Start Creating.
-            </h2>
-            <p class="text-xl mb-12 text-gray-300 reveal-up stagger-1">
-                Download the complete 7-day framework and unlock your most valuable business asset: your unique voice.
-            </p>
-            
-            <div class="max-w-xl mx-auto p-8 rounded-2xl shadow-2xl reveal-up stagger-2" style="background: rgba(244, 240, 232, 0.95);">
-                <form action="YOUR_EMAIL_SERVICE_URL" method="POST" class="space-y-4">
-                    <input 
-                        type="text" 
-                        name="first_name" 
-                        placeholder="First Name" 
-                        required 
-                        class="w-full px-6 py-4 rounded-lg text-lg focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition"
-                        style="background: white; color: var(--color-dark); border: 1px solid #ddd;"
-                    />
-                    <input 
-                        type="email" 
-                        name="email" 
-                        placeholder="Email Address" 
-                        required 
-                        class="w-full px-6 py-4 rounded-lg text-lg focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition"
-                        style="background: white; color: var(--color-dark); border: 1px solid #ddd;"
-                    />
-                    <button 
-                        type="submit" 
-                        class="cta-button w-full text-white px-8 py-5 rounded-lg font-bold text-xl inline-flex items-center justify-center group"
-                    >
-                        Send Me The Blueprint 
-                        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </button>
-                </form>
-                
-                <p class="text-sm mt-4" style="color: var(--color-secondary);">
-                    Instant access. No spam. Unsubscribe anytime.
-                </p>
-            </div>
-
-            <div class="mt-12 pt-12 border-t border-white/10 reveal-up stagger-3" style="color: #F3FAF7;">
-                <p class="text-lg italic">
-                    "Your voice is your only truly uncopyable asset. Let's claim it."
-                </p>
-                <p class="mt-4 font-semibold text-orange-500">— Brenda Blanche</p>
-            </div>
-        </div>
-    </section>
-
-    ---
-
-    <footer class="bg-black py-12 border-t border-white/10 text-center relative z-20">
-        <div class="max-w-4xl mx-auto px-6">
-            
-            <div class="flex justify-center gap-8 mb-8">
-                
-                <a href="mailto:unapologeticquenn@gmail.com" class="text-gray-400 hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
-                    <span class="sr-only">Email</span>
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                </a>
-
-                <a href="https://www.linkedin.com/in/brendablanche" target="_blank" class="text-gray-400 hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
-                    <span class="sr-only">LinkedIn</span>
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                </a>
-
-                <a href="https://wa.me/237672411155" target="_blank" class="text-gray-400 hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
-                    <span class="sr-only">WhatsApp</span>
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                    </svg>
-                </a>
-            </div>
-            
-            <p class="text-gray-600 text-sm">
-                &copy; 2024 Brenda Blanche. All rights reserved.<br>
-                The Voice Discovery Blueprint
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: "0px"
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Optional: unobserve after activation if you only want it to fire once
-                        // observer.unobserve(entry.target); 
-                    }
-                });
-            }, observerOptions);
-
-            const revealElements = document.querySelectorAll('.reveal-up');
-            revealElements.forEach(el => observer.observe(el));
-        });
-    </script>
 </body>
 </html>
