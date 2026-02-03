@@ -1,429 +1,309 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brenda Blanche | The Diagnostic</title>
+    <title>Brenda Blanche | Identity-to-Income™</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: '#010313',
-                        blood: '#ff001e',
-                        bone: '#fcebe9',
-                        deepblue: '#1e3c65',
-                        charcoal: '#0a0c16'
-                    },
-                    fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
-        /* --- Premium Textures & Utils --- */
+        :root {
+            --brand-red: #ff001e;
+            --brand-dark: #010313;
+            --brand-navy: #1e3c65;
+            --brand-bone: #fcebe9;
+        }
         body {
-            background-color: #010313;
-            color: #fcebe9;
+            background-color: var(--brand-dark);
+            color: var(--brand-bone);
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
         }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        
+        .glow-red { text-shadow: 0 0 20px rgba(255, 0, 30, 0.5); }
+        .border-red { border-color: var(--brand-red); }
+        .bg-red { background-color: var(--brand-red); }
+        
+        /* Glassmorphism Cards */
+        .phase-card {
+            background: linear-gradient(145deg, rgba(30, 60, 101, 0.1), rgba(1, 3, 19, 0.8));
+            border-left: 2px solid var(--brand-navy);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+        .phase-card:hover {
+            border-left-color: var(--brand-red);
+            transform: translateX(5px);
+            background: linear-gradient(145deg, rgba(30, 60, 101, 0.2), rgba(1, 3, 19, 1));
+            box-shadow: -10px 0 30px rgba(255, 0, 30, 0.05);
+        }
 
-        /* Film Grain Overlay */
-        .noise-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        /* Button Animations */
+        .cta-button {
+            background-color: var(--brand-red);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 0, 30, 0.4);
+        }
+
+        /* Background Ambience */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,0,30,0.15) 0%, rgba(1,3,19,0) 70%);
+            border-radius: 50%;
             pointer-events: none;
-            z-index: 40;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: -1;
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #010313; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #ff001e; }
-
-        /* --- Effects --- */
-        .text-glow { text-shadow: 0 0 40px rgba(255, 255, 255, 0.15); }
-        .red-glow { text-shadow: 0 0 30px rgba(255, 0, 30, 0.5); }
-        
-        .glass-panel {
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .glass-panel-danger {
-            background: linear-gradient(180deg, rgba(255, 0, 30, 0.05) 0%, rgba(0,0,0,0) 100%);
-            border: 1px solid rgba(255, 0, 30, 0.3);
-            backdrop-filter: blur(8px);
-        }
-
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            inset: 0;
-            background: #010313;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.8s ease-in-out, visibility 0.8s;
-        }
-        .loader-line {
-            width: 0%;
-            height: 2px;
-            background: #ff001e;
-            animation: loadLine 1.5s ease-in-out forwards;
-        }
-        @keyframes loadLine { 0% { width: 0; } 100% { width: 200px; } }
-
-        /* Animations */
-        .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
-        .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
-
-        .pulse-btn { animation: pulse-red 2s infinite; }
-        @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 30, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 0, 30, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 30, 0); }
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--brand-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--brand-navy); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-red); }
     </style>
 </head>
-<body class="antialiased selection:bg-blood selection:text-white">
+<body class="selection:bg-red-600 selection:text-white">
 
-    <div id="preloader">
-        <div class="flex flex-col items-center gap-4">
-            <p class="text-[10px] uppercase tracking-[0.4em] text-blood animate-pulse">Establishing Connection</p>
-            <div class="loader-line"></div>
-        </div>
-    </div>
-
-    <div class="noise-overlay"></div>
-
-    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div class="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-deepblue/20 rounded-full blur-[150px] mix-blend-screen opacity-60"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-blood/10 rounded-full blur-[180px] mix-blend-screen opacity-50"></div>
-    </div>
-
-    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
-        <div class="text-sm font-bold tracking-[0.2em] uppercase">Brenda Blanche</div>
-        <div class="text-[10px] uppercase tracking-widest hidden md:block opacity-60">Voice-first Personal Branding Strategist</div>
-    </nav>
-
-    <section class="min-h-screen flex flex-col justify-center items-center px-6 relative z-10 pt-20">
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-20 pb-20">
+        <div class="ambient-glow top-0 -left-40"></div>
+        <div class="ambient-glow bottom-0 -right-40" style="background: radial-gradient(circle, rgba(30,60,101,0.2) 0%, rgba(1,3,19,0) 70%);"></div>
         
-        <div class="mb-8 flex items-center gap-3 border border-white/10 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm animate-[fadeIn_2s_ease-out]">
-            <div class="w-2 h-2 bg-blood rounded-full animate-pulse"></div>
-            <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-80">Market Status: Unrecognized</span>
-        </div>
-
-        <h1 class="text-5xl md:text-7xl lg:text-9xl font-serif font-bold text-center leading-[0.95] mb-8 text-glow">
-            The Market <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-bone via-white to-gray-500 italic pr-2">Doesn't Get You.</span>
-        </h1>
-
-        <div class="h-px w-32 bg-gradient-to-r from-transparent via-blood to-transparent mb-10"></div>
-
-        <p class="text-lg md:text-2xl text-center max-w-3xl text-bone/80 leading-relaxed font-light mb-12">
-            That's why you're invisible and it’s costing you <span class="text-blood font-bold border-b border-blood/30">$1000—$5000</span> every single month you stay unclear.
-        </p>
-
-        <a href="#diagnostic" class="group relative px-12 py-6 bg-blood text-white font-bold text-lg uppercase tracking-[0.2em] overflow-hidden transition-all hover:scale-105 duration-300 shadow-[0_0_40px_rgba(255,0,30,0.4)]">
-            <div class="absolute inset-0 w-full h-full bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12"></div>
-            <span class="relative z-10">Take The Diagnostic Now</span>
-        </a>
-        
-        <p class="mt-6 text-[10px] opacity-40 uppercase tracking-[0.3em]">Join the builders club • No credit card required to start</p>
-    </section>
-
-    <section class="py-24 relative border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-serif italic mb-6 leading-tight">
-                        "I'm doing everything right... <br>
-                        <span class="text-blood not-italic font-sans font-bold tracking-tighter">SO WHY IS NOBODY BUYING?"</span>
-                    </h2>
-                    <p class="text-lg opacity-70 leading-relaxed">
-                         The market sees you posting, but they don't understand what you're <span class="text-white font-bold">SELLING</span>. The reason is simple!, you haven't locked your message into language they can adopt, repeat and pay for. You are simply noise to them.
-                    </p>
-                </div>
-
-                <div class="glass-panel p-10 rounded-sm border-l-2 border-blood relative reveal-on-scroll">
-                    <div class="absolute -top-3 -right-3 bg-blood text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">Symptom Detected</div>
-                    <h3 class="text-xl font-bold uppercase tracking-widest mb-8 text-blood">The Pattern</h3>
-                    <ul class="space-y-6 opacity-80 text-sm md:text-base font-light">
-                        <li class="flex items-center gap-4">
-                            <span class="text-blood">→</span> Post 3-5x per week <span class="opacity-40 italic ml-auto">(Zero inquiries)</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <span class="text-blood">→</span> High engagement <span class="opacity-40 italic ml-auto">(Zero sales)</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <span class="text-blood">→</span> Prospects nod politely <span class="opacity-40 italic ml-auto">(Then disappear)</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-navy relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#1e3c65 1px, transparent 1px), linear-gradient(90deg, #1e3c65 1px, transparent 1px); background-size: 40px 40px;"></div>
-
-        <div class="max-w-4xl mx-auto px-6 relative z-10 reveal-on-scroll">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-serif mb-4">The Cost of <span class="italic text-white/50">Invisibility</span></h2>
-            </div>
-
-            <div class="glass-panel border border-white/10 rounded-xl overflow-hidden mb-8">
-                <div class="grid grid-cols-12 bg-white/5 border-b border-white/10 text-[10px] uppercase tracking-widest font-bold text-white/60">
-                    <div class="col-span-8 p-6">The Bleed</div>
-                    <div class="col-span-4 p-6 text-right text-blood">Monthly Loss</div>
-                </div>
-                <div class="grid grid-cols-12 border-b border-white/5 hover:bg-white/5 transition">
-                    <div class="col-span-8 p-6 text-sm">Lost Deals (Unclear Positioning)</div>
-                    <div class="col-span-4 p-6 text-right font-mono text-blood/80 text-sm">$1k — $3k</div>
-                </div>
-                <div class="grid grid-cols-12 border-b border-white/5 hover:bg-white/5 transition">
-                    <div class="col-span-8 p-6 text-sm">Failed Referrals (Confusion)</div>
-                    <div class="col-span-4 p-6 text-right font-mono text-blood/80 text-sm">$1k — $5k</div>
-                </div>
-                <div class="grid grid-cols-12 border-b border-white/5 hover:bg-white/5 transition">
-                    <div class="col-span-8 p-6 text-sm">Positioning Discount</div>
-                    <div class="col-span-4 p-6 text-right font-mono text-blood/80 text-sm">$3k — $10k</div>
-                </div>
-                <div class="grid grid-cols-12 bg-blood/10">
-                    <div class="col-span-6 p-6 font-bold uppercase tracking-widest text-xs flex items-center">Total Monthly Loss</div>
-                    <div class="col-span-6 p-6 text-right font-mono text-xl md:text-2xl font-bold text-blood">$7,000 — $23,000</div>
-                </div>
-            </div>
-            <p class="text-center text-sm md:text-lg opacity-50 font-mono">"3 Years Unclear = <span class="text-white border-b border-white">$828,000</span> Gone Forever."</p>
-        </div>
-    </section>
-
-    <section class="py-24 px-6 relative">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 md:gap-24">
-                
-                <div class="reveal-on-scroll">
-                    <h3 class="text-3xl font-serif mb-8">But It's Not Just Money...</h3>
-                    <p class="mb-8 opacity-70">While you're unclear, you're also losing:</p>
-                    <ul class="space-y-6">
-                        <li class="flex items-start gap-4 group">
-                            <span class="text-blood font-mono text-xl font-bold group-hover:scale-125 transition">✗</span>
-                            <div>
-                                <strong class="block text-white">Your confidence</strong>
-                                <span class="text-sm opacity-50">Every month that doesn't work makes you doubt yourself more.</span>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4 group">
-                            <span class="text-blood font-mono text-xl font-bold group-hover:scale-125 transition">✗</span>
-                            <div>
-                                <strong class="block text-white">Your authority window</strong>
-                                <span class="text-sm opacity-50">The market is learning to scroll past you.</span>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4 group">
-                            <span class="text-blood font-mono text-xl font-bold group-hover:scale-125 transition">✗</span>
-                            <div>
-                                <strong class="block text-white">Your sanity</strong>
-                                <span class="text-sm opacity-50">"Maybe I'm just not cut out for this..."</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass-panel-danger p-8 md:p-10 rounded-sm flex flex-col justify-center relative reveal-on-scroll delay-200">
-                    <div class="absolute inset-0 bg-blood/5 animate-pulse-slow"></div>
-                    <h4 class="relative z-10 text-xs font-bold uppercase tracking-[0.3em] text-blood mb-6">The Question That Destroys</h4>
-                    <p class="relative z-10 text-lg md:text-xl leading-relaxed font-light">
-                        Right now, someone with <span class="text-white font-bold">WORSE skills</span> than you, <span class="text-white font-bold">LESS experience</span> than you, and <span class="text-white font-bold">WORSE content</span> than you...
-                    </p>
-                    <div class="relative z-10 my-6 text-3xl md:text-4xl font-serif italic text-white">
-                        Is making $5,000/mo.
-                    </div>
-                    <p class="relative z-10 text-sm opacity-70">
-                        Not because they're better. But because their message is clearer. <strong class="text-white">The market buys what it understands.</strong>
-                    </p>
-                </div>
-            </div>
-
-            <div class="mt-20 text-center">
-                <a href="#diagnostic" class="inline-block border border-blood text-blood px-8 py-4 text-xs uppercase tracking-[0.2em] hover:bg-blood hover:text-white transition duration-300">
-                    Stop The Bleeding - Take The Diagnostic
-                </a>
-                <p class="mt-3 text-[10px] opacity-40">15 minutes to see what's broken.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-charcoal relative">
-        <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
-            <h2 class="text-5xl md:text-7xl font-serif italic mb-6">You're Not Broken.<br><span class="text-blood">You're Unclear.</span></h2>
-            <p class="text-xl max-w-2xl mx-auto mb-16 opacity-70">
-                You have the skills. You have the discipline. The problem isn't YOU. The problem is your MESSAGE. And clarity is teachable.
+        <div class="relative z-10 text-center max-w-5xl animate__animated animate__fadeIn">
+            <p class="uppercase tracking-[0.4em] text-xs md:text-sm mb-6 text-red-500 font-bold">Brenda Blanche Strategy</p>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1]">
+                Why the Market <br><span class="italic text-[#ff001e] glow-red">Doesn't Understand</span> You
+            </h1>
+            
+            <p class="text-xl md:text-2xl opacity-80 max-w-3xl mx-auto mb-8 font-light leading-relaxed">
+                (And How to Fix It in 90 Days)
             </p>
-        </div>
-
-        <div class="max-w-3xl mx-auto px-6 reveal-on-scroll">
-            <div class="glass-panel p-8 md:p-12 border-t border-white/20 relative">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-charcoal px-4 text-blood font-serif text-4xl">“</div>
-                <h3 class="text-center text-xs uppercase tracking-[0.3em] mb-8 opacity-50">Evidence from the trenches</h3>
-                
-                <div class="space-y-6 font-light text-lg">
-                    <p>I built publicly for 6 months in Cameroon. Posted 5x per week. Did "everything right." <strong class="text-white">Made $0.</strong></p>
-                    <p>My message was generic: <em class="opacity-60">"I help people with personal branding."</em> Unsellable.</p>
-                    <p>Then I locked my message: <em class="text-white block mt-2 border-l-2 border-blood pl-4">"I help builders who've been posting 1-3 years but are still invisible lock their message so they get paid in 90 days."</em></p>
-                    <p>I posted it 1,000 times without changing it. <span class="text-blood font-bold">The market finally paid me.</span></p>
-                </div>
-                <div class="mt-8 pt-8 border-t border-white/5 flex items-center justify-center gap-4">
-                    <div class="text-right">
-                        <div class="font-serif italic text-xl">Brenda Blanche</div>
-                        <div class="text-[10px] uppercase tracking-widest opacity-50">Strategic Consultant</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-6xl font-serif mb-4">What Happens Next</h2>
-                <p class="opacity-50 uppercase tracking-widest text-xs">Protocol initiated by 20+ builders</p>
-            </div>
-
-            <div class="relative border-l border-white/10 ml-4 md:ml-1/2 md:translate-x-[-1px] space-y-16">
-                
-                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-center reveal-on-scroll">
-                    <div class="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 top-0 w-3 h-3 bg-blood rounded-full"></div>
-                    <div class="md:text-right">
-                        <h3 class="text-xl font-bold text-white mb-2">Step 01: The Audit</h3>
-                        <p class="text-blood text-xs uppercase tracking-widest mb-4">Duration: 10 Minutes</p>
-                    </div>
-                    <div>
-                        <p class="opacity-70 text-sm">Answer 21 strategic questions. No fluff. Just brutal diagnosis of why you're invisible.</p>
-                    </div>
-                </div>
-
-                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-center reveal-on-scroll">
-                    <div class="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 top-0 w-3 h-3 bg-white rounded-full"></div>
-                    <div class="md:order-2">
-                        <h3 class="text-xl font-bold text-white mb-2">Step 02: The Score</h3>
-                        <p class="text-blood text-xs uppercase tracking-widest mb-4">Duration: 2 Minutes</p>
-                    </div>
-                    <div class="md:text-right md:order-1">
-                        <p class="opacity-70 text-sm">Get your <strong class="text-white">Market Recognition Score (0-105)</strong>. 
-                        <br><span class="text-xs opacity-50">Score &lt; 40 means you are completely invisible ($5k+ loss).</span></p>
-                    </div>
-                </div>
-
-                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-center reveal-on-scroll">
-                    <div class="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 top-0 w-3 h-3 bg-white rounded-full"></div>
-                    <div class="md:text-right">
-                        <h3 class="text-xl font-bold text-white mb-2">Step 03: The Fix</h3>
-                        <p class="text-blood text-xs uppercase tracking-widest mb-4">Included Free</p>
-                    </div>
-                    <div>
-                        <p class="opacity-70 text-sm">Receive the complete 90-Day Fix roadmap. Phase 1: Message Lock. Phase 2: Recognition Build.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="diagnostic" class="py-24 px-6 relative">
-        <div class="absolute inset-0 bg-gradient-to-b from-navy via-deepblue/10 to-navy opacity-50"></div>
-        
-        <div class="max-w-2xl mx-auto relative z-10 text-center reveal-on-scroll">
-            <h2 class="text-5xl md:text-7xl font-serif italic mb-6">Stop The Bleeding.</h2>
-            <p class="text-lg opacity-70 mb-12 font-light">
-                Secure your 15-minute diagnostic now.
-            </p>
-
-            <form action="https://wa.link/pte0l2" method="GET" class="text-left bg-black/40 backdrop-blur-xl p-8 md:p-12 border border-white/10 rounded-sm shadow-2xl relative overflow-hidden group hover:border-blood/30 transition duration-500">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blood to-transparent opacity-50"></div>
-
-                <div class="space-y-8">
-                    <div class="group/input">
-                        <label class="block uppercase tracking-widest text-[10px] text-blood mb-2 font-bold group-focus-within/input:text-white transition-colors">Full Name</label>
-                        <input type="text" required class="w-full bg-transparent border-b border-white/20 p-4 text-xl placeholder-white/10 focus:border-blood focus:outline-none transition-colors text-white" placeholder="Enter your name">
-                    </div>
-                    
-                    <div class="group/input">
-                        <label class="block uppercase tracking-widest text-[10px] text-blood mb-2 font-bold group-focus-within/input:text-white transition-colors">Email Address</label>
-                        <input type="email" required class="w-full bg-transparent border-b border-white/20 p-4 text-xl placeholder-white/10 focus:border-blood focus:outline-none transition-colors text-white" placeholder="name@company.com">
-                    </div>
-
-                    <div class="group/input">
-                        <label class="block uppercase tracking-widest text-[10px] text-blood mb-2 font-bold group-focus-within/input:text-white transition-colors">WhatsApp Number</label>
-                        <input type="tel" required class="w-full bg-transparent border-b border-white/20 p-4 text-xl placeholder-white/10 focus:border-blood focus:outline-none transition-colors text-white" placeholder="+237 ...">
-                    </div>
-
-                    <div class="pt-6">
-                        <button type="submit" class="w-full bg-blood hover:bg-red-600 text-white py-6 text-xl font-bold uppercase tracking-[0.2em] transition-all pulse-btn hover:scale-[1.01] active:scale-[0.99] shadow-lg">
-                            Initialize Diagnostic
-                        </button>
-                    </div>
-                </div>
-                
-                <p class="text-center text-[10px] opacity-30 mt-6 uppercase tracking-widest">
-                    Redirects to Brenda's Private WhatSapp • Average Score: 47/105
+            
+            <div class="w-full max-w-2xl mx-auto border-l-2 border-red-600 pl-6 text-left mb-12 bg-white/5 p-6 rounded-r-xl">
+                <p class="text-lg italic opacity-90">
+                    "Here's the truth: If the market doesn't understand you, it doesn't matter how good you are. I'm Brenda Blanche. I turn unclear expertise into brands the market understands and pays for."
                 </p>
-            </form>
+            </div>
+
+            <a href="#system" class="cta-button inline-block px-10 py-5 rounded-full font-bold uppercase tracking-widest text-white text-sm md:text-base">
+                Explore the System
+            </a>
+        </div>
+    </header>
+
+    <section class="py-24 border-t border-white/5 relative">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl mb-8 uppercase tracking-tighter leading-tight">The Problem Isn't <br><span class="text-[#ff001e]">Your Content.</span></h2>
+                <p class="text-lg opacity-70 mb-6">You've tried posting more, "being authentic", and following templates. <strong class="text-white">Nothing sticks.</strong></p>
+                <p class="text-lg opacity-70 mb-8">You're treating the symptom. The problem isn't your offer or your expertise.</p>
+                <div class="text-3xl font-bold mb-8 border-b-2 border-red-600 inline-block pb-2">It's Clarity.</div>
+            </div>
+            
+            <div class="bg-[#1e3c65]/10 border border-white/10 p-10 rounded-2xl backdrop-blur-sm">
+                <h4 class="text-red-600 uppercase font-bold tracking-widest mb-6 text-sm">Without Clarity On:</h4>
+                <ul class="space-y-4 text-lg font-light">
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-red-600 rounded-full mr-4"></span> Identity (Who you are)</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-red-600 rounded-full mr-4"></span> Market Alignment (Where you fit)</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-red-600 rounded-full mr-4"></span> Message Precision (What you mean)</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-red-600 rounded-full mr-4"></span> Monetization (How it pays you)</li>
+                </ul>
+                <p class="mt-8 text-xl font-serif italic text-white">"The market doesn't reward the best. It rewards the most understood."</p>
+            </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/5 text-center">
-        <p class="text-xs uppercase tracking-[0.3em] opacity-30">&copy; 2026 Brenda Blanche. Brand It Unapologetically Accelerator.</p>
+    <section id="system" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-white/5 skew-y-3 scale-110 z-0 pointer-events-none"></div>
+        
+        <div class="relative z-10 max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl mb-4">The Identity-to-Income™ System</h2>
+                <p class="text-red-600 tracking-[0.2em] uppercase font-bold text-sm">The Exact 4-Phase Operating System</p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="phase-card p-8 md:p-10 rounded-r-2xl">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/4">
+                            <span class="text-5xl font-bold opacity-10 font-serif">01</span>
+                            <h3 class="text-2xl font-bold mb-2 uppercase">Identity</h3>
+                            <p class="text-red-600 text-sm font-bold italic">Who You Are</p>
+                        </div>
+                        <div class="md:w-3/4">
+                            <p class="mb-6 opacity-80 text-sm md:text-base">Strategic self-definition. We extract what you want to be known for, your core beliefs, and your non-negotiable values.</p>
+                            <div class="bg-black/30 p-4 rounded border-l-2 border-red-600">
+                                <p class="text-xs uppercase tracking-widest text-red-500 mb-1">Key Question</p>
+                                <p class="italic text-sm">"What do I believe strongly enough to test in the real world?"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-card p-8 md:p-10 rounded-r-2xl">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/4">
+                            <span class="text-5xl font-bold opacity-10 font-serif">02</span>
+                            <h3 class="text-2xl font-bold mb-2 uppercase">Alignment</h3>
+                            <p class="text-red-600 text-sm font-bold italic">Where You Fit</p>
+                        </div>
+                        <div class="md:w-3/4">
+                            <p class="mb-4 opacity-80 text-sm md:text-base">Using the <strong>PACT Framework</strong> to find where you belong:</p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-bold uppercase tracking-wider mb-2">
+                                <div class="p-2 border border-white/10 text-center"><span class="text-red-500 block text-lg">P</span>roximity</div>
+                                <div class="p-2 border border-white/10 text-center"><span class="text-red-500 block text-lg">A</span>cute Pain</div>
+                                <div class="p-2 border border-white/10 text-center"><span class="text-red-500 block text-lg">C</span>an Prove</div>
+                                <div class="p-2 border border-white/10 text-center"><span class="text-red-500 block text-lg">T</span>executable</div>
+                            </div>
+                            <p class="text-sm opacity-60 italic mt-4">One Problem. One Outcome. One Mechanism.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-card p-8 md:p-10 rounded-r-2xl">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/4">
+                            <span class="text-5xl font-bold opacity-10 font-serif">03</span>
+                            <h3 class="text-2xl font-bold mb-2 uppercase">Expression</h3>
+                            <p class="text-red-600 text-sm font-bold italic">What You Mean</p>
+                        </div>
+                        <div class="md:w-3/4">
+                            <p class="mb-6 opacity-80 text-sm md:text-base">Content is the interface between expertise and understanding. We use the <strong>4-Step Trust Formula</strong>.</p>
+                            <ul class="text-sm space-y-2 opacity-70 list-disc pl-5">
+                                <li>Identify the Painful Problem (They see themselves)</li>
+                                <li>Communicate Unique Solution (Differentiation)</li>
+                                <li>Set Expectations (Honesty)</li>
+                                <li>Make Action Easy (Remove Confusion)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-card p-8 md:p-10 rounded-r-2xl">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/4">
+                            <span class="text-5xl font-bold opacity-10 font-serif">04</span>
+                            <h3 class="text-2xl font-bold mb-2 uppercase">Monetization</h3>
+                            <p class="text-red-600 text-sm font-bold italic">How It Pays You</p>
+                        </div>
+                        <div class="md:w-3/4">
+                            <p class="mb-6 opacity-80 text-sm md:text-base">A brand that doesn't pay is a hobby. We build a logical <strong>Offer Ladder</strong>.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-2 bg-white/5 border border-white/10 rounded text-xs uppercase">Level 1: Lead Magnet</span>
+                                <span class="px-4 py-2 bg-white/5 border border-white/10 rounded text-xs uppercase">Level 2: Low-Ticket</span>
+                                <span class="px-4 py-2 bg-red-600/20 border border-red-600/50 rounded text-xs uppercase text-white font-bold">Level 3: Flagship</span>
+                                <span class="px-4 py-2 bg-white/5 border border-white/10 rounded text-xs uppercase">Level 4: Retainer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center">
+                <h3 class="text-2xl mb-4">In 90 Days...</h3>
+                <p class="opacity-70 max-w-2xl mx-auto mb-10">You won't just have a personal brand. You'll have a system that turns who you are into predictable revenue. Without faking it.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl text-center mb-4 uppercase">Three Ways to <span class="text-red-600">Work With Me</span></h2>
+        <p class="text-center opacity-60 mb-16 max-w-2xl mx-auto">I've helped 500+ founders turn unclear expertise into brands the market understands.</p>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="border border-white/10 p-8 rounded-2xl hover:border-red-600 transition duration-300 flex flex-col h-full bg-white/[0.02]">
+                <div>
+                    <span class="text-4xl mb-6 block">🎯</span>
+                    <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Clarity Consultation</h3>
+                    <p class="text-red-500 text-xs font-bold uppercase mb-6">45-Minute 1:1 Strategy</p>
+                    <p class="text-sm opacity-60 mb-6 leading-relaxed">
+                        A focused diagnosis of why the market doesn't understand you. We map out exactly how the system applies to your situation.
+                    </p>
+                    <ul class="text-xs space-y-2 mb-8 opacity-70">
+                        <li>✓ Clear Diagnosis</li>
+                        <li>✓ Specific Roadmap</li>
+                        <li>✓ NOT a sales call</li>
+                    </ul>
+                </div>
+                <div class="mt-auto">
+                    <a href="https://wa.link/pte0l2" target="_blank" class="block w-full text-center border border-white/20 py-4 rounded-lg font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-black transition">Book Clarity Call</a>
+                </div>
+            </div>
+
+            <div class="border-2 border-red-600 p-8 rounded-2xl relative overflow-hidden flex flex-col h-full transform md:-translate-y-4 bg-[#050a1f]">
+                <div class="absolute top-0 right-0 bg-red-600 text-[10px] px-4 py-1 uppercase font-bold text-white">Most Popular</div>
+                <div>
+                    <span class="text-4xl mb-6 block">🚀</span>
+                    <h3 class="text-xl font-bold mb-2 uppercase tracking-wide italic">Brand It Unapologetically</h3>
+                    <p class="text-red-500 text-xs font-bold uppercase mb-6">8-Week Group Cohort</p>
+                    <p class="text-sm opacity-60 mb-6 leading-relaxed">
+                        Live weekly coaching. I teach the system, you build it alongside other founders. Community + Accountability.
+                    </p>
+                    <ul class="text-xs space-y-2 mb-8 opacity-70">
+                        <li>✓ Identity Extraction</li>
+                        <li>✓ Market Alignment</li>
+                        <li>✓ Expression System</li>
+                        <li>✓ Monetization Path</li>
+                    </ul>
+                </div>
+                <div class="mt-auto">
+                    <a href="https://wa.link/pte0l2" target="_blank" class="block w-full text-center bg-red-600 py-4 rounded-lg font-bold uppercase text-xs tracking-widest text-white hover:brightness-110 transition shadow-[0_0_20px_rgba(255,0,30,0.4)]">Apply For Cohort</a>
+                </div>
+            </div>
+
+            <div class="border border-white/10 p-8 rounded-2xl hover:border-red-600 transition duration-300 flex flex-col h-full bg-white/[0.02]">
+                <div>
+                    <span class="text-4xl mb-6 block">⚡</span>
+                    <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Done-For-You</h3>
+                    <p class="text-red-500 text-xs font-bold uppercase mb-6">Complete Brand Build</p>
+                    <p class="text-sm opacity-60 mb-6 leading-relaxed">
+                        I apply the system directly to your brand. You show up, we extract, I build. Speed and precision.
+                    </p>
+                    <ul class="text-xs space-y-2 mb-8 opacity-70">
+                        <li>✓ Brand Clarity Document</li>
+                        <li>✓ Positioning Statement</li>
+                        <li>✓ Content Strategy</li>
+                        <li>✓ Offer Ladder Structure</li>
+                    </ul>
+                </div>
+                <div class="mt-auto">
+                    <a href="https://wa.link/pte0l2" target="_blank" class="block w-full text-center border border-white/20 py-4 rounded-lg font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-black transition">Apply for DFY</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/10 text-center px-6 bg-black">
+        <h2 class="text-3xl md:text-5xl mb-10 italic serif leading-tight">"The market doesn't reward the best. <br>It rewards the <span class="text-[#ff001e]">most understood."</span></h2>
+        
+        <p class="mb-10 opacity-60">You're an expert. The market just doesn't know it yet. Let's fix that.</p>
+        
+        <div class="flex flex-col md:flex-row justify-center gap-4 mb-16">
+            <a href="https://wa.link/pte0l2" class="text-xs font-bold uppercase tracking-widest border-b border-red-600 pb-1 hover:text-red-500">Book Clarity Call</a>
+            <span class="hidden md:inline text-white/20">|</span>
+            <a href="https://wa.link/pte0l2" class="text-xs font-bold uppercase tracking-widest border-b border-red-600 pb-1 hover:text-red-500">Join Cohort</a>
+            <span class="hidden md:inline text-white/20">|</span>
+            <a href="https://wa.link/pte0l2" class="text-xs font-bold uppercase tracking-widest border-b border-red-600 pb-1 hover:text-red-500">Apply DFY</a>
+        </div>
+
+        <div class="space-y-2">
+            <p class="uppercase tracking-widest font-bold text-sm">Stay Unapologetically You.</p>
+            <p class="opacity-50 text-sm">— Brenda Blanche</p>
+            <p class="text-[10px] uppercase tracking-[0.3em] opacity-30 mt-4">Founder, The Unapologetics</p>
+        </div>
     </footer>
 
     <script>
-        // Preloader Logic
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-            }, 1800); // 1.8 seconds delay
-        });
-
-        // Scroll Reveal Logic
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
-            observer.observe(el);
-        });
-
-        // Smooth scroll interaction
+        // Simple Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
