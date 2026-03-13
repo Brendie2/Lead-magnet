@@ -1,484 +1,1433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brenda Blanche | Identity-to-Income™</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-red: #ff001e;
-            --brand-dark: #010313;
-            --brand-navy: #1e3c65;
-            --brand-bone: #fcebe9;
-        }
-        body {
-            background-color: var(--brand-dark);
-            color: var(--brand-bone);
-            font-family: 'Space Grotesk', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
-        
-        /* Utility */
-        .text-glow { text-shadow: 0 0 20px rgba(255, 0, 30, 0.4); }
-        .mono { font-family: 'Courier New', Courier, monospace; letter-spacing: -0.5px; }
-        
-        /* Glass Cards */
-        .glass-panel {
-            background: linear-gradient(180deg, rgba(30, 60, 101, 0.08) 0%, rgba(1, 3, 19, 0.4) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brenda Blanche — Brand It Unapologetically™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Syne:wght@400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
 
-        /* Phase Cards - The "System" look */
-        .phase-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.4));
-            border-left: 2px solid var(--brand-navy);
-            transition: all 0.4s ease;
-        }
-        .phase-card:hover {
-            border-left-color: var(--brand-red);
-            background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.4));
-            transform: translateX(5px);
-            box-shadow: -10px 0 30px -10px rgba(255, 0, 30, 0.1);
-        }
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────── */
+:root {
+  --ink:    #06040F;
+  --deep:   #0B0818;
+  --red:    #FF001E;
+  --cream:  #F8EDE8;
+  --sand:   #EDE0D8;
+  --mist:   rgba(248,237,232,0.55);
+  --ghost:  rgba(248,237,232,0.1);
+  --rule:   rgba(248,237,232,0.09);
 
-        /* The Transformation Section Specifics */
-        .future-state-card {
-            background: rgba(1, 3, 19, 0.95);
-            border: 1px solid var(--brand-red);
-            box-shadow: 0 0 40px rgba(255, 0, 30, 0.05);
-        }
+  --p1: #7C3AED;
+  --p2: #0D9488;
+  --p3: #D97706;
+  --p4: #DC2626;
 
-        /* Buttons */
-        .btn-primary {
-            background-color: var(--brand-red);
-            color: white;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .btn-primary:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 25px rgba(255, 0, 30, 0.5);
-        }
-        .btn-outline {
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .btn-outline:hover {
-            background: white;
-            color: black;
-            border-color: white;
-        }
+  --f-display: 'Cormorant Garamond', Georgia, serif;
+  --f-body:    'Syne', sans-serif;
+  --f-mono:    'DM Mono', monospace;
+}
 
-        /* Background Ambience */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: -1;
-            pointer-events: none;
-        }
-    </style>
+/* ─────────────────────────────────────────────
+   RESET
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--f-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--red); color: #fff; }
+img, svg { display: block; }
+a { color: inherit; }
+
+/* ─────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────── */
+.page-pad { padding-left: clamp(24px, 6vw, 96px); padding-right: clamp(24px, 6vw, 96px); }
+.col-wrap  { max-width: 1180px; margin: 0 auto; }
+
+/* ─────────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px clamp(24px, 5vw, 80px);
+  transition: all .5s cubic-bezier(.4,0,.2,1);
+}
+#nav.scrolled {
+  background: rgba(6,4,15,0.94);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid var(--rule);
+  padding-top: 16px; padding-bottom: 16px;
+}
+.nav-id {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: .38em; text-transform: uppercase;
+  color: rgba(248,237,232,.35); text-decoration: none;
+}
+.nav-id strong { color: var(--cream); }
+.nav-actions { display: flex; gap: 20px; align-items: center; }
+.nav-ghost {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .28em;
+  text-transform: uppercase; color: rgba(248,237,232,.35);
+  text-decoration: none; transition: color .25s;
+}
+.nav-ghost:hover { color: var(--cream); }
+.nav-pill {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--cream); text-decoration: none;
+  border: 1px solid rgba(248,237,232,.18);
+  padding: 10px 24px; transition: all .25s;
+}
+.nav-pill:hover { background: var(--red); border-color: var(--red); }
+
+/* ─────────────────────────────────────────────
+   TYPE SCALE
+───────────────────────────────────────────── */
+.label {
+  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .45em;
+  text-transform: uppercase; color: var(--red);
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.label::before {
+  content: '';
+  display: inline-block; width: 28px; height: 1px; background: var(--red);
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────── */
+.btn {
+  display: inline-block; text-decoration: none;
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .28em;
+  text-transform: uppercase; padding: 17px 40px;
+  transition: all .32s cubic-bezier(.2,.8,.2,1);
+  cursor: pointer; border: none;
+}
+.btn-solid { background: var(--red); color: #fff; }
+.btn-solid:hover { box-shadow: 0 14px 44px rgba(255,0,30,.38); transform: translateY(-2px); }
+.btn-outline-light { background: transparent; color: var(--cream); border: 1px solid rgba(248,237,232,.22); }
+.btn-outline-light:hover { background: var(--cream); color: var(--ink); }
+.btn-outline-dark { background: transparent; color: var(--ink); border: 1px solid rgba(6,4,15,.25); }
+.btn-outline-dark:hover { background: var(--ink); color: var(--cream); }
+.btn-wire-red { background: transparent; color: var(--red); border: 1px solid rgba(255,0,30,.35); }
+.btn-wire-red:hover { background: var(--red); color: #fff; }
+
+/* ─────────────────────────────────────────────
+   ░░ 01 — HERO ░░
+───────────────────────────────────────────── */
+#hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+  padding-top: 80px;
+}
+
+/* radial atmosphere */
+.hero-atm {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 78% 15%, rgba(255,0,30,.08) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 55% at 15% 85%, rgba(124,58,237,.07) 0%, transparent 60%);
+}
+
+/* grain */
+.hero-grain {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: .035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+.hero-body {
+  position: relative; z-index: 2;
+  padding-bottom: 80px;
+}
+
+.hero-chapter {
+  margin-bottom: 52px;
+}
+
+.hero-h1 {
+  font-family: var(--f-display);
+  font-size: clamp(72px, 12vw, 168px);
+  line-height: .92; letter-spacing: -.025em;
+  font-weight: 700; color: var(--cream);
+  margin-bottom: 0;
+}
+.hero-h1 .word-failing { opacity: .45; }
+.hero-h1 .word-illegible {
+  font-style: italic; color: var(--red);
+  display: inline-block;
+  position: relative;
+}
+
+.hero-rule {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, rgba(255,0,30,.5), rgba(248,237,232,.12) 55%, transparent);
+  margin: 52px 0;
+}
+
+.hero-sub-grid {
+  display: grid; grid-template-columns: 5fr 2fr 3fr;
+  gap: 48px; align-items: end;
+}
+.hero-subtext {
+  font-size: 18px; line-height: 1.75; color: var(--mist);
+}
+.hero-subtext strong { color: var(--cream); font-weight: 600; }
+.hero-metric { text-align: center; }
+.hero-metric-n {
+  font-family: var(--f-display);
+  font-size: 64px; font-weight: 700; line-height: 1;
+  color: var(--cream); margin-bottom: 6px;
+}
+.hero-metric-l {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .3em;
+  text-transform: uppercase; color: rgba(248,237,232,.3);
+}
+.hero-cta-group { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+
+.hero-scroll {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 16px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .35em;
+  text-transform: uppercase; color: rgba(248,237,232,.2);
+}
+.hero-scroll-bar { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--red), transparent); }
+
+/* ─────────────────────────────────────────────
+   ░░ 02 — PAIN (MIRROR) ░░
+───────────────────────────────────────────── */
+#pain {
+  background: var(--ink);
+  padding: 160px 0 120px;
+  position: relative;
+}
+
+/* big ghost chapter number */
+.ch-num {
+  position: absolute; top: 60px;
+  font-family: var(--f-display);
+  font-size: clamp(140px, 20vw, 260px);
+  font-weight: 700; font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(248,237,232,.045);
+  line-height: 1; user-select: none; pointer-events: none;
+  right: clamp(24px, 5vw, 80px);
+  letter-spacing: -.04em;
+}
+
+.pain-intro {
+  margin-bottom: 72px;
+}
+.pain-intro h2 {
+  font-family: var(--f-display);
+  font-size: clamp(42px, 6vw, 80px);
+  font-weight: 600; line-height: 1.05;
+  letter-spacing: -.02em;
+  margin-top: 20px;
+}
+.pain-intro h2 em { font-style: italic; color: var(--red); }
+
+/* the confessions */
+.pain-confessions { list-style: none; }
+.confession {
+  padding: 44px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 32px;
+  align-items: baseline;
+  transition: padding-left .35s;
+  cursor: default;
+}
+.confession:first-child { border-top: 1px solid var(--rule); }
+.confession:hover { padding-left: 14px; }
+.confession-n {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .25em;
+  text-transform: uppercase; color: rgba(248,237,232,.2);
+  padding-top: 5px;
+}
+.confession-text {
+  font-family: var(--f-display);
+  font-size: clamp(22px, 2.8vw, 36px);
+  font-style: italic; font-weight: 400; line-height: 1.35;
+  color: rgba(248,237,232,.72);
+}
+.confession-text strong {
+  font-style: normal; color: var(--cream); font-weight: 600;
+}
+
+/* verdict card */
+.pain-verdict {
+  margin-top: 72px;
+  padding: 56px 64px;
+  position: relative; overflow: hidden;
+  background: rgba(255,0,30,.04);
+  border: 1px solid rgba(255,0,30,.16);
+}
+.pain-verdict::before {
+  content: '"';
+  position: absolute; top: -12px; left: 44px;
+  font-family: var(--f-display); font-size: 120px; font-weight: 700;
+  color: var(--red); opacity: .2; line-height: 1;
+}
+.pain-verdict-text {
+  font-family: var(--f-display);
+  font-size: clamp(22px, 2.6vw, 36px);
+  font-style: italic; line-height: 1.45;
+  position: relative; z-index: 1;
+}
+.pain-verdict-text em { color: var(--red); font-style: normal; font-weight: 600; }
+
+/* bridge — connects sections */
+.bridge {
+  padding: 56px 0 0;
+  font-family: var(--f-display);
+  font-size: 17px; font-style: italic; line-height: 1.65;
+  color: rgba(248,237,232,.35);
+  border-top: 1px solid var(--rule);
+  margin-top: 80px;
+}
+.bridge strong { color: rgba(248,237,232,.65); font-style: normal; font-weight: 500; }
+
+/* ─────────────────────────────────────────────
+   ░░ 03 — COST ░░
+───────────────────────────────────────────── */
+#cost {
+  background: var(--deep);
+  padding: 140px 0;
+  position: relative; overflow: hidden;
+}
+.cost-watermark {
+  position: absolute; bottom: -60px; left: -20px;
+  font-family: var(--f-display);
+  font-size: clamp(160px, 26vw, 320px);
+  font-weight: 700; font-style: italic; line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,0,30,.04);
+  user-select: none; pointer-events: none;
+  letter-spacing: -.04em; white-space: nowrap;
+}
+
+.cost-lede {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+  margin-bottom: 100px;
+}
+.cost-lede h2 {
+  font-family: var(--f-display);
+  font-size: clamp(44px, 6.5vw, 88px);
+  line-height: .98; letter-spacing: -.025em; font-weight: 700;
+}
+.cost-lede h2 em { font-style: italic; color: var(--red); }
+.cost-lede-sub {
+  font-size: 17px; line-height: 1.8; color: var(--mist);
+  padding-top: 12px;
+}
+.cost-lede-sub strong { color: var(--cream); }
+
+.cost-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); }
+.cost-block {
+  background: var(--deep);
+  padding: 48px 40px 52px;
+  position: relative;
+  transition: background .3s;
+}
+.cost-block:hover { background: rgba(20,15,36,.9); }
+.cost-block-bar { height: 2px; width: 36px; margin-bottom: 32px; }
+.cost-block-n {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .3em;
+  text-transform: uppercase; color: rgba(248,237,232,.25); margin-bottom: 16px;
+}
+.cost-block-title {
+  font-family: var(--f-display); font-size: 26px; font-weight: 600;
+  margin-bottom: 16px; line-height: 1.1;
+}
+.cost-block-body { font-size: 15px; line-height: 1.8; color: rgba(248,237,232,.52); }
+
+.cost-verdict {
+  margin-top: 1px; padding: 64px;
+  background: var(--deep);
+  border-top: 1px solid rgba(255,0,30,.14);
+  position: relative; z-index: 1;
+}
+.cost-verdict blockquote {
+  font-family: var(--f-display);
+  font-size: clamp(24px, 3.2vw, 44px);
+  font-style: italic; line-height: 1.4;
+  max-width: 860px;
+}
+.cost-verdict blockquote em { color: var(--red); font-style: normal; font-weight: 700; }
+.cost-verdict cite {
+  display: block; margin-top: 24px;
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .3em;
+  text-transform: uppercase; color: rgba(248,237,232,.28); font-style: normal;
+}
+
+/* ─────────────────────────────────────────────
+   ░░ 04 — DIAGNOSIS + BRENDA ░░
+   Cream section — relief, warmth
+───────────────────────────────────────────── */
+#diagnosis {
+  background: var(--cream); color: var(--ink);
+  padding: 140px 0;
+  position: relative;
+}
+
+.diag-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 100px; align-items: start;
+}
+
+.diag-label { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .42em; text-transform: uppercase; color: var(--red); margin-bottom: 24px; }
+
+.diag-h2 {
+  font-family: var(--f-display);
+  font-size: clamp(46px, 6vw, 80px);
+  line-height: .98; letter-spacing: -.025em; font-weight: 700;
+  color: var(--ink); margin-bottom: 36px;
+}
+.diag-h2 em { font-style: italic; }
+
+.diag-p {
+  font-size: 17px; line-height: 1.82; color: rgba(6,4,15,.65);
+  margin-bottom: 24px;
+}
+.diag-p strong { color: var(--ink); font-weight: 600; }
+
+.diag-callout {
+  border-left: 3px solid var(--red);
+  padding: 28px 32px;
+  background: rgba(6,4,15,.06);
+  margin-top: 40px;
+}
+.diag-callout p { font-size: 17px; line-height: 1.7; color: rgba(6,4,15,.82); }
+.diag-callout p strong { color: var(--ink); }
+
+/* brenda card — dark inside cream */
+.brenda-card {
+  background: var(--ink);
+  color: var(--cream);
+  position: relative; overflow: hidden;
+}
+.brenda-top-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--red) 0%, var(--p1) 35%, var(--p2) 65%, var(--p3) 100%);
+}
+.brenda-head {
+  padding: 44px 44px 36px;
+  border-bottom: 1px solid var(--rule);
+}
+.brenda-head-label {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .38em;
+  text-transform: uppercase; color: rgba(248,237,232,.28); margin-bottom: 10px;
+}
+.brenda-head-name {
+  font-family: var(--f-display); font-size: 38px; font-weight: 700;
+  color: #fff; margin-bottom: 8px; line-height: 1;
+}
+.brenda-head-role {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--red);
+}
+.brenda-content { padding: 36px 44px 44px; }
+.brenda-p { font-size: 15px; line-height: 1.85; color: rgba(248,237,232,.62); margin-bottom: 18px; }
+.brenda-p strong { color: var(--cream); font-weight: 600; }
+.brenda-proof { margin-top: 32px; border-top: 1px solid var(--rule); padding-top: 28px; }
+.brenda-proof-row {
+  display: flex; gap: 14px; padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px; color: rgba(248,237,232,.48); line-height: 1.5;
+}
+.brenda-proof-row span { color: var(--red); flex-shrink: 0; font-size: 10px; margin-top: 2px; }
+
+/* ─────────────────────────────────────────────
+   ░░ 05 — SYSTEM ░░
+───────────────────────────────────────────── */
+#system {
+  background: var(--ink);
+  padding: 140px 0 120px;
+}
+
+.system-top {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: end;
+  margin-bottom: 80px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--rule);
+}
+.system-h2 {
+  font-family: var(--f-display);
+  font-size: clamp(44px, 6vw, 82px);
+  line-height: .97; letter-spacing: -.025em; font-weight: 700;
+}
+.system-sub { font-size: 16px; line-height: 1.78; color: var(--mist); }
+.system-sub strong { color: var(--cream); }
+
+/* phase rows */
+.phase { border-top: 1px solid var(--rule); }
+.phase:last-child { border-bottom: 1px solid var(--rule); }
+
+.phase-bar-top { height: 2px; width: 0; transition: width .5s cubic-bezier(.4,0,.2,1); }
+.phase.open .phase-bar-top { width: 100%; }
+
+.phase-trigger {
+  display: grid;
+  grid-template-columns: 68px 1fr auto;
+  gap: 0; align-items: center;
+  padding: 34px 0; cursor: pointer;
+  user-select: none;
+}
+.phase-trigger:hover .phase-name { opacity: .65; }
+
+.phase-no {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em;
+  text-transform: uppercase; transition: color .25s;
+}
+.phase-name {
+  font-family: var(--f-display);
+  font-size: clamp(24px, 3vw, 38px); font-weight: 600;
+  transition: opacity .2s;
+}
+.phase-hook {
+  font-size: 13px; font-style: italic;
+  color: var(--mist); padding: 0 24px;
+  /* shown inline at large screens */
+}
+.phase-chevron {
+  font-family: var(--f-mono); font-size: 14px; color: var(--red);
+  transition: transform .38s cubic-bezier(.4,0,.2,1);
+  margin-left: 24px;
+}
+.phase.open .phase-chevron { transform: rotate(90deg); }
+
+.phase-drawer {
+  max-height: 0; overflow: hidden;
+  transition: max-height .55s cubic-bezier(.4,0,.2,1);
+}
+.phase.open .phase-drawer { max-height: 700px; }
+
+.phase-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-top: 1px solid var(--rule);
+  padding: 48px 0 64px;
+}
+.phase-body { padding-right: 64px; }
+.phase-body p { font-size: 16px; line-height: 1.85; color: rgba(248,237,232,.62); }
+.phase-deliverables { border-left: 1px solid var(--rule); padding-left: 64px; }
+.phase-del-label {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .35em;
+  text-transform: uppercase; color: rgba(248,237,232,.25); margin-bottom: 28px;
+}
+.phase-del-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 10px 0; border-bottom: 1px solid var(--rule);
+  font-size: 14px; color: rgba(248,237,232,.68); line-height: 1.45;
+}
+.phase-del-arrow { flex-shrink: 0; font-family: var(--f-mono); font-size: 10px; margin-top: 2px; }
+
+/* ─────────────────────────────────────────────
+   ░░ 06 — LEAD MAGNET ░░
+   Cream again — an invitation
+───────────────────────────────────────────── */
+#leadmagnet {
+  background: var(--cream); color: var(--ink);
+  padding: 140px 0;
+  position: relative; overflow: hidden;
+}
+#leadmagnet::after {
+  content: 'FREE';
+  position: absolute; right: -10px; bottom: -40px;
+  font-family: var(--f-display); font-size: 22vw; font-weight: 700;
+  color: transparent; -webkit-text-stroke: 1px rgba(6,4,15,.055);
+  line-height: 1; pointer-events: none; user-select: none;
+  letter-spacing: -.03em;
+}
+
+.lm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
+
+.lm-left-label { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .42em; text-transform: uppercase; color: var(--red); margin-bottom: 24px; }
+.lm-h2 {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 5.5vw, 68px);
+  line-height: 1.01; letter-spacing: -.022em; font-weight: 700;
+  color: var(--ink); margin-bottom: 24px;
+}
+.lm-p { font-size: 17px; line-height: 1.8; color: rgba(6,4,15,.62); margin-bottom: 36px; }
+.lm-list { list-style: none; }
+.lm-list li {
+  display: flex; gap: 14px; padding: 14px 0;
+  border-bottom: 1px solid rgba(6,4,15,.1);
+  font-size: 15px; color: rgba(6,4,15,.74); line-height: 1.5;
+}
+.lm-list li .arr { color: var(--red); font-family: var(--f-mono); font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+
+/* dark card inside cream */
+.lm-card {
+  background: var(--ink); color: var(--cream);
+  padding: 56px 52px; position: relative;
+}
+.lm-card-stripe {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--p1), var(--p3));
+}
+.lm-card-eyebrow {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .38em;
+  text-transform: uppercase; color: var(--red); margin-bottom: 18px;
+}
+.lm-card-title {
+  font-family: var(--f-display); font-size: 34px; font-weight: 700;
+  color: #fff; line-height: 1.1; margin-bottom: 14px;
+}
+.lm-card-sub { font-size: 14px; color: rgba(248,237,232,.48); line-height: 1.7; margin-bottom: 36px; }
+.lm-card-items { list-style: none; margin-bottom: 40px; }
+.lm-card-items li {
+  display: flex; gap: 12px; padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px; color: rgba(248,237,232,.62);
+}
+.lm-card-items li .dot { color: var(--red); flex-shrink: 0; font-size: 10px; margin-top: 3px; }
+.lm-card-stamp {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .32em;
+  text-transform: uppercase; color: rgba(248,237,232,.28); margin-bottom: 18px; display: block;
+}
+
+/* ─────────────────────────────────────────────
+   ░░ 07 — OFFERS ░░
+───────────────────────────────────────────── */
+#offers {
+  background: var(--ink);
+  padding: 140px 0 120px;
+}
+
+.offers-header {
+  margin-bottom: 80px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: end;
+}
+.offers-h2 {
+  font-family: var(--f-display);
+  font-size: clamp(46px, 6.5vw, 88px);
+  line-height: .97; letter-spacing: -.025em; font-weight: 700;
+}
+.offers-header-right { font-size: 16px; line-height: 1.82; color: var(--mist); }
+.offers-header-right strong { color: var(--cream); }
+
+.offers-pair {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; background: var(--rule); border: 1px solid var(--rule);
+}
+
+.offer-card {
+  background: rgba(6,4,15,.97);
+  padding: 56px 52px;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  transition: background .3s;
+}
+.offer-card:hover { background: rgba(14,10,28,.98); }
+.offer-card.prime { background: rgba(12,8,24,.99); }
+.offer-card.prime:hover { background: rgba(18,12,32,.99); }
+
+.offer-accent { height: 2px; width: 48px; margin-bottom: 44px; }
+.offer-path {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .32em;
+  text-transform: uppercase; color: rgba(248,237,232,.28); margin-bottom: 12px;
+}
+.offer-name {
+  font-family: var(--f-display); font-size: 34px; font-weight: 700;
+  line-height: 1.1; margin-bottom: 10px;
+}
+.offer-meta {
+  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(248,237,232,.3); margin-bottom: 40px;
+}
+.offer-iff {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .28em;
+  text-transform: uppercase; color: rgba(248,237,232,.28); margin-bottom: 12px;
+}
+.offer-fit { font-size: 15px; line-height: 1.75; color: rgba(248,237,232,.58); margin-bottom: 36px; }
+.offer-list { list-style: none; flex: 1; margin-bottom: 44px; }
+.offer-list li {
+  display: flex; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px; color: rgba(248,237,232,.64); line-height: 1.45;
+}
+.offer-list li .tick { flex-shrink: 0; font-family: var(--f-mono); font-size: 10px; margin-top: 2px; }
+.offer-prime-tag {
+  position: absolute; top: 0; right: 0;
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; background: var(--red); color: #fff; padding: 9px 20px;
+}
+
+.offers-foot {
+  margin-top: 2px; border: 1px solid var(--rule); border-top: none;
+  padding: 36px 52px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 32px; flex-wrap: wrap;
+}
+.offers-foot p { font-size: 15px; color: var(--mist); }
+.offers-foot p strong { color: var(--cream); font-weight: 500; }
+
+/* ─────────────────────────────────────────────
+   ░░ 08 — CLARITY CALL ░░
+───────────────────────────────────────────── */
+#clarity {
+  background: var(--deep);
+  padding: 140px 0;
+}
+
+.clarity-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 96px; align-items: start;
+}
+
+.clarity-left-label { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .42em; text-transform: uppercase; color: var(--red); margin-bottom: 24px; }
+.clarity-h2 {
+  font-family: var(--f-display);
+  font-size: clamp(46px, 6vw, 80px);
+  line-height: .97; letter-spacing: -.025em; font-weight: 700;
+  margin-bottom: 32px;
+}
+.clarity-p { font-size: 17px; line-height: 1.82; color: var(--mist); margin-bottom: 40px; }
+.clarity-p strong { color: var(--cream); }
+.clarity-what-label {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .35em;
+  text-transform: uppercase; color: rgba(248,237,232,.25); margin-bottom: 20px;
+}
+.clarity-what { list-style: none; margin-bottom: 52px; }
+.clarity-what li {
+  display: flex; gap: 16px; padding: 15px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 15px; color: rgba(248,237,232,.7); line-height: 1.55;
+}
+.clarity-what li .arr { color: var(--red); flex-shrink: 0; font-family: var(--f-mono); font-size: 10px; margin-top: 3px; }
+.clarity-aside {
+  font-family: var(--f-display); font-size: 19px;
+  font-style: italic; line-height: 1.65; color: rgba(248,237,232,.38);
+}
+
+/* right: pricing card */
+.clarity-card {
+  background: rgba(248,237,232,.025);
+  border: 1px solid var(--rule);
+  padding: 60px 52px;
+  text-align: center;
+  position: sticky; top: 100px;
+}
+.clarity-price-label {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .38em;
+  text-transform: uppercase; color: rgba(248,237,232,.28); margin-bottom: 10px;
+}
+.clarity-price {
+  font-family: var(--f-display); font-size: 100px; font-weight: 700;
+  color: var(--red); line-height: 1; margin-bottom: 6px;
+}
+.clarity-price-sub { font-size: 14px; color: rgba(248,237,232,.35); margin-bottom: 44px; }
+.clarity-divider { border: none; border-top: 1px solid var(--rule); margin: 0 0 36px; }
+.clarity-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .2em;
+  text-transform: uppercase; color: rgba(248,237,232,.3); margin-bottom: 28px;
+}
+.clarity-pill-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
+.clarity-promise {
+  font-family: var(--f-display); font-size: 17px; font-style: italic;
+  line-height: 1.65; color: rgba(248,237,232,.42); margin-bottom: 36px;
+}
+.clarity-card-note {
+  margin-top: 14px; font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: .22em; text-transform: uppercase; color: rgba(248,237,232,.18);
+}
+
+/* ─────────────────────────────────────────────
+   ░░ 09 — CLOSE ░░
+───────────────────────────────────────────── */
+#close {
+  background: var(--ink);
+  padding: 160px 0 120px;
+  position: relative; overflow: hidden;
+}
+#close::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 100% 50% at 50% 120%, rgba(255,0,30,.07), transparent);
+  pointer-events: none;
+}
+
+.close-inner { max-width: 860px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.close-thread { width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, var(--red)); margin: 0 auto 64px; }
+
+.close-quote {
+  font-family: var(--f-display);
+  font-size: clamp(30px, 5vw, 58px);
+  font-style: italic; line-height: 1.28; font-weight: 500;
+  color: rgba(248,237,232,.88); margin-bottom: 36px;
+}
+.close-quote em { color: var(--red); font-style: normal; font-weight: 700; }
+
+.close-sub { font-size: 18px; color: var(--mist); max-width: 480px; margin: 0 auto 56px; line-height: 1.7; }
+.close-sub strong { color: var(--cream); font-weight: 600; }
+
+.close-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 96px; }
+
+.close-sig-line { border: none; border-top: 1px solid var(--rule); margin-bottom: 44px; }
+.close-sig {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .28em;
+  text-transform: uppercase; color: rgba(248,237,232,.22); line-height: 2.2;
+}
+.close-sig strong { color: rgba(248,237,232,.5); }
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+footer {
+  background: rgba(0,0,0,.5);
+  border-top: 1px solid var(--rule);
+  padding: 28px clamp(24px, 6vw, 96px);
+  display: flex; flex-wrap: wrap; gap: 16px;
+  justify-content: space-between; align-items: center;
+}
+.footer-copy {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .18em;
+  color: rgba(248,237,232,.18);
+}
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; text-decoration: none;
+  color: rgba(248,237,232,.25); transition: color .2s;
+}
+.footer-links a:hover { color: var(--red); }
+
+/* ─────────────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .75s cubic-bezier(.4,0,.2,1), transform .75s cubic-bezier(.4,0,.2,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* stagger children */
+.reveal-stagger > * {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.15s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.25s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.35s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:.45s; }
+.reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:.55s; }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero-sub-grid  { grid-template-columns: 1fr; }
+  .hero-cta-group { align-items: flex-start; }
+  .hero-metric    { text-align: left; }
+  .cost-lede, .diag-grid, .lm-grid, .offers-pair,
+  .offers-header, .system-top, .clarity-grid { grid-template-columns: 1fr; gap: 48px; }
+  .clarity-card { position: static; }
+  .phase-trigger { grid-template-columns: 52px 1fr auto; }
+  .phase-hook { display: none; }
+  .phase-inner { grid-template-columns: 1fr; }
+  .phase-deliverables { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 36px; }
+  .cost-trio { grid-template-columns: 1fr; }
+  .pain-verdict { padding: 40px 28px; }
+  .cost-verdict { padding: 40px 28px; }
+  .offers-foot { flex-direction: column; align-items: flex-start; }
+  nav .nav-ghost { display: none; }
+  .ch-num { display: none; }
+}
+
+</style>
 </head>
-<body class="antialiased selection:bg-[#ff001e] selection:text-white">
+<body>
 
-    <header class="relative min-h-screen flex items-center justify-center px-6 py-20">
-        <div class="orb w-[500px] h-[500px] bg-[#1e3c65]/30 top-[-10%] left-[-10%]"></div>
-        <div class="orb w-[400px] h-[400px] bg-[#ff001e]/20 bottom-[10%] right-[-5%]"></div>
-        
-        <div class="max-w-4xl text-center relative z-10 animate__animated animate__fadeIn">
-            <p class="uppercase tracking-[0.4em] text-xs font-bold text-red-500 mb-6">Brenda Blanche</p>
-            
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-8">
-                Why the Market <br><span class="italic text-[#ff001e] text-glow">Doesn't Understand</span> You
-            </h1>
-            
-            <p class="text-xl md:text-2xl opacity-80 font-light mb-10 max-w-2xl mx-auto">
-                (And How to Fix It in 90 Days)
-            </p>
-            
-            <div class="glass-panel p-8 rounded-xl max-w-2xl mx-auto text-left border-l-4 border-l-[#ff001e] mb-12">
-                <p class="text-lg italic opacity-90 leading-relaxed">
-                    "You're an expert. Your work is solid. But people don't get it. 
-                    <br><br>
-                    <span class="font-bold text-white">Here's the truth:</span> If the market doesn't understand you, it doesn't matter how good you are. I'm Brenda Blanche, I turn unclear expertise into brands the market understands and pays for."
-                </p>
-            </div>
+<!-- ░░ NAV ░░ -->
+<nav id="nav" aria-label="main navigation">
+  <span class="nav-id"><strong>Brenda Blanche</strong>&thinsp;/&thinsp;Unapologetics™</span>
+  <div class="nav-actions">
+    <a href="#system" class="nav-ghost">The System</a>
+    <a href="#offers" class="nav-ghost">Work With Me</a>
+    <a href="#clarity" class="nav-pill">Free Clarity Call</a>
+  </div>
+</nav>
 
-            <a href="#problem" class="btn-primary inline-block px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm">
-                See Why You're Stuck
-            </a>
+
+<!-- ══════════════════════════════════════════
+     01 · HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-atm"></div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-body page-pad col-wrap">
+
+    <div class="hero-chapter">
+      <span class="label" style="margin-bottom:56px;display:inline-flex;">Personal Brand Strategist</span>
+
+      <h1 class="hero-h1">
+        You're good.<br>
+        <span class="word-failing">The market</span><br>
+        just <span class="word-illegible">can't see it.</span>
+      </h1>
+    </div>
+
+    <div class="hero-rule"></div>
+
+    <div class="hero-sub-grid">
+      <p class="hero-subtext">
+        Your expertise is real. Your work is solid.
+        But if the market can't decode who you are and what you do —
+        <strong>it won't wait around to figure it out.</strong>
+        That's not a talent problem. That's a translation problem.
+        And there's a specific, repeatable way to fix it in 90 days.
+      </p>
+
+      <div class="hero-metric">
+        <div class="hero-metric-n">90</div>
+        <div class="hero-metric-l">Days to a built brand</div>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="#leadmagnet" class="btn btn-solid">Get the Free Brand Audit →</a>
+        <a href="#pain" class="btn btn-outline-light">See Why You're Stuck</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero-scroll page-pad col-wrap">
+    <div class="hero-scroll-bar"></div>
+    <span>Continue reading</span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     02 · PAIN
+══════════════════════════════════════════ -->
+<section id="pain">
+  <div class="ch-num" aria-hidden="true">02</div>
+
+  <div class="page-pad col-wrap">
+
+    <div class="pain-intro reveal">
+      <span class="label">The Mirror</span>
+      <h2>You're doing<br>everything right.<br><em>Nothing is compounding.</em></h2>
+    </div>
+
+    <ul class="pain-confessions reveal-stagger">
+      <li class="confession">
+        <span class="confession-n">01</span>
+        <span class="confession-text">"I post consistently. <strong>I get three likes</strong> — mostly from people who will never buy from me."</span>
+      </li>
+      <li class="confession">
+        <span class="confession-n">02</span>
+        <span class="confession-text">"People with <strong>half my experience</strong> are landing the opportunities I know I'm more qualified for."</span>
+      </li>
+      <li class="confession">
+        <span class="confession-n">03</span>
+        <span class="confession-text">"I know what I do. I just <strong>can't explain it</strong> in a way that makes people reach for their wallet."</span>
+      </li>
+      <li class="confession">
+        <span class="confession-n">04</span>
+        <span class="confession-text">"I've tried templates, niching down, 'just being authentic.' <strong>Still invisible.</strong>"</span>
+      </li>
+      <li class="confession">
+        <span class="confession-n">05</span>
+        <span class="confession-text">"Every piece of advice makes my brand feel <strong>less like me.</strong> It doesn't feel like mine."</span>
+      </li>
+      <li class="confession">
+        <span class="confession-n">06</span>
+        <span class="confession-text">"I've been building in public for months. <strong>Nothing is compounding.</strong> I'm exhausted."</span>
+      </li>
+    </ul>
+
+    <div class="pain-verdict reveal">
+      <p class="pain-verdict-text">
+        If any of that is familiar — you don't have a work ethic problem.
+        You don't have a talent problem.
+        You have a <em>translation problem.</em>
+        And it's fixable.
+      </p>
+    </div>
+
+    <div class="bridge reveal">
+      The market doesn't walk past you because you're not good enough.
+      It walks past you because <strong>it can't decode what you do, who it's for,
+      or why it should trust you.</strong>
+      That's what it means to be illegible — invisible not because you lack substance,
+      but because the market lacks the language for you. <strong>Clarity is the product. Everything else is a symptom.</strong>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     03 · COST
+══════════════════════════════════════════ -->
+<section id="cost">
+  <div class="cost-watermark" aria-hidden="true">COST</div>
+
+  <div class="page-pad col-wrap">
+
+    <div class="cost-lede reveal">
+      <div>
+        <span class="label" style="margin-bottom:20px;display:inline-flex;">The Price of Waiting</span>
+        <h2>Every month without a clear brand is a month the market <em>walks past you.</em></h2>
+      </div>
+      <div>
+        <p class="cost-lede-sub">Not because you're unqualified.
+        Because someone who <strong>sounds clearer</strong> gets there first.
+        This isn't about motivation. It's about compounding loss.</p>
+      </div>
+    </div>
+
+    <div class="cost-trio reveal-stagger">
+      <div class="cost-block">
+        <div class="cost-block-bar" style="background:var(--p1);"></div>
+        <div class="cost-block-n">Cost 01</div>
+        <div class="cost-block-title">The Time Cost</div>
+        <p class="cost-block-body">Hours into content that resets to zero every week. No brand behind the output means no compounding. You're producing. But nothing is building.</p>
+      </div>
+      <div class="cost-block">
+        <div class="cost-block-bar" style="background:var(--p3);"></div>
+        <div class="cost-block-n">Cost 02</div>
+        <div class="cost-block-title">The Income Cost</div>
+        <p class="cost-block-body">The opportunities you're not getting aren't going unclaimed. They're going to someone clearer — not better. Every unclear month is income transferred to someone who figured out how to be understood first.</p>
+      </div>
+      <div class="cost-block">
+        <div class="cost-block-bar" style="background:var(--red);"></div>
+        <div class="cost-block-n">Cost 03</div>
+        <div class="cost-block-title">The Confidence Cost</div>
+        <p class="cost-block-body">Invisibility becomes an identity. You begin to wonder if you're the problem. You are not. The problem was never your talent. It was always the translation. Translation is fixable.</p>
+      </div>
+    </div>
+
+    <div class="cost-verdict reveal">
+      <blockquote>
+        "The invisible expert doesn't stay invisible because they're not good enough.
+        They stay invisible because <em>the market can't find the language for who they are.</em>"
+        <cite>— Brenda Blanche</cite>
+      </blockquote>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     04 · DIAGNOSIS + BRENDA
+══════════════════════════════════════════ -->
+<section id="diagnosis">
+  <div class="page-pad col-wrap">
+    <div class="diag-grid">
+
+      <div class="reveal">
+        <div class="diag-label">The Real Diagnosis</div>
+        <h2 class="diag-h2">It's not you.<br>It's the <em>translation.</em></h2>
+        <p class="diag-p">I see personal branding through the lens of translation — the gap between how someone sees themselves and how the market receives them. Most people are trying to fix a visibility problem when they actually have a <strong>legibility problem.</strong></p>
+        <p class="diag-p">More content won't fix it. A better bio won't fix it. What fixes it is a structured process of excavating who you actually are — then translating that into language the market can act on.</p>
+        <div class="diag-callout">
+          <p>That's what the Identity-to-Income™ system does. <strong>Structure who you are and what you know into a personal brand the market understands, adopts, and pays for — without pretending to be someone else.</strong></p>
         </div>
-    </header>
+      </div>
 
-    <section id="problem" class="py-24 border-t border-white/5 relative">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-4xl md:text-5xl mb-8 uppercase tracking-tighter leading-tight">The Problem Isn't <br><span class="text-[#ff001e]">Your Content.</span></h2>
-                <div class="space-y-4 text-lg opacity-70 mb-8">
-                    <p>You've tried posting more → No engagement.</p>
-                    <p>You've tried "being authentic" → No conversions.</p>
-                    <p>You've tried templates → Still invisible.</p>
-                </div>
-                
-                <div class="text-3xl font-bold mb-6 border-b-2 border-red-600 inline-block pb-2 text-white">It's Clarity.</div>
-                
-                <p class="mb-4 text-white font-bold">Without clarity on:</p>
-                <ul class="space-y-2 opacity-80 font-light">
-                    <li>→ Who you are (identity)</li>
-                    <li>→ Where you fit (market alignment)</li>
-                    <li>→ What you mean (message precision)</li>
-                    <li>→ How it pays you (monetization)</li>
-                </ul>
+      <div class="reveal">
+        <div class="brenda-card">
+          <div class="brenda-top-bar"></div>
+          <div class="brenda-head">
+            <div class="brenda-head-label">Your Strategist</div>
+            <div class="brenda-head-name">Brenda Blanche</div>
+            <div class="brenda-head-role">Personal Brand Strategist · Founder, Unapologetics™</div>
+          </div>
+          <div class="brenda-content">
+            <p class="brenda-p">I tried affiliate marketing, dropshipping, freelance design. Watched all of it go nowhere. Not because the skills were wrong. <strong>Because the brand was absent.</strong></p>
+            <p class="brenda-p">I deleted 800 contacts and rebuilt from scratch. I built a LinkedIn presence in Cameroon — a market where the platform barely exists. Not from a playbook. From figuring out the translation problem firsthand.</p>
+            <p class="brenda-p"><strong>I don't teach what I read. I teach what I proved. I am the case study.</strong></p>
+            <div class="brenda-proof">
+              <div class="brenda-proof-row"><span>◆</span><span>Ranked among top female personal branding creators in Cameroon</span></div>
+              <div class="brenda-proof-row"><span>◆</span><span>Built a platform in a market where LinkedIn has minimal penetration — no template, no shortcut</span></div>
+              <div class="brenda-proof-row"><span>◆</span><span>Coaches, freelancers and consultants globally run through the Identity-to-Income™ system</span></div>
             </div>
-            
-            <div class="glass-panel p-10 rounded-2xl flex flex-col justify-center h-full">
-                <h3 class="serif text-3xl italic mb-6 leading-tight">"The market doesn't reward the best. It rewards the <span class="text-[#ff001e]">most understood.</span>"</h3>
-                <p class="opacity-50 text-sm mono">-- THE REALITY CHECK</p>
-            </div>
+          </div>
+</div>
         </div>
-    </section>
+      </div>
 
-    <section class="py-24 bg-white/[0.02] relative">
-        <div class="max-w-6xl mx-auto px-6">
-            
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-6xl mb-4">The Identity-to-Income™ System</h2>
-                <p class="text-[#ff001e] tracking-[0.2em] uppercase font-bold text-sm">The 4-Phase Operating System</p>
-                <p class="mt-6 max-w-2xl mx-auto opacity-70 text-sm md:text-base">This is the exact operating system I use with my clients to become the authority in rooms they haven't even entered.</p>
-            </div>
+    </div>
+  </div>
+</section>
 
-            <div class="phase-card p-8 md:p-12 rounded-r-2xl mb-12">
-                <div class="flex items-baseline justify-between border-b border-white/10 pb-4 mb-8">
-                    <div>
-                        <span class="text-[#ff001e] font-bold tracking-widest uppercase text-xs mb-1 block">Phase 01</span>
-                        <h3 class="text-3xl md:text-4xl font-bold uppercase">Identity</h3>
-                        <p class="serif italic text-xl opacity-60">(Who You Are)</p>
-                    </div>
-                    <span class="text-6xl font-bold opacity-5 serif hidden md:block">01</span>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <p class="mb-6 opacity-80">This is strategic self-definition, not journaling. We extract:</p>
-                        <ul class="space-y-2 text-sm mb-6">
-                            <li class="flex"><span class="text-red-500 mr-2">✓</span> What you want to be known for</li>
-                            <li class="flex"><span class="text-red-500 mr-2">✓</span> Your core beliefs & origin story</li>
-                            <li class="flex"><span class="text-red-500 mr-2">✓</span> Your transformation & non-negotiables</li>
-                        </ul>
-                        <div class="bg-[#1e3c65]/20 border border-[#1e3c65] p-4 rounded">
-                            <p class="text-xs uppercase font-bold text-[#ff001e] mb-1">The Key Question:</p>
-                            <p class="italic">"What do I believe strongly enough to test in the real world?"</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col justify-between">
-                        <div class="mb-6">
-                            <p class="text-xs font-bold uppercase opacity-50 mb-2">Why This Matters</p>
-                            <p class="text-sm opacity-70">Identity without market clarity = expression with no traction. You must know yourself before the market can know you.</p>
-                        </div>
-                        <div class="bg-black/30 p-5 rounded border-l-2 border-white/20">
-                            <p class="mono text-xs text-[#ff001e] mb-2 uppercase">What You Walk Away With:</p>
-                            <ul class="text-xs space-y-1 opacity-70 mono">
-                                <li>- Core identity clarity</li>
-                                <li>- Belief system defined</li>
-                                <li>- Authority themes locked in</li>
-                                <li>- Foundational stories extracted</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="phase-card p-8 md:p-12 rounded-r-2xl mb-12">
-                <div class="flex items-baseline justify-between border-b border-white/10 pb-4 mb-8">
-                    <div>
-                        <span class="text-[#ff001e] font-bold tracking-widest uppercase text-xs mb-1 block">Phase 02</span>
-                        <h3 class="text-3xl md:text-4xl font-bold uppercase"> Market Alignment</h3>
-                        <p class="serif italic text-xl opacity-60">(Where You Fit)</p>
-                    </div>
-                    <span class="text-6xl font-bold opacity-5 serif hidden md:block">02</span>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <p class="mb-6 opacity-80">This is positioning, but deeper. Not "how do I stand out?" but "where do I belong?" using the <strong>PACT Framework</strong>:</p>
-                        <div class="grid grid-cols-1 gap-2 text-sm mb-6">
-                            <div class="bg-white/5 p-2 rounded"><strong class="text-red-500">P - Proximity:</strong> Who feels seen by your thinking?</div>
-                            <div class="bg-white/5 p-2 rounded"><strong class="text-red-500">A - Acute Pain:</strong> What is it costing them?</div>
-                            <div class="bg-white/5 p-2 rounded"><strong class="text-red-500">C - Can it be Proven:</strong> No proof → no trust.</div>
-                            <div class="bg-white/5 p-2 rounded"><strong class="text-red-500">T - Executability:</strong> Can you deliver?</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col justify-between">
-                        <div class="mb-6">
-                            <p class="text-xs font-bold uppercase opacity-50 mb-2">Why This Matters</p>
-                            <p class="text-sm opacity-70">Authenticity without market alignment = self-expression that doesn't pay. The market cares about the problem you solve, not your passion.</p>
-                        </div>
-                        <div class="bg-black/30 p-5 rounded border-l-2 border-white/20">
-                            <p class="mono text-xs text-[#ff001e] mb-2 uppercase">What You Walk Away With:</p>
-                            <ul class="text-xs space-y-1 opacity-70 mono">
-                                <li>- One clear avatar (ICP)</li>
-                                <li>- One executable mechanism</li>
-                                <li>- Positioning that converts</li>
-                                <li>- One painful problem & outcome</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ══════════════════════════════════════════
+     05 · SYSTEM
+══════════════════════════════════════════ -->
+<section id="system">
+  <div class="page-pad col-wrap">
 
-            <div class="phase-card p-8 md:p-12 rounded-r-2xl mb-12">
-                <div class="flex items-baseline justify-between border-b border-white/10 pb-4 mb-8">
-                    <div>
-                        <span class="text-[#ff001e] font-bold tracking-widest uppercase text-xs mb-1 block">Phase 03</span>
-                        <h3 class="text-3xl md:text-4xl font-bold uppercase">Expression</h3>
-                        <p class="serif italic text-xl opacity-60">(How You Communicate)</p>
-                    </div>
-                    <span class="text-6xl font-bold opacity-5 serif hidden md:block">03</span>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <p class="mb-6 opacity-80">Content is the interface between your expertise and the market's understanding. We use the <strong>4-Step Trust Formula</strong>:</p>
-                        <ol class="list-decimal pl-5 space-y-2 text-sm mb-6 opacity-80">
-                            <li><strong>Identify Painful Problem:</strong> They think "That's me."</li>
-                            <li><strong>Unique Solution:</strong> Show your mechanism (Differentiation).</li>
-                            <li><strong>Set Expectations:</strong> Be honest. How bad is it?</li>
-                            <li><strong>Make Action Easy:</strong> Remove confusion.</li>
-                        </ol>
-                        <p class="text-xs italic text-[#ff001e] font-bold">Trust = Repetition of this formula.</p>
-                    </div>
-                    <div class="flex flex-col justify-between">
-                        <div class="mb-6">
-                            <p class="text-xs font-bold uppercase opacity-50 mb-2">Why This Matters</p>
-                            <p class="text-sm opacity-70">Visibility without clarity is just noise. Content must answer: "What is my ideal client Googling right now?"</p>
-                        </div>
-                        <div class="bg-black/30 p-5 rounded border-l-2 border-white/20">
-                            <p class="mono text-xs text-[#ff001e] mb-2 uppercase">What You Walk Away With:</p>
-                            <ul class="text-xs space-y-1 opacity-70 mono">
-                                <li>- Predictable trust-building system</li>
-                                <li>- Content that compounds authority</li>
-                                <li>- Clear messaging framework</li>
-                                <li>- Scalable visibility strategy</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="system-top reveal">
+      <div>
+        <span class="label" style="display:inline-flex;margin-bottom:20px;">The Framework</span>
+        <h2 class="system-h2">The Identity-to-Income™ System</h2>
+      </div>
+      <p class="system-sub">Four phases. Every output derived from who you actually are. <strong>No templates. No borrowed frameworks. No filler.</strong> Each phase builds on the last — remove one and the whole thing collapses.</p>
+    </div>
 
-            <div class="phase-card p-8 md:p-12 rounded-r-2xl">
-                <div class="flex items-baseline justify-between border-b border-white/10 pb-4 mb-8">
-                    <div>
-                        <span class="text-[#ff001e] font-bold tracking-widest uppercase text-xs mb-1 block">Phase 04</span>
-                        <h3 class="text-3xl md:text-4xl font-bold uppercase">Monetization</h3>
-                        <p class="serif italic text-xl opacity-60">(How It Pays You)</p>
-                    </div>
-                    <span class="text-6xl font-bold opacity-5 serif hidden md:block">04</span>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <p class="mb-6 opacity-80">This is not "selling more." This is logical progression. When trust exists, monetization is natural. We build an <strong>Offer Ladder</strong>:</p>
-                        <div class="flex flex-col gap-3">
-                            <div class="flex items-center gap-3">
-                                <span class="bg-white/10 px-2 py-1 rounded text-xs">Level 1</span>
-                                <span class="text-sm">Lead Magnet (Immediate relief)</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="bg-white/10 px-2 py-1 rounded text-xs">Level 2</span>
-                                <span class="text-sm">Low-Ticket ($14-$49)</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="bg-red-900/40 text-red-200 border border-red-500/30 px-2 py-1 rounded text-xs font-bold">Level 3</span>
-                                <span class="text-sm font-bold">Flagship Offer (Transformation)</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="bg-white/10 px-2 py-1 rounded text-xs">Level 4</span>
-                                <span class="text-sm">Retainer (Compounding Value)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col justify-between">
-                        <div class="mb-6">
-                            <p class="text-xs font-bold uppercase opacity-50 mb-2">Why This Matters</p>
-                            <p class="text-sm opacity-70">A brand that doesn't pay is a hobby. You need conversion paths that feel natural, not forced. "Of course this is next."</p>
-                        </div>
-                        <div class="bg-black/30 p-5 rounded border-l-2 border-white/20">
-                            <p class="mono text-xs text-[#ff001e] mb-2 uppercase">What You Walk Away With:</p>
-                            <ul class="text-xs space-y-1 opacity-70 mono">
-                                <li>- Clear offer ladder</li>
-                                <li>- Lead generation system</li>
-                                <li>- Predictable revenue path</li>
-                                <li>- Sustainable execution model</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Phase 1 -->
+    <div class="phase open" id="ph1">
+      <div class="phase-bar-top" style="background:var(--p1);"></div>
+      <div class="phase-trigger" onclick="togglePhase('ph1')">
+        <span class="phase-no" style="color:var(--p1);">01</span>
+        <span class="phase-name">Identity Blueprint</span>
+        <span class="phase-hook">Know yourself before the market can know you.</span>
+        <span class="phase-chevron">→</span>
+      </div>
+      <div class="phase-drawer">
+        <div class="phase-inner">
+          <div class="phase-body"><p>Strategic self-definition — not journaling. We excavate your values with specificity, extract your origin story, map your expertise, and build your Identity Lens Statement: the single sentence that makes positioning possible. Everything else in the system is built on what comes out of this phase. If the foundation is generic, everything built on it collapses.</p></div>
+          <div class="phase-deliverables">
+            <div class="phase-del-label">You leave with</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p1);">→</span>Identity Blueprint Document</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p1);">→</span>Identity Lens Statement</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p1);">→</span>Origin Story (short + long form)</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p1);">→</span>Brand Convictions + Values List</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p1);">→</span>Expertise Map + Zone of Genius</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="py-24 relative overflow-hidden bg-gradient-to-b from-transparent to-[#050a1f]">
-        <div class="absolute left-1/2 transform -translate-x-1/2 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-[#ff001e] to-transparent opacity-50"></div>
-        
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl mb-6 serif italic">Here's What This <span class="text-[#ff001e] text-glow">Means For You</span></h2>
-                <p class="opacity-70 text-lg max-w-2xl mx-auto">
-                    Right now, you're invisible because the market doesn't understand who you are, where you fit, or why they should pay you.
-                </p>
-            </div>
-
-            <div class="future-state-card p-10 md:p-14 rounded-3xl text-center md:text-left">
-                <h3 class="text-center text-xl uppercase tracking-widest font-bold mb-10 border-b border-white/10 pb-6">
-                    In 90 Days, You'll Have:
-                </h3>
-                
-                <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
-                    <div class="flex flex-col">
-                        <div class="flex items-center mb-2">
-                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 mr-3">✓</div>
-                            <h4 class="font-bold text-lg">Identity Clarity</h4>
-                        </div>
-                        <p class="text-sm opacity-60 pl-9">Clarity on your beliefs and authority. No more guessing what to say.</p>
-                    </div>
-
-                    <div class="flex flex-col">
-                        <div class="flex items-center mb-2">
-                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 mr-3">✓</div>
-                            <h4 class="font-bold text-lg">Unapologetic Positioning</h4>
-                        </div>
-                        <p class="text-sm opacity-60 pl-9">Positioning that makes the market say "Oh, I get it."</p>
-                    </div>
-
-                    <div class="flex flex-col">
-                        <div class="flex items-center mb-2">
-                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 mr-3">✓</div>
-                            <h4 class="font-bold text-lg">Automated Trust</h4>
-                        </div>
-                        <p class="text-sm opacity-60 pl-9">A content system that builds trust automatically without burnout.</p>
-                    </div>
-
-                    <div class="flex flex-col">
-                        <div class="flex items-center mb-2">
-                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 mr-3">✓</div>
-                            <h4 class="font-bold text-lg">Predictable Income</h4>
-                        </div>
-                        <p class="text-sm opacity-60 pl-9">An offer ladder that converts attention into income.</p>
-                    </div>
-                </div>
-
-                <div class="mt-12 pt-8 border-t border-white/10 text-center">
-                    <p class="serif text-xl md:text-2xl italic opacity-90 leading-relaxed">
-                        "You won't just have a personal brand. You'll have a system that turns who you are into predictable revenue. <span class="text-[#ff001e]">Without faking it.</span>"
-                    </p>
-                </div>
-            </div>
+    <!-- Phase 2 -->
+    <div class="phase" id="ph2">
+      <div class="phase-bar-top" style="background:var(--p2);"></div>
+      <div class="phase-trigger" onclick="togglePhase('ph2')">
+        <span class="phase-no" style="color:var(--p2);">02</span>
+        <span class="phase-name">Market Alignment</span>
+        <span class="phase-hook">Translate who you are into language the market acts on.</span>
+        <span class="phase-chevron">→</span>
+      </div>
+      <div class="phase-drawer">
+        <div class="phase-inner">
+          <div class="phase-body"><p>Positioning is not about standing out. It's about being understood. We build the Positioning Statement that makes the right people feel found and the wrong people self-select out. We map your ideal client's psychological profile — their fears, the words they use — then align every surface of your platform to say one coherent thing.</p></div>
+          <div class="phase-deliverables">
+            <div class="phase-del-label">You leave with</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p2);">→</span>Positioning Statement</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p2);">→</span>Ideal Client Profile (Psychological)</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p2);">→</span>Audience Language Map</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p2);">→</span>Aligned LinkedIn Profile + 3 Bios</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p2);">→</span>Messaging System</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="py-24 max-w-7xl mx-auto px-6">
-        <h2 class="text-4xl md:text-5xl text-center mb-4 uppercase">Three Ways to <span class="text-[#ff001e]">Work With Me</span></h2>
-        <p class="text-center opacity-60 mb-16 max-w-2xl mx-auto">I've helped founders and creatives turn unclear expertise into brands the market understands and pays for.</p>
-        
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="glass-panel p-8 rounded-2xl hover:border-[#ff001e] transition duration-300 flex flex-col h-full">
-                <div>
-                    <span class="text-4xl mb-6 block">🎯</span>
-                    <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Clarity Consultation</h3>
-                    <p class="text-[#ff001e] text-xs font-bold uppercase mb-6">45-Minute 1:1 Strategy</p>
-                    <p class="text-sm opacity-60 mb-6 leading-relaxed">
-                        A focused, 1:1 consultation where we diagnose exactly why the market doesn't understand you and map out how the system applies to you.
-                    </p>
-                    <ul class="text-xs space-y-2 mb-8 opacity-70 mono">
-                        <li>✓ Clear Diagnosis</li>
-                        <li>✓ Specific Roadmap</li>
-                        <li>✓ NOT a sales call</li>
-                    </ul>
-                </div>
-                <div class="mt-auto">
-                    <a href="https://tally.so/r/81QReA" class="btn-outline block w-full text-center py-4 rounded-lg font-bold uppercase text-xs tracking-widest">Book Clarity Call</a>
-                </div>
-            </div>
-
-            <div class="glass-panel border-[#ff001e] p-8 rounded-2xl relative overflow-hidden flex flex-col h-full transform md:-translate-y-4 bg-[#050a1f] shadow-[0_0_30px_rgba(255,0,30,0.1)]">
-                <div class="absolute top-0 right-0 bg-[#ff001e] text-[10px] px-4 py-1 uppercase font-bold text-white">Most Popular</div>
-                <div>
-                    <span class="text-4xl mb-6 block">🚀</span>
-                    <h3 class="text-xl font-bold mb-2 uppercase tracking-wide italic">Brand It Unapologetically</h3>
-                    <p class="text-[#ff001e] text-xs font-bold uppercase mb-6">90-Day Group Cohort</p>
-                    <p class="text-sm opacity-60 mb-6 leading-relaxed">
-                        Live weekly coaching. I teach the full Identity-to-Income™ System and guide you through applying it alongside other founders.
-                    </p>
-                    <ul class="text-xs space-y-2 mb-8 opacity-70 mono">
-                        <li>✓ Identity Extraction</li>
-                        <li>✓ Market Alignment</li>
-                        <li>✓ Expression System</li>
-                        <li>✓ Monetization Path</li>
-                    </ul>
-                </div>
-                <div class="mt-auto">
-                    <a href="https://tally.so/r/nr97Do" class="btn-primary block w-full text-center py-4 rounded-lg font-bold uppercase text-xs tracking-widest">Apply For Cohort</a>
-                </div>
-            </div>
-
-            <div class="glass-panel p-8 rounded-2xl hover:border-[#ff001e] transition duration-300 flex flex-col h-full">
-                <div>
-                    <span class="text-4xl mb-6 block">⚡</span>
-                    <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Done-For-You</h3>
-                    <p class="text-[#ff001e] text-xs font-bold uppercase mb-6">Complete Brand Build</p>
-                    <p class="text-sm opacity-60 mb-6 leading-relaxed">
-                        I apply the Identity-to-Income™ System directly to your brand. You show up, we extract, I build. Speed and precision.
-                    </p>
-                    <ul class="text-xs space-y-2 mb-8 opacity-70 mono">
-                        <li>✓ Brand Clarity Document</li>
-                        <li>✓ Positioning Statement</li>
-                        <li>✓ Content Strategy</li>
-                        <li>✓ Offer Ladder Structure</li>
-                    </ul>
-                </div>
-                <div class="mt-auto">
-                    <a href="https://tally.so/r/81Q67r" class="btn-outline block w-full text-center py-4 rounded-lg font-bold uppercase text-xs tracking-widest">Apply for DFY</a>
-                </div>
-            </div>
+    <!-- Phase 3 -->
+    <div class="phase" id="ph3">
+      <div class="phase-bar-top" style="background:var(--p3);"></div>
+      <div class="phase-trigger" onclick="togglePhase('ph3')">
+        <span class="phase-no" style="color:var(--p3);">03</span>
+        <span class="phase-name">Content as Expression</span>
+        <span class="phase-hook">Make your brand visible in a way that compounds.</span>
+        <span class="phase-chevron">→</span>
+      </div>
+      <div class="phase-drawer">
+        <div class="phase-inner">
+          <div class="phase-body"><p>Content is the interface between your expertise and the market's understanding. We build your personalised content pillars — derived from your identity, not from a template — map the psychology behind why people stop and read, and give you a 90-day strategy that knows exactly what to produce at every stage of the funnel.</p></div>
+          <div class="phase-deliverables">
+            <div class="phase-del-label">You leave with</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p3);">→</span>Personalised Content Pillars (4–7)</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p3);">→</span>Hook System + Post Architecture</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p3);">→</span>Psychology Engine (12 Triggers)</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p3);">→</span>30 Content Prompts</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p3);">→</span>90-Day Content Calendar</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <footer class="py-20 border-t border-white/10 text-center px-6 bg-black">
-        <h2 class="text-3xl md:text-5xl mb-10 italic serif leading-tight">"The market doesn't reward the best. <br>It rewards the <span class="text-[#ff001e]">most understood."</span></h2>
-        
-        <p class="mb-10 opacity-60">You're an expert. The market just doesn't know it yet. Let's fix that.</p>
-        
-        <div class="flex flex-col md:flex-row justify-center gap-4 mb-16">
-            <a href="https://tally.so/r/81QReA" class="text-xs font-bold uppercase tracking-widest border-b border-[#ff001e] pb-1 hover:text-[#ff001e]">Apply for clarity call</a>
-            <span class="hidden md:inline text-white/20">|</span>
-            <a href="https://tally.so/r/nr97Do" class="text-xs font-bold uppercase tracking-widest border-b border-[#ff001e] pb-1 hover:text-[#ff001e]">Join Cohort</a>
-            <span class="hidden md:inline text-white/20">|</span>
-            <a href="https://tally.so/r/81Q67r class="text-xs font-bold uppercase tracking-widest border-b border-[#ff001e] pb-1 hover:text-[#ff001e]">Apply DFY</a>
+    <!-- Phase 4 -->
+    <div class="phase" id="ph4">
+      <div class="phase-bar-top" style="background:var(--p4);"></div>
+      <div class="phase-trigger" onclick="togglePhase('ph4')">
+        <span class="phase-no" style="color:var(--p4);">04</span>
+        <span class="phase-name">Monetisation Architecture</span>
+        <span class="phase-hook">Turn clarity into predictable income.</span>
+        <span class="phase-chevron">→</span>
+      </div>
+      <div class="phase-drawer">
+        <div class="phase-inner">
+          <div class="phase-body"><p>A brand that doesn't pay is an expensive hobby. We build your offer ladder so each tier leads naturally to the next, your lead generation system, and a conversion protocol — so income follows naturally from clarity. The Clarity Call replaces the pitch. The revenue rhythm replaces launch panic.</p></div>
+          <div class="phase-deliverables">
+            <div class="phase-del-label">You leave with</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p4);">→</span>4-Tier Offer Ladder</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p4);">→</span>Lead Magnet (Ready to Deploy)</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p4);">→</span>5-Email Trust Sequence</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p4);">→</span>Clarity Call Protocol</div>
+            <div class="phase-del-item"><span class="phase-del-arrow" style="color:var(--p4);">→</span>Revenue Rhythm System</div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="space-y-2">
-            <p class="uppercase tracking-widest font-bold text-sm">As always, <br>Stay Unapologetically You</br>.</p>
-            <p class="opacity-50 text-sm">— Brenda Blanche</p>
-            <p class="text-[10px] uppercase tracking-[0.3em] opacity-30 mt-4">Founder, Brand It Unapologetically</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     06 · LEAD MAGNET
+══════════════════════════════════════════ -->
+<section id="leadmagnet">
+  <div class="page-pad col-wrap">
+    <div class="lm-grid">
+
+      <div class="reveal">
+        <div class="lm-left-label">Start Here — Free</div>
+        <h2 class="lm-h2">Find exactly where your brand is breaking down.</h2>
+        <p class="lm-p">Before you fix anything, you need to know what's actually wrong. The Positioning Gap Diagnostic™ is a 15-minute self-diagnostic that tells you precisely where the translation gap is — and what to fix first.</p>
+        <ul class="lm-list">
+          <li><span class="arr">→</span>Identify whether you have a clarity, positioning, or messaging problem</li>
+          <li><span class="arr">→</span>See exactly which stage of the brand-building process you're stuck at</li>
+          <li><span class="arr">→</span>Get a personalised starting point — not generic advice</li>
+          <li><span class="arr">→</span>15 minutes. No fluff. A specific answer.</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <div class="lm-card">
+          <div class="lm-card-stripe"></div>
+          <div class="lm-card-eyebrow">Free Resource</div>
+          <div class="lm-card-title">The Positioning Gap Diagnostic™</div>
+          <div class="lm-card-sub">A brand diagnostic — not a PDF to download and forget. A 15-minute process that gives you a specific answer about your brand's translation gap.</div>
+          <ul class="lm-card-items">
+            <li><span class="dot">◆</span>Where your brand is losing the market right now</li>
+            <li><span class="dot">◆</span>Which of the 3 translation gaps applies to you</li>
+            <li><span class="dot">◆</span>What to fix before everything else</li>
+          </ul>
+          <span class="lm-card-stamp">Always Free · Takes 15 Minutes</span>
+          <a href="https://wa.link/be38fk" class="btn btn-solid" style="width:100%;text-align:center;display:block;">
+            Get the Positioning Gap Diagnostic™ →
+          </a>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     07 · OFFERS
+══════════════════════════════════════════ -->
+<section id="offers">
+  <div class="page-pad col-wrap">
+
+    <div class="offers-header reveal">
+      <div>
+        <span class="label" style="display:inline-flex;margin-bottom:20px;">How We Work Together</span>
+        <h2 class="offers-h2">Two paths.<br>One outcome.</h2>
+      </div>
+      <p class="offers-header-right">Both deliver the same 4-phase Identity-to-Income™ system. <strong>The difference is the container and the level of Brenda's direct involvement in your work.</strong></p>
+    </div>
+
+    <div class="offers-pair">
+
+      <!-- cohort -->
+      <div class="offer-card reveal">
+        <div class="offer-accent" style="background:var(--p1);"></div>
+        <div class="offer-path">Path One · Group Cohort</div>
+        <div class="offer-name">Brand It Unapologetically<br>Accelerator™</div>
+        <div class="offer-meta">13 Weeks · 2 Calls Per Week · Max 15 People</div>
+        <div class="offer-iff">This is for you if</div>
+        <p class="offer-fit">You want the complete framework, the accountability of a cohort, and the energy of building alongside other independent thinkers doing the same work in real time.</p>
+        <ul class="offer-list">
+          <li><span class="tick" style="color:var(--p1);">→</span>Teaching Tuesdays: modules delivered live</li>
+          <li><span class="tick" style="color:var(--p1);">→</span>Hot Seat Fridays: your work reviewed in the room</li>
+          <li><span class="tick" style="color:var(--p1);">→</span>All 4 phases · one deliverable per week</li>
+          <li><span class="tick" style="color:var(--p1);">→</span>90-Day Content Calendar built with you</li>
+          <li><span class="tick" style="color:var(--p1);">→</span>Offer ladder + revenue rhythm</li>
+          <li><span class="tick" style="color:var(--p1);">→</span>Week 13: brand presentation + graduation</li>
+        </ul>
+        <a href="https://tally.so/r/nr97Do" class="btn btn-outline-light" style="width:100%;text-align:center;display:block;">Apply for the Cohort →</a>
+      </div>
+
+      <!-- 1:1 -->
+      <div class="offer-card prime reveal">
+        <span class="offer-prime-tag">Most Intensive</span>
+        <div class="offer-accent" style="background:var(--red);"></div>
+        <div class="offer-path">Path Two · Private Coaching</div>
+        <div class="offer-name">Brand It Unapologetically<br>1:1 Intensive™</div>
+        <div class="offer-meta">13 Weeks · 2 Private Calls Per Week · One Client at a Time</div>
+        <div class="offer-iff">This is for you if</div>
+        <p class="offer-fit">You want Brenda's full attention on your specific brand. Every deliverable written and edited together. Done-with-you content built in session. Unlimited Telegram access between calls. A custom strategy roadmap before Week 1 even starts.</p>
+        <ul class="offer-list">
+          <li><span class="tick" style="color:var(--red);">→</span>Pre-program brand audit + custom roadmap</li>
+          <li><span class="tick" style="color:var(--red);">→</span>2 private calls per week (teach + direct review)</li>
+          <li><span class="tick" style="color:var(--red);">→</span>Brenda writes and edits deliverables directly</li>
+          <li><span class="tick" style="color:var(--red);">→</span>Done-with-you content — posts built in session</li>
+          <li><span class="tick" style="color:var(--red);">→</span>Unlimited Telegram DM access between calls</li>
+          <li><span class="tick" style="color:var(--red);">→</span>Week 13: full brand handover + 90-day deployment plan</li>
+        </ul>
+        <a href="https://tally.so/r/81QReA" class="btn btn-solid" style="width:100%;text-align:center;display:block;">Apply for the 1:1 Intensive →</a>
+      </div>
+
+    </div>
+
+    <div class="offers-foot reveal">
+      <p><strong>Not sure which path is right for you?</strong> That's what the free clarity call is for. We'll figure it out in 45 minutes. No pressure.</p>
+      <a href="#clarity" class="btn btn-wire-red">Book the Free Clarity Call →</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     08 · CLARITY CALL
+══════════════════════════════════════════ -->
+<section id="clarity">
+  <div class="page-pad col-wrap">
+    <div class="clarity-grid">
+
+      <div class="reveal">
+        <div class="clarity-left-label">Not a Sales Call</div>
+        <h2 class="clarity-h2">The Free Brand<br>Clarity Call</h2>
+        <p class="clarity-p">A 45-minute diagnostic. We look at your brand right now — your content, your positioning, your platform — and find <strong>exactly where the translation gap is.</strong> You leave knowing more than when you arrived. Regardless of what you decide to do next.</p>
+        <div class="clarity-what-label">What happens on the call</div>
+        <ul class="clarity-what">
+          <li><span class="arr">→</span><span>We audit your current brand: what it's saying vs. what the market is actually hearing</span></li>
+          <li><span class="arr">→</span><span>We identify your specific translation gap — clarity, positioning, or messaging</span></li>
+          <li><span class="arr">→</span><span>We map which of the 4 phases needs the most attention for your brand right now</span></li>
+          <li><span class="arr">→</span><span>If it makes sense, we talk about which path forward fits your timeline and goals</span></li>
+        </ul>
+        <p class="clarity-aside">"You are not obligated to work with me. You are obligated only to leave with more clarity than you arrived with."</p>
+      </div>
+
+      <div class="reveal">
+        <div class="clarity-card">
+          <div class="clarity-price-label">Your Investment</div>
+          <div class="clarity-price">Free</div>
+          <div class="clarity-price-sub">45 minutes. No obligation.</div>
+          <hr class="clarity-divider">
+          <div class="clarity-pill">
+            <span class="clarity-pill-dot"></span>
+            45 Minutes
+            <span class="clarity-pill-dot"></span>
+            Zoom or Google Meet
+          </div>
+          <p class="clarity-promise">"This is a diagnostic session — not a discovery call dressed up as a gift. You will leave with something actionable."</p>
+          <a href="https://calendly.com/unapologeticquenn/brand-clarity-call" class="btn btn-solid" style="width:100%;text-align:center;display:block;margin-bottom:14px;">
+            Book the Clarity Call →
+          </a>
+          <p class="clarity-card-note">Limited spots available per month</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     09 · CLOSE
+══════════════════════════════════════════ -->
+<section id="close">
+  <div class="close-inner page-pad">
+
+    <div class="close-thread"></div>
+
+    <p class="close-quote reveal">
+      "The invisible expert doesn't stay invisible because they're not good enough.
+      They stay invisible because <em>the market can't find the language for who they are.</em>"
+    </p>
+
+    <p class="close-sub reveal">
+      You don't need to be louder.
+      <strong>You need to be clearer.</strong><br>
+      The market finds the people it understands.
+    </p>
+
+    <div class="close-btns reveal">
+      <a href="#leadmagnet" class="btn btn-solid">Get the Free Positioning Gap Diagnostic™</a>
+      <a href="#clarity"    class="btn btn-outline-light">Book a Clarity Call</a>
+    </div>
+
+    <hr class="close-sig-line">
+    <p class="close-sig reveal">
+      As always — stay <strong>Unapologetically You.</strong><br>
+      — <strong>Brenda Blanche</strong> · Founder, Brand It Unapologetically™
+    </p>
+
+  </div>
+</section>
+
+
+<footer>
+  <span class="footer-copy">© 2025 Brenda Blanche · Identity-to-Income™ · The Unapologetics</span>
+  <div class="footer-links">
+    <a href="#leadmagnet">Free Audit</a>
+    <a href="#system">The System</a>
+    <a href="#offers">Work With Me</a>
+    <a href="#clarity">Clarity Call</a>
+  </div>
+</footer>
+
+
+<script>
+/* ── Nav scroll state ── */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', scrollY > 48);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ── Phase accordion ── */
+function togglePhase(id) {
+  const el = document.getElementById(id);
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.phase.open').forEach(p => p.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ── Scroll reveal ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.classList.add('visible');
+      io.unobserve(en.target);
+    }
+  });
+}, { threshold: 0.07 });
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
