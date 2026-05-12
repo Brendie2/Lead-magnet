@@ -145,7 +145,6 @@ body::before{
   position:relative;
 }
 
-/* Red glow radial */
 .cover-body::before{
   content:'';
   position:absolute;
@@ -356,7 +355,6 @@ body::before{
   letter-spacing:-0.01em;
 }
 
-/* ── ANSWER OPTIONS ── */
 .answer-grid{display:flex;flex-direction:column}
 
 .answer-btn{
@@ -644,7 +642,6 @@ body::before{
   align-items:start;
 }
 
-/* ── LEFT COL ── */
 .scores-block{margin-bottom:2.5rem}
 
 .score-row{
@@ -752,7 +749,6 @@ body::before{
   top:2px;
 }
 
-/* FIX BLOCK */
 .fix-block{
   border-left:3px solid var(--red);
   padding:2rem 2rem 2rem 2.2rem;
@@ -805,7 +801,6 @@ body::before{
   letter-spacing:0.05em;
 }
 
-/* ── RIGHT COL ── */
 .bridge-block{
   border:1px solid rgba(245,239,230,0.08);
   padding:2.2rem;
@@ -850,7 +845,6 @@ body::before{
 }
 .bridge-body strong{color:var(--cream);font-weight:500}
 
-/* WhatsApp CTA */
 .btn-whatsapp{
   display:flex;
   align-items:center;
@@ -873,7 +867,6 @@ body::before{
 .btn-whatsapp:hover{opacity:.88}
 .btn-whatsapp svg{width:18px;height:18px;flex-shrink:0}
 
-/* Share block */
 .share-block{
   border:1px solid rgba(245,239,230,0.06);
   padding:1.8rem;
@@ -952,9 +945,6 @@ body::before{
   text-transform:uppercase;
 }
 
-/* ══════════════════════════════════════
-   ANIMATIONS
-══════════════════════════════════════ */
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:translateY(0)}
@@ -964,7 +954,6 @@ body::before{
   to{opacity:1;transform:none}
 }
 
-/* ── RESPONSIVE ── */
 @media(max-width:780px){
   .results-grid{grid-template-columns:1fr;gap:2rem}
   .cover-body,.quiz-body,.quiz-top,.quiz-nav,
@@ -979,9 +968,7 @@ body::before{
 <body>
 <div class="spine"></div>
 
-<!-- ══════════════════════════════════════
-     COVER
-══════════════════════════════════════ -->
+<!-- COVER -->
 <div id="screen-cover" class="screen active">
   <div class="cover-header">
     <div class="brand-mark">Brenda.Blanche™ · The Unapologetics</div>
@@ -1017,25 +1004,21 @@ body::before{
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     PILLAR TRANSITION
-══════════════════════════════════════ -->
+<!-- TRANSITION -->
 <div id="screen-transition" class="screen">
   <div class="pillar-transition">
     <div class="pillar-bg-num" id="pt-bg-num">1</div>
     <div class="pt-eyebrow" id="pt-eyebrow">Section 1 of 3</div>
     <div class="pt-bar"></div>
     <h2 class="pt-heading" id="pt-heading"><span>Identity</span></h2>
-    <p class="pt-body" id="pt-body">These statements diagnose the clarity of your signal.</p>
+    <p class="pt-body" id="pt-body"></p>
     <button class="btn-primary" onclick="continueToQuestions()">
       Continue <span class="arrow">→</span>
     </button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     QUIZ
-══════════════════════════════════════ -->
+<!-- QUIZ -->
 <div id="screen-quiz" class="screen">
   <div class="quiz-top">
     <div class="pillar-label-wrap">
@@ -1076,9 +1059,7 @@ body::before{
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     EMAIL GATE
-══════════════════════════════════════ -->
+<!-- EMAIL GATE -->
 <div id="screen-gate" class="screen">
   <div class="gate-wrap">
     <div class="eyebrow">One step away</div>
@@ -1106,9 +1087,7 @@ body::before{
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     RESULTS
-══════════════════════════════════════ -->
+<!-- RESULTS -->
 <div id="screen-results" class="screen">
   <div class="results-header">
     <div>
@@ -1124,7 +1103,6 @@ body::before{
   </div>
 
   <div class="results-grid">
-    <!-- LEFT -->
     <div>
       <div class="scores-block" id="scores-block"></div>
       <div class="gap-headline" id="gap-headline"></div>
@@ -1140,8 +1118,6 @@ body::before{
         <ol class="fix-steps" id="fix-steps"></ol>
       </div>
     </div>
-
-    <!-- RIGHT -->
     <div>
       <div class="bridge-block">
         <div class="bridge-eyebrow">Close the gap — completely</div>
@@ -1159,7 +1135,6 @@ body::before{
           Message Brenda on WhatsApp →
         </a>
       </div>
-
       <div class="share-block">
         <div class="bridge-eyebrow">Declare your gap publicly</div>
         <p class="share-body">Post your result. Tag me. When you name the gap out loud, you commit to closing it.</p>
@@ -1181,119 +1156,31 @@ body::before{
 </div>
 
 <script>
-const BREVO_API_KEY = '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';
-const BREVO_LIST_ID = 3;
+// ─── ONLY safe config here — no API keys ───────────────────
 const WHATSAPP_NUM = '237672411155';
+// API key lives in Netlify environment variables only.
+// ──────────────────────────────────────────────────────────
 
 const questions = [
-  {
-    pillar:'Identity',sub:'· Signal',section:'Section 1 of 3',bgNum:'1',
-    intro:'These statements diagnose the clarity of your signal — who you are, and how distinctly you come through to the market.',
-    text:'If someone fed your last three posts to an AI and asked "Who wrote this?" — would it say your name, or just "a consultant"?',
-    yes:'Yes — my voice is unmistakable.',
-    somewhat:'Somewhat — sometimes me, sometimes generic.',
-    no:'No — I\'m a ghost in my own content.'
-  },
-  {
-    pillar:'Identity',sub:'· Signal',section:'Section 1 of 3',bgNum:'1',intro:'',
-    text:'You\'re on a call with a dream client. They ask, "Why you, specifically?" Can you answer in one crisp sentence that makes them lean in, not lean back?',
-    yes:'Yes — I can say it, and they get it.',
-    somewhat:'Somewhat — the words still feel slippery when I say them aloud.',
-    no:'No — I usually end up saying something vague about "quality" or "experience."'
-  },
-  {
-    pillar:'Identity',sub:'· Signal',section:'Section 1 of 3',bgNum:'1',intro:'',
-    text:'Is the real story — the fire you walked through, the unconventional path, the reason you refuse to shrink — visible on your profile right now?',
-    yes:'Yes — you can feel me through the screen.',
-    somewhat:'Somewhat — parts of me show up, but I play it safe.',
-    no:'No — I keep most of who I am hidden behind "professional" language.'
-  },
-  {
-    pillar:'Expertise',sub:'· Proof',section:'Section 2 of 3',bgNum:'2',
-    intro:'These statements diagnose your proof — whether the market can see and trust your ability to deliver on your promise.',
-    text:'A potential client asks, "How do you actually get results?" Can you walk them through a clear, repeatable process that makes them think, "That\'s exactly what I need"?',
-    yes:'Yes — my method is named, structured, and easy to understand.',
-    somewhat:'Somewhat — I have a process, but it doesn\'t sound as clean as it should.',
-    no:'No — I describe outcomes, not a trustable system.'
-  },
-  {
-    pillar:'Expertise',sub:'· Proof',section:'Section 2 of 3',bgNum:'2',intro:'',
-    text:'In the last five minutes, could you pull up a concrete example of a real result you created for someone — and show the numbers?',
-    yes:'Yes — my proof is organized, recent, and ready.',
-    somewhat:'Somewhat — I have results, but I\'m not great at presenting them.',
-    no:'No — asking for proof makes me uncomfortable, or I haven\'t tracked it.'
-  },
-  {
-    pillar:'Expertise',sub:'· Proof',section:'Section 2 of 3',bgNum:'2',intro:'',
-    text:'If someone secretly recorded your last discovery call and played it for a stranger, would they immediately know exactly who you\'re for and what problem you solve — without needing an explanation?',
-    yes:'Yes — it lands every time.',
-    somewhat:'Somewhat — I get there, but it takes a few tries.',
-    no:'No — I tend to ramble, or I sound different on every call.'
-  },
-  {
-    pillar:'Structure',sub:'· Delivery',section:'Section 3 of 3',bgNum:'3',
-    intro:'These statements diagnose your delivery system — whether the market receives you consistently and clearly, every time.',
-    text:'If a potential client found your LinkedIn today, read your content tomorrow, and visited your website next week — would they receive the exact same signal, or three slightly different versions that create quiet doubt?',
-    yes:'Yes — I\'m consistent as clockwork.',
-    somewhat:'Somewhat — mostly aligned, but some pieces feel off.',
-    no:'No — I sound different depending on the day and the platform.'
-  },
-  {
-    pillar:'Structure',sub:'· Delivery',section:'Section 3 of 3',bgNum:'3',intro:'',
-    text:'Does your positioning actively push the wrong people away — and magnetize the right people so strongly they think, "This is exactly who I need"?',
-    yes:'Yes — my wrong-person filter is loud and clear.',
-    somewhat:'Somewhat — I\'m specific, but I still hesitate to exclude anyone.',
-    no:'No — I keep it broad so I don\'t miss opportunities.'
-  },
-  {
-    pillar:'Structure',sub:'· Delivery',section:'Section 3 of 3',bgNum:'3',intro:'',
-    text:'If a stranger read your last three posts, would they know exactly what to do next to work with you — without guessing, without reading your full bio, without watching a video?',
-    yes:'Yes — the next step is obvious and frictionless.',
-    somewhat:'Somewhat — I post consistently, but the path to hiring me isn\'t clear.',
-    no:'No — I post when I\'m inspired and hope someone reaches out.'
-  }
+  { pillar:'Identity', sub:'· Signal', section:'Section 1 of 3', bgNum:'1', intro:'These statements diagnose the clarity of your signal — who you are, and how distinctly you come through to the market.', text:'If someone fed your last three posts to an AI and asked "Who wrote this?" — would it say your name, or just "a consultant"?', yes:'Yes — my voice is unmistakable.', somewhat:'Somewhat — sometimes me, sometimes generic.', no:'No — I\'m a ghost in my own content.' },
+  { pillar:'Identity', sub:'· Signal', section:'Section 1 of 3', bgNum:'1', intro:'', text:'You\'re on a call with a dream client. They ask, "Why you, specifically?" Can you answer in one crisp sentence that makes them lean in, not lean back?', yes:'Yes — I can say it, and they get it.', somewhat:'Somewhat — the words still feel slippery when I say them aloud.', no:'No — I usually end up saying something vague about "quality" or "experience."' },
+  { pillar:'Identity', sub:'· Signal', section:'Section 1 of 3', bgNum:'1', intro:'', text:'Is the real story — the fire you walked through, the unconventional path, the reason you refuse to shrink — visible on your profile right now?', yes:'Yes — you can feel me through the screen.', somewhat:'Somewhat — parts of me show up, but I play it safe.', no:'No — I keep most of who I am hidden behind "professional" language.' },
+  { pillar:'Expertise', sub:'· Proof', section:'Section 2 of 3', bgNum:'2', intro:'These statements diagnose your proof — whether the market can see and trust your ability to deliver on your promise.', text:'A potential client asks, "How do you actually get results?" Can you walk them through a clear, repeatable process that makes them think, "That\'s exactly what I need"?', yes:'Yes — my method is named, structured, and easy to understand.', somewhat:'Somewhat — I have a process, but it doesn\'t sound as clean as it should.', no:'No — I describe outcomes, not a trustable system.' },
+  { pillar:'Expertise', sub:'· Proof', section:'Section 2 of 3', bgNum:'2', intro:'', text:'In the last five minutes, could you pull up a concrete example of a real result you created for someone — and show the numbers?', yes:'Yes — my proof is organized, recent, and ready.', somewhat:'Somewhat — I have results, but I\'m not great at presenting them.', no:'No — asking for proof makes me uncomfortable, or I haven\'t tracked it.' },
+  { pillar:'Expertise', sub:'· Proof', section:'Section 2 of 3', bgNum:'2', intro:'', text:'If someone secretly recorded your last discovery call and played it for a stranger, would they immediately know exactly who you\'re for and what problem you solve — without needing an explanation?', yes:'Yes — it lands every time.', somewhat:'Somewhat — I get there, but it takes a few tries.', no:'No — I tend to ramble, or I sound different on every call.' },
+  { pillar:'Structure', sub:'· Delivery', section:'Section 3 of 3', bgNum:'3', intro:'These statements diagnose your delivery system — whether the market receives you consistently and clearly, every time.', text:'If a potential client found your LinkedIn today, read your content tomorrow, and visited your website next week — would they receive the exact same signal, or three slightly different versions that create quiet doubt?', yes:'Yes — I\'m consistent as clockwork.', somewhat:'Somewhat — mostly aligned, but some pieces feel off.', no:'No — I sound different depending on the day and the platform.' },
+  { pillar:'Structure', sub:'· Delivery', section:'Section 3 of 3', bgNum:'3', intro:'', text:'Does your positioning actively push the wrong people away — and magnetize the right people so strongly they think, "This is exactly who I need"?', yes:'Yes — my wrong-person filter is loud and clear.', somewhat:'Somewhat — I\'m specific, but I still hesitate to exclude anyone.', no:'No — I keep it broad so I don\'t miss opportunities.' },
+  { pillar:'Structure', sub:'· Delivery', section:'Section 3 of 3', bgNum:'3', intro:'', text:'If a stranger read your last three posts, would they know exactly what to do next to work with you — without guessing, without reading your full bio, without watching a video?', yes:'Yes — the next step is obvious and frictionless.', somewhat:'Somewhat — I post consistently, but the path to hiring me isn\'t clear.', no:'No — I post when I\'m inspired and hope someone reaches out.' }
 ];
 
 const results = {
-  Identity:{
-    badge:'IDENTITY GAP',
-    headline:'You\'re not invisible. You\'re <em>untranslated.</em>',
-    verdict:'Your gap is Identity. The market can\'t trust someone it can\'t perceive. You\'re skilled — maybe the best at what you do. But you sound correct, not irreplaceable. No one knows why you, specifically, should be the one they choose.',
-    cost:'You\'ve lost income this month because the market couldn\'t read you in the first five seconds. Someone less experienced, with a sharper signal, got the client you deserved.',
-    signs:['You get "This is insightful" instead of "How do I hire you?"','Your bio has been rewritten ten times, and it still feels wrong.','When someone asks what makes you different, the words die in your throat.'],
-    fixTitle:'Write the belief that makes you unpopular',
-    fixSteps:['Write down one belief about your industry that most people won\'t say out loud.','In one sentence, explain why they\'re wrong and you\'re right.','Combine them: "Most people believe [X]. I believe [Y]. That\'s why I help [Z] do [A]." You just wrote the seed of an irreplaceable brand — not from a template, from your actual lens.']
-  },
-  Expertise:{
-    badge:'EXPERTISE GAP',
-    headline:'You\'re visible. But you\'re <em>unproven.</em>',
-    verdict:'Your gap is Expertise. People read your content. They might even follow you. But when it\'s time to pay, they hesitate. The market isn\'t convinced you can solve this problem for them. Your expertise is real — but you\'re asking them to trust a promise, not a process.',
-    cost:'You\'ve had warm discovery calls that ended with "I\'ll think about it." The person liked you. They just didn\'t trust your mechanism enough to buy.',
-    signs:['You describe outcomes, but you can\'t clearly explain the how.','You feel like you have to prove yourself all over again in every conversation.','People say you\'re smart — but they never ask how to work with you.'],
-    fixTitle:'Name your process so the market trusts it',
-    fixSteps:['Pick one result you\'ve created for a client.','Write down the exact 3–4 steps you took to produce it — not the outcome, your process.','Name it. "The [Your Lens] Method." You just created a proprietary system. That\'s what the market buys — not promises, processes.']
-  },
-  Structure:{
-    badge:'STRUCTURE GAP',
-    headline:'You have the goods. But the <em>delivery is fractured.</em>',
-    verdict:'Your gap is Structure. You\'ve got the identity and the expertise, but the market receives you inconsistently. One post sounds like you, the next could be anyone. LinkedIn says one thing, your content says something else. The market isn\'t rejecting you — it\'s confused. And a confused person never pays.',
-    cost:'People follow you for a while, then drift away without buying. You\'re constantly tweaking your headline, your bio, your format — without a clear system underneath any of it.',
-    signs:['You post consistently, but the inbound leads don\'t match the effort.','Your content gets likes, but your offer gets silence.','You\'re always one tweak away from feeling "finished," but it never comes.'],
-    fixTitle:'Set your standard, not your schedule',
-    fixSteps:['Open your last 5 posts. Ask: if someone only read these, would they know who you help, what you solve, and how to hire you?','Find the post that answers those three questions best. That\'s your benchmark.','Write your next 3 posts to match that benchmark — same clarity, same signal, same next step. Consistency starts with a standard, not a calendar.']
-  },
-  Alignment:{
-    badge:'ALIGNMENT GAP',
-    headline:'You\'re not broken. You\'re just <em>not connected.</em>',
-    verdict:'Your gap is Alignment. You don\'t have one fatal flaw — you have three capable pieces that aren\'t locked together. Identity, Expertise, and Structure are all present, but they\'re not working as one system. Some days your brand fires. Other days, silence. The market can\'t predict you, so it can\'t trust you.',
-    cost:'You get results, but they\'re wildly inconsistent. You feel like you\'re always one missing piece away from the business you know you could have.',
-    signs:['Some posts go viral and you have no idea why.','Some discovery calls convert effortlessly; others collapse for no clear reason.','People compliment your work, but it hasn\'t translated into steady, predictable income.'],
-    fixTitle:'Integrate the three in sequence',
-    fixSteps:['Do the Structure fix first — pick the post that feels most like you and set it as your benchmark.','Check: is your Identity (your lens, your story, your why-you) visible in that post? Is your Expertise (a repeatable process) embedded in it?','Rewrite the post so a stranger walks away knowing exactly who you are, what you do, and why they should trust you. That\'s full IES alignment in one piece of content.']
-  }
+  Identity:  { badge:'IDENTITY GAP',  headline:'You\'re not invisible. You\'re <em>untranslated.</em>', verdict:'Your gap is Identity. The market can\'t trust someone it can\'t perceive. You\'re skilled — maybe the best at what you do. But you sound correct, not irreplaceable. No one knows why you, specifically, should be the one they choose.', cost:'You\'ve lost income this month because the market couldn\'t read you in the first five seconds. Someone less experienced, with a sharper signal, got the client you deserved.', signs:['You get "This is insightful" instead of "How do I hire you?"','Your bio has been rewritten ten times, and it still feels wrong.','When someone asks what makes you different, the words die in your throat.'], fixTitle:'Write the belief that makes you unpopular', fixSteps:['Write down one belief about your industry that most people won\'t say out loud.','In one sentence, explain why they\'re wrong and you\'re right.','Combine them: "Most people believe [X]. I believe [Y]. That\'s why I help [Z] do [A]." You just wrote the seed of an irreplaceable brand — not from a template, from your actual lens.'] },
+  Expertise: { badge:'EXPERTISE GAP', headline:'You\'re visible. But you\'re <em>unproven.</em>', verdict:'Your gap is Expertise. People read your content. They might even follow you. But when it\'s time to pay, they hesitate. The market isn\'t convinced you can solve this problem for them. Your expertise is real — but you\'re asking them to trust a promise, not a process.', cost:'You\'ve had warm discovery calls that ended with "I\'ll think about it." The person liked you. They just didn\'t trust your mechanism enough to buy.', signs:['You describe outcomes, but you can\'t clearly explain the how.','You feel like you have to prove yourself all over again in every conversation.','People say you\'re smart — but they never ask how to work with you.'], fixTitle:'Name your process so the market trusts it', fixSteps:['Pick one result you\'ve created for a client.','Write down the exact 3–4 steps you took to produce it — not the outcome, your process.','Name it. "The [Your Lens] Method." You just created a proprietary system. That\'s what the market buys — not promises, processes.'] },
+  Structure:  { badge:'STRUCTURE GAP', headline:'You have the goods. But the <em>delivery is fractured.</em>', verdict:'Your gap is Structure. You\'ve got the identity and the expertise, but the market receives you inconsistently. One post sounds like you, the next could be anyone. LinkedIn says one thing, your content says something else. The market isn\'t rejecting you — it\'s confused. And a confused person never pays.', cost:'People follow you for a while, then drift away without buying. You\'re constantly tweaking your headline, your bio, your format — without a clear system underneath any of it.', signs:['You post consistently, but the inbound leads don\'t match the effort.','Your content gets likes, but your offer gets silence.','You\'re always one tweak away from feeling "finished," but it never comes.'], fixTitle:'Set your standard, not your schedule', fixSteps:['Open your last 5 posts. Ask: if someone only read these, would they know who you help, what you solve, and how to hire you?','Find the post that answers those three questions best. That\'s your benchmark.','Write your next 3 posts to match that benchmark — same clarity, same signal, same next step. Consistency starts with a standard, not a calendar.'] },
+  Alignment:  { badge:'ALIGNMENT GAP', headline:'You\'re not broken. You\'re just <em>not connected.</em>', verdict:'Your gap is Alignment. You don\'t have one fatal flaw — you have three capable pieces that aren\'t locked together. Identity, Expertise, and Structure are all present, but they\'re not working as one system. Some days your brand fires. Other days, silence. The market can\'t predict you, so it can\'t trust you.', cost:'You get results, but they\'re wildly inconsistent. You feel like you\'re always one missing piece away from the business you know you could have.', signs:['Some posts go viral and you have no idea why.','Some discovery calls convert effortlessly; others collapse for no clear reason.','People compliment your work, but it hasn\'t translated into steady, predictable income.'], fixTitle:'Integrate the three in sequence', fixSteps:['Do the Structure fix first — pick the post that feels most like you and set it as your benchmark.','Check: is your Identity (your lens, your story, your why-you) visible in that post? Is your Expertise (a repeatable process) embedded in it?','Rewrite the post so a stranger walks away knowing exactly who you are, what you do, and why they should trust you. That\'s full IES alignment in one piece of content.'] }
 };
 
-let currentQ=0,answers=new Array(9).fill(null),selectedVal=null,currentGap='';
+let currentQ=0, answers=new Array(9).fill(null), selectedVal=null, currentGap='';
 
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -1302,7 +1189,7 @@ function showScreen(id){
 }
 
 function startQuiz(){
-  currentQ=0;answers=new Array(9).fill(null);selectedVal=null;
+  currentQ=0; answers=new Array(9).fill(null); selectedVal=null; currentGap='';
   showTransitionScreen(0);
 }
 
@@ -1315,10 +1202,7 @@ function showTransitionScreen(idx){
   showScreen('screen-transition');
 }
 
-function continueToQuestions(){
-  loadQuestion(currentQ);
-  showScreen('screen-quiz');
-}
+function continueToQuestions(){ loadQuestion(currentQ); showScreen('screen-quiz'); }
 
 function loadQuestion(idx){
   const q=questions[idx];
@@ -1334,7 +1218,7 @@ function loadQuestion(idx){
   const saved=answers[idx];
   document.querySelectorAll('.answer-btn').forEach(btn=>{
     btn.classList.remove('selected');
-    if(saved!==null&&parseInt(btn.dataset.val)===saved)btn.classList.add('selected');
+    if(saved!==null&&parseInt(btn.dataset.val)===saved) btn.classList.add('selected');
   });
   selectedVal=saved;
   document.getElementById('btn-next').disabled=(saved===null);
@@ -1342,27 +1226,22 @@ function loadQuestion(idx){
 }
 
 function selectAnswer(val){
-  selectedVal=val;answers[currentQ]=val;
+  selectedVal=val; answers[currentQ]=val;
   document.querySelectorAll('.answer-btn').forEach(btn=>{
     btn.classList.remove('selected');
-    if(parseInt(btn.dataset.val)===val)btn.classList.add('selected');
+    if(parseInt(btn.dataset.val)===val) btn.classList.add('selected');
   });
   document.getElementById('btn-next').disabled=false;
 }
 
-function goBack(){
-  if(currentQ===0)return;
-  currentQ--;
-  loadQuestion(currentQ);
-}
+function goBack(){ if(currentQ===0)return; currentQ--; loadQuestion(currentQ); }
 
 function goNext(){
   if(selectedVal===null)return;
-  const prev=currentQ;currentQ++;
+  const prev=currentQ; currentQ++;
   if(currentQ>=9){
     document.getElementById('progress-fill').style.width='100%';
-    const scores=getScores();
-    currentGap=getGap(scores);
+    currentGap=getGap(getScores());
     showScreen('screen-gate');
     return;
   }
@@ -1377,7 +1256,7 @@ function goNext(){
 
 function getScores(){
   return{
-    Identity:(answers[0]||0)+(answers[1]||0)+(answers[2]||0),
+    Identity: (answers[0]||0)+(answers[1]||0)+(answers[2]||0),
     Expertise:(answers[3]||0)+(answers[4]||0)+(answers[5]||0),
     Structure:(answers[6]||0)+(answers[7]||0)+(answers[8]||0)
   };
@@ -1393,46 +1272,49 @@ function getGap(s){
 }
 
 async function submitGate(){
-  const nameEl=document.getElementById('gate-name');
-  const emailEl=document.getElementById('gate-email');
+  const name =document.getElementById('gate-name').value.trim();
+  const email=document.getElementById('gate-email').value.trim();
   const errEl=document.getElementById('gate-error');
-  const btn=document.getElementById('gate-submit-btn');
-  const spinner=document.getElementById('gate-spinner');
-  const name=nameEl.value.trim();
-  const email=emailEl.value.trim();
+  const btn  =document.getElementById('gate-submit-btn');
+  const spin =document.getElementById('gate-spinner');
   const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if(!name||!emailOk){errEl.style.display='block';return}
+  if(!name||!emailOk){ errEl.style.display='block'; return; }
   errEl.style.display='none';
-  btn.disabled=true;spinner.style.display='inline-block';
+  btn.disabled=true; spin.style.display='inline-block';
+
   try{
-    await fetch('https://api.brevo.com/v3/contacts',{
+    // Calls our Netlify function — API key never leaves the server
+    await fetch('/.netlify/functions/subscribe',{
       method:'POST',
-      headers:{'Content-Type':'application/json','api-key':BREVO_API_KEY},
-      body:JSON.stringify({email,attributes:{FIRSTNAME:name,SCORECARD_GAP:currentGap},listIds:[BREVO_LIST_ID],updateEnabled:true})
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ name, email, gap: currentGap })
     });
-  }catch(e){console.warn('Brevo error:',e)}
-  btn.disabled=false;spinner.style.display='none';
+  }catch(e){ console.warn('Subscribe error:',e); }
+  // Always show results — never block user on network failure
+  btn.disabled=false; spin.style.display='none';
   showResults(name);
 }
 
-document.addEventListener('keydown',function(e){
-  if(e.key==='Enter'&&document.getElementById('screen-gate').classList.contains('active')){submitGate()}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&document.getElementById('screen-gate').classList.contains('active')) submitGate();
 });
 
 function showResults(firstName){
   const scores=getScores();
   const total=scores.Identity+scores.Expertise+scores.Structure;
-  const gap=currentGap;
-  const r=results[gap];
+  const r=results[currentGap];
+
   document.getElementById('gap-badge').textContent=r.badge;
   document.getElementById('total-score-num').textContent=total;
   document.getElementById('gap-headline').innerHTML=r.headline;
   document.getElementById('gap-verdict').textContent=r.verdict;
   document.getElementById('cost-body').textContent=r.cost;
   document.getElementById('fix-title').textContent=r.fixTitle;
+
   const signsList=document.getElementById('signs-list');
   signsList.innerHTML='';
-  r.signs.forEach(s=>{const li=document.createElement('li');li.textContent=s;signsList.appendChild(li)});
+  r.signs.forEach(s=>{ const li=document.createElement('li'); li.textContent=s; signsList.appendChild(li); });
+
   const fixList=document.getElementById('fix-steps');
   fixList.innerHTML='';
   r.fixSteps.forEach((s,i)=>{
@@ -1440,38 +1322,38 @@ function showResults(firstName){
     li.innerHTML='<span class="fix-step-num">0'+(i+1)+'</span><span>'+s+'</span>';
     fixList.appendChild(li);
   });
+
   const block=document.getElementById('scores-block');
   block.innerHTML='';
   ['Identity','Expertise','Structure'].forEach(p=>{
-    const s=scores[p],isGap=(gap===p),pct=(s/6*100);
+    const s=scores[p],isGap=(currentGap===p),pct=(s/6*100);
     const row=document.createElement('div');
     row.className='score-row'+(isGap?' is-gap':'');
-    row.innerHTML=`
-      <div class="score-label">${p}</div>
-      <div class="score-track"><div class="score-fill" style="width:0%" data-pct="${pct}"></div></div>
-      <div class="score-num">${s}/6</div>
-      ${isGap?'<div class="weak-tag" id="weak-tag">← gap</div>':''}
-    `;
+    row.innerHTML=`<div class="score-label">${p}</div><div class="score-track"><div class="score-fill" style="width:0%" data-pct="${pct}"></div></div><div class="score-num">${s}/6</div>${isGap?'<div class="weak-tag" id="weak-tag">← gap</div>':''}`;
     block.appendChild(row);
   });
-  const waMsg=encodeURIComponent('Hi Brenda! I just took the Market Translation Scorecard™. My gap is '+gap+'. I\'d love to know more about Identity to Income™.');
+
+  const waMsg=encodeURIComponent('Hi Brenda! I just took the Market Translation Scorecard™. My gap is '+currentGap+'. I\'d love to know more about Identity to Income™.');
   document.getElementById('whatsapp-cta').href='https://wa.me/'+WHATSAPP_NUM+'?text='+waMsg;
-  const shareTxt='"I just took the Market Translation Scorecard™ by @BrendaBlanche and discovered my gap is '+gap+'. I\'ve been fixing the wrong thing for months. 90 seconds to the truth. #UnapologeticallyYou"';
+
+  const shareTxt='"I just took the Market Translation Scorecard™ by @BrendaBlanche and discovered my gap is '+currentGap+'. I\'ve been fixing the wrong thing for months. 90 seconds to the truth. #UnapologeticallyYou"';
   document.getElementById('share-copy').textContent=shareTxt;
   document.getElementById('copy-confirm').style.display='none';
+
   showScreen('screen-results');
+
   setTimeout(()=>{
     document.querySelectorAll('.score-fill').forEach(el=>{
       el.style.transition='width 1s ease';
       el.style.width=el.dataset.pct+'%';
     });
     const wt=document.getElementById('weak-tag');
-    if(wt)setTimeout(()=>wt.classList.add('visible'),800);
+    if(wt) setTimeout(()=>wt.classList.add('visible'),800);
   },150);
 }
 
 function restart(){
-  currentQ=0;answers=new Array(9).fill(null);selectedVal=null;currentGap='';
+  currentQ=0; answers=new Array(9).fill(null); selectedVal=null; currentGap='';
   document.getElementById('gate-name').value='';
   document.getElementById('gate-email').value='';
   document.getElementById('gate-error').style.display='none';
@@ -1479,8 +1361,7 @@ function restart(){
 }
 
 function copyResult(){
-  const text=document.getElementById('share-copy').textContent;
-  navigator.clipboard.writeText(text).then(()=>{
+  navigator.clipboard.writeText(document.getElementById('share-copy').textContent).then(()=>{
     const c=document.getElementById('copy-confirm');
     c.style.display='inline';
     setTimeout(()=>{c.style.display='none'},2500);
@@ -1488,13 +1369,11 @@ function copyResult(){
 }
 
 function shareLinkedIn(){
-  const text=encodeURIComponent(document.getElementById('share-copy').textContent);
-  window.open('https://www.linkedin.com/shareArticle?mini=true&summary='+text,'_blank');
+  window.open('https://www.linkedin.com/shareArticle?mini=true&summary='+encodeURIComponent(document.getElementById('share-copy').textContent),'_blank');
 }
 
 function shareWhatsAppPost(){
-  const text=encodeURIComponent(document.getElementById('share-copy').textContent);
-  window.open('https://wa.me/?text='+text,'_blank');
+  window.open('https://wa.me/?text='+encodeURIComponent(document.getElementById('share-copy').textContent),'_blank');
 }
 </script>
 </body>
