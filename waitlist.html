@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identity to Income™ · July 2026 Cohort — Brenda Blanche</title>
+<meta name="description" content="The personal brand programme that starts with who you are and ends with clients finding you. 10 weeks. Live cohort. Starts July 27.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --red:#D90429;
+  --black:#0F0C0D;
+  --charcoal:#1F1A1C;
+  --gold:#C49A3C;
+  --cream:#F5EFE6;
+  --grey:#6E6570;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--black);
+  color:var(--cream);
+  font-family:var(--sans);
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* grain */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.4;
+}
+
+/* spine */
+.spine{
+  position:fixed;top:0;left:0;
+  width:4px;height:100%;
+  background:linear-gradient(180deg,var(--red) 0%,var(--gold) 100%);
+  z-index:200;
+}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 3.5rem 0 calc(4px + 3.5rem);
+  display:flex;justify-content:space-between;align-items:center;
+  height:60px;
+  background:rgba(15,12,13,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+
+.nav-brand{
+  font-family:var(--mono);
+  font-size:0.5rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+.nav-cta{
+  font-family:var(--mono);
+  font-size:0.52rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--cream);
+  background:var(--red);
+  padding:8px 20px;
+  border:none;
+  cursor:pointer;
+  text-decoration:none;
+  transition:opacity 0.2s;
+}
+.nav-cta:hover{opacity:.85}
+
+/* ── SECTIONS ── */
+section{padding-left:4px}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:calc(60px + 5rem) 3.5rem 5rem;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(217,4,41,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(196,154,60,0.06) 0%, transparent 55%),
+    linear-gradient(160deg,#2A0810 0%,#1A0507 25%,#0F0C0D 60%,#080507 100%);
+}
+
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;
+}
+
+.hero-content{max-width:900px;position:relative;z-index:2}
+
+.hero-eyebrow{
+  font-family:var(--mono);
+  font-size:0.55rem;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:flex;align-items:center;gap:0.8rem;
+  margin-bottom:2rem;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+
+.hero-headline{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(2.8rem,7vw,6.5rem);
+  line-height:0.93;
+  letter-spacing:-0.03em;
+  color:var(--cream);
+  margin-bottom:2rem;
+}
+.hero-headline em{color:var(--red);font-style:italic}
+
+.hero-rule{
+  width:80px;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--gold),transparent);
+  margin-bottom:2rem;
+}
+
+.hero-sub{
+  font-size:clamp(0.9rem,1.8vw,1.1rem);
+  line-height:1.85;
+  color:rgba(245,239,230,0.6);
+  max-width:580px;
+  margin-bottom:3rem;
+}
+.hero-sub strong{color:var(--cream);font-weight:500}
+
+.hero-meta{
+  display:flex;gap:0;
+  flex-wrap:wrap;
+  margin-bottom:3rem;
+}
+
+.hero-meta-item{
+  padding:1rem 2rem;
+  border:1px solid rgba(255,255,255,0.06);
+  margin-right:-1px;
+}
+.hero-meta-label{
+  font-family:var(--mono);
+  font-size:0.44rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--grey);
+  margin-bottom:0.3rem;
+}
+.hero-meta-val{
+  font-size:0.88rem;
+  color:var(--cream);
+  font-weight:500;
+}
+.hero-meta-val.highlight{color:var(--gold)}
+
+/* countdown */
+.countdown-row{
+  display:flex;gap:0;
+  margin-bottom:3rem;
+  flex-wrap:wrap;
+}
+
+.count-unit{
+  padding:1.2rem 1.8rem;
+  background:rgba(217,4,41,0.08);
+  border:1px solid rgba(217,4,41,0.2);
+  text-align:center;
+  margin-right:-1px;
+}
+
+.count-num{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:2.8rem;
+  line-height:1;
+  color:var(--cream);
+  letter-spacing:-0.03em;
+  display:block;
+}
+
+.count-label{
+  font-family:var(--mono);
+  font-size:0.42rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--grey);
+  display:block;
+  margin-top:0.3rem;
+}
+
+.count-starts{
+  font-family:var(--mono);
+  font-size:0.5rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--red);
+  padding:1.2rem 1.5rem;
+  display:flex;align-items:center;
+}
+
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+
+.btn-red{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--red);color:var(--cream);
+  font-family:var(--mono);font-size:0.6rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;
+  padding:16px 36px;border:none;cursor:pointer;
+  transition:all 0.2s;position:relative;overflow:hidden;
+  text-decoration:none;
+}
+.btn-red::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:linear-gradient(90deg,var(--gold),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
+}
+.btn-red:hover{opacity:.88;transform:translateY(-2px)}
+.btn-red:hover::after{transform:scaleX(1)}
+.btn-red .arr{transition:transform 0.2s}
+.btn-red:hover .arr{transform:translateX(5px)}
+
+.btn-outline{
+  display:inline-flex;align-items:center;gap:12px;
+  background:transparent;color:var(--cream);
+  font-family:var(--mono);font-size:0.6rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;
+  padding:16px 36px;border:1px solid rgba(245,239,230,0.2);
+  cursor:pointer;transition:all 0.2s;text-decoration:none;
+}
+.btn-outline:hover{border-color:var(--cream)}
+
+/* ── MIRROR ── */
+.mirror{
+  padding:6rem 3.5rem;
+  position:relative;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+
+.mirror-eyebrow{
+  font-family:var(--mono);
+  font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:0.8rem;
+  margin-bottom:3rem;
+}
+.mirror-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+
+.mirror-headline{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.8rem,4vw,3rem);
+  color:var(--cream);line-height:1.1;letter-spacing:-0.02em;
+  margin-bottom:1rem;max-width:640px;
+}
+.mirror-headline em{color:var(--red);font-style:italic}
+
+.mirror-sub{
+  font-size:0.9rem;line-height:1.85;
+  color:rgba(245,239,230,0.5);
+  max-width:560px;margin-bottom:3.5rem;
+}
+
+.mirror-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  max-width:860px;
+}
+
+.mirror-card{
+  background:var(--charcoal);
+  padding:2rem;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.2s;
+}
+.mirror-card:hover{background:#261F22}
+
+.mirror-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:rgba(217,4,41,0.3);
+}
+
+.mirror-card.active::before{background:var(--red)}
+
+.mirror-quote{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(0.9rem,1.6vw,1.05rem);
+  color:rgba(245,239,230,0.75);
+  line-height:1.65;
+  margin-bottom:0.8rem;
+}
+
+.mirror-tag{
+  font-family:var(--mono);
+  font-size:0.45rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--grey);
+}
+
+/* ── WHAT THIS IS ── */
+.what{
+  padding:6rem 3.5rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;
+}
+
+.what-left{}
+
+.what-eyebrow{
+  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:0.8rem;margin-bottom:2rem;
+}
+.what-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+
+.what-headline{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  color:var(--cream);line-height:1.05;letter-spacing:-0.02em;
+  margin-bottom:1.5rem;
+}
+.what-headline em{color:var(--red);font-style:italic}
+
+.what-body{
+  font-size:0.9rem;line-height:1.9;
+  color:rgba(245,239,230,0.55);
+  margin-bottom:1.5rem;
+}
+.what-body strong{color:var(--cream);font-weight:500}
+
+.promise-block{
+  border-left:3px solid var(--red);
+  padding:1.5rem 1.5rem 1.5rem 2rem;
+  background:rgba(217,4,41,0.04);
+  margin-top:2rem;
+  position:relative;
+}
+.promise-block::before{
+  content:'';position:absolute;top:0;left:-3px;
+  width:3px;height:35%;background:var(--gold);
+}
+
+.promise-label{
+  font-family:var(--mono);font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.8rem;
+}
+
+.promise-text{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(0.95rem,1.8vw,1.1rem);
+  color:var(--cream);line-height:1.65;
+}
+
+.what-right{}
+
+.format-block{
+  background:var(--charcoal);
+  padding:2rem;
+  margin-bottom:1.5rem;
+  border-top:2px solid var(--gold);
+}
+
+.format-label{
+  font-family:var(--mono);font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.5rem;
+}
+
+.format-row{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:0.85rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  gap:1rem;
+}
+.format-row:last-child{border-bottom:none}
+
+.format-key{
+  font-family:var(--mono);font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--grey);min-width:100px;padding-top:2px;
+}
+
+.format-val{
+  font-size:0.83rem;color:var(--cream);text-align:right;line-height:1.5;
+}
+
+.format-val .accent{color:var(--gold)}
+.format-val .red{color:var(--red)}
+
+/* ── PHASES ── */
+.phases{
+  padding:6rem 3.5rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+
+.phases-eyebrow{
+  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;
+}
+.phases-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+
+.phases-headline{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  color:var(--cream);line-height:1.05;letter-spacing:-0.02em;
+  margin-bottom:0.8rem;max-width:640px;
+}
+.phases-headline em{color:var(--red);font-style:italic}
+
+.phases-sub{
+  font-size:0.88rem;line-height:1.85;color:rgba(245,239,230,0.45);
+  max-width:560px;margin-bottom:4rem;
+}
+
+.phases-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+}
+
+.phase-card{
+  background:var(--charcoal);
+  padding:2rem 1.8rem;
+  position:relative;overflow:hidden;
+  transition:background 0.2s;
+}
+.phase-card:hover{background:#261F22}
+
+.phase-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+}
+.phase-card:nth-child(1)::before{background:var(--red)}
+.phase-card:nth-child(2)::before{background:linear-gradient(90deg,var(--red),var(--gold))}
+.phase-card:nth-child(3)::before{background:var(--gold)}
+.phase-card:nth-child(4)::before{background:rgba(196,154,60,0.4)}
+
+.phase-num{
+  font-family:var(--serif);font-weight:900;
+  font-size:3.5rem;color:rgba(245,239,230,0.04);
+  line-height:1;letter-spacing:-0.04em;
+  margin-bottom:1rem;
+}
+
+.phase-weeks{
+  font-family:var(--mono);font-size:0.44rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.5rem;
+}
+
+.phase-name{
+  font-family:var(--serif);font-weight:700;
+  font-size:1.15rem;color:var(--cream);
+  margin-bottom:0.8rem;line-height:1.2;
+}
+
+.phase-desc{
+  font-size:0.78rem;line-height:1.7;color:var(--grey);
+}
+
+/* ── DELIVERABLES ── */
+.deliverables{
+  padding:6rem 3.5rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+
+.del-eyebrow{
+  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;
+}
+.del-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+
+.del-headline{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  color:var(--cream);line-height:1.05;letter-spacing:-0.02em;
+  margin-bottom:0.8rem;
+}
+.del-headline em{color:var(--red);font-style:italic}
+
+.del-sub{
+  font-size:0.88rem;line-height:1.85;color:rgba(245,239,230,0.45);
+  max-width:560px;margin-bottom:3.5rem;
+}
+
+.del-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+}
+
+.del-item{
+  background:var(--charcoal);
+  padding:1.6rem;
+  display:flex;gap:1.2rem;
+  align-items:flex-start;
+  transition:background 0.2s;
+}
+.del-item:hover{background:#261F22}
+
+.del-num{
+  font-family:var(--mono);font-size:0.55rem;color:rgba(217,4,41,0.5);
+  font-weight:700;margin-top:2px;flex-shrink:0;letter-spacing:0.05em;
+}
+
+.del-text{
+  font-size:0.8rem;color:var(--cream);line-height:1.55;
+}
+
+.del-text span{display:block;font-size:0.72rem;color:var(--grey);margin-top:0.2rem;}
+
+/* ── WAITLIST FORM ── */
+.waitlist{
+  padding:7rem 3.5rem;
+  border-top:3px solid var(--red);
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#1A0507 0%,#0F0C0D 50%,#080507 100%);
+}
+
+.waitlist::before{
+  content:'';
+  position:absolute;top:-30%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(ellipse,rgba(217,4,41,0.1) 0%,transparent 65%);
+  pointer-events:none;
+}
+
+.waitlist-inner{
+  max-width:680px;
+  position:relative;z-index:2;
+}
+
+.waitlist-eyebrow{
+  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--red);display:flex;align-items:center;gap:0.8rem;margin-bottom:2rem;
+}
+.waitlist-eyebrow::before{content:'';width:28px;height:1px;background:var(--red)}
+
+.waitlist-headline{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(2rem,5vw,4rem);
+  color:var(--cream);line-height:0.95;letter-spacing:-0.03em;
+  margin-bottom:1.5rem;
+}
+.waitlist-headline em{color:var(--red);font-style:italic}
+
+.waitlist-rule{
+  width:60px;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+  margin-bottom:1.8rem;
+}
+
+.waitlist-body{
+  font-size:0.9rem;line-height:1.9;
+  color:rgba(245,239,230,0.55);
+  margin-bottom:2.5rem;max-width:520px;
+}
+.waitlist-body strong{color:var(--cream);font-weight:500}
+
+/* cohort badge */
+.cohort-badge{
+  display:inline-flex;align-items:center;gap:1.5rem;
+  border:1px solid rgba(196,154,60,0.3);
+  padding:1rem 1.5rem;
+  margin-bottom:3rem;
+  flex-wrap:wrap;
+}
+
+.badge-item{
+  text-align:center;
+}
+
+.badge-val{
+  font-family:var(--serif);font-weight:900;
+  font-size:1.4rem;color:var(--gold);
+  line-height:1;letter-spacing:-0.02em;
+  display:block;
+}
+
+.badge-label{
+  font-family:var(--mono);font-size:0.4rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--grey);display:block;margin-top:0.2rem;
+}
+
+.badge-divider{
+  width:1px;height:40px;
+  background:rgba(196,154,60,0.2);
+}
+
+/* form */
+.form-fields{display:flex;flex-direction:column;margin-bottom:1.5rem}
+
+.form-field{
+  border-top:1px solid rgba(245,239,230,0.1);
+  padding-top:0.6rem;
+  transition:border-color 0.18s;
+}
+.form-field:last-child{border-bottom:1px solid rgba(245,239,230,0.1)}
+.form-field:focus-within{border-color:var(--gold)}
+
+.form-label{
+  font-family:var(--mono);font-size:0.44rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--grey);margin-bottom:4px;
+}
+
+.form-field input{
+  width:100%;background:transparent;border:none;outline:none;
+  color:var(--cream);font-family:var(--sans);font-size:0.95rem;font-weight:300;
+  padding:10px 0 16px;caret-color:var(--red);
+}
+.form-field input::placeholder{color:rgba(245,239,230,0.2)}
+
+.form-error{
+  font-family:var(--mono);font-size:0.55rem;color:var(--red);
+  margin-bottom:1rem;display:none;letter-spacing:0.08em;text-transform:uppercase;
+}
+
+.form-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:1.5rem}
+
+.form-privacy{
+  font-family:var(--mono);font-size:0.44rem;color:rgba(245,239,230,0.18);
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+
+.form-spinner{
+  display:none;width:12px;height:12px;
+  border:2px solid rgba(245,239,230,0.2);border-top-color:var(--cream);
+  border-radius:50%;animation:spin 0.7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* success state */
+.form-success{
+  display:none;
+  padding:2rem;background:rgba(196,154,60,0.05);
+  border:1px solid rgba(196,154,60,0.2);
+}
+
+.success-icon{
+  font-family:var(--mono);font-size:1.2rem;color:var(--gold);
+  margin-bottom:0.8rem;display:block;
+}
+
+.success-headline{
+  font-family:var(--serif);font-weight:700;
+  font-size:1.3rem;color:var(--cream);
+  margin-bottom:0.5rem;
+}
+
+.success-body{
+  font-size:0.85rem;line-height:1.75;color:rgba(245,239,230,0.55);
+  margin-bottom:1.5rem;
+}
+
+/* whatsapp */
+.wa-block{margin-top:2.5rem}
+
+.wa-label{
+  font-family:var(--mono);font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(245,239,230,0.3);margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.8rem;
+}
+.wa-label::before{content:'';width:28px;height:1px;background:rgba(245,239,230,0.1)}
+
+.btn-whatsapp{
+  display:inline-flex;align-items:center;gap:12px;
+  background:#128C7E;color:#fff;
+  font-family:var(--mono);font-size:0.58rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:15px 28px;cursor:pointer;
+  transition:opacity 0.2s;text-decoration:none;border:none;
+}
+.btn-whatsapp:hover{opacity:.88}
+.btn-whatsapp svg{width:18px;height:18px;flex-shrink:0}
+
+.wa-sub{
+  font-size:0.75rem;color:rgba(245,239,230,0.25);
+  margin-top:0.8rem;line-height:1.6;
+}
+
+/* ── SCORECAARD BRIDGE ── */
+.scorecard-bridge{
+  padding:4rem 3.5rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:2rem;
+}
+
+.sb-left{}
+.sb-eyebrow{
+  font-family:var(--mono);font-size:0.48rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--grey);margin-bottom:0.6rem;
+}
+.sb-text{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(0.95rem,1.8vw,1.1rem);
+  color:rgba(245,239,230,0.6);
+  max-width:520px;line-height:1.6;
+}
+.sb-text strong{color:var(--cream);font-style:normal}
+
+/* ── FOOTER ── */
+.footer{
+  padding:2.5rem 3.5rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;
+}
+
+.footer-brand{
+  font-family:var(--mono);font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);
+}
+
+.footer-note{
+  font-family:var(--mono);font-size:0.44rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(245,239,230,0.12);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .phases-grid{grid-template-columns:1fr 1fr}
+  .del-grid{grid-template-columns:1fr 1fr}
+  .what{grid-template-columns:1fr;gap:3rem}
+  .mirror-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:580px){
+  .hero,.mirror,.what,.phases,.deliverables,.waitlist,
+  .scorecard-bridge,.footer{padding-left:1.5rem;padding-right:1.5rem}
+  .nav{padding-left:calc(4px + 1.5rem);padding-right:1.5rem}
+  .phases-grid{grid-template-columns:1fr}
+  .del-grid{grid-template-columns:1fr}
+  .countdown-row{gap:2px}
+  .hero-meta{flex-direction:column;gap:2px}
+  .hero-meta-item{margin-right:0}
+}
+</style>
+</head>
+<body>
+<div class="spine"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Brenda.Blanche™ · Identity to Income</div>
+  <a class="nav-cta" href="#waitlist">Join the Waitlist →</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Identity to Income™ · July 2026 Cohort</div>
+    <h1 class="hero-headline">
+      Stop being the<br>
+      best-kept secret<br>
+      in your <em>industry.</em>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">
+      You've done the work. You have the skill. You show up. And still — the market doesn't see you.
+      <br><br>
+      That is not a visibility problem. It's a <strong>translation problem.</strong>
+      The market can't find the language for who you are. In 10 weeks, we fix that — completely, in order.
+    </p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Cohort Start</div>
+        <div class="hero-meta-val highlight">July 27, 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Duration</div>
+        <div class="hero-meta-val">10 Weeks</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Format</div>
+        <div class="hero-meta-val">Live Cohort</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Weekly Rhythm</div>
+        <div class="hero-meta-val">Tue Teaching · Fri Hot Seat</div>
+      </div>
+    </div>
+
+    <div class="countdown-row">
+      <div class="count-unit">
+        <span class="count-num" id="cd-days">—</span>
+        <span class="count-label">Days</span>
+      </div>
+      <div class="count-unit">
+        <span class="count-num" id="cd-hours">—</span>
+        <span class="count-label">Hours</span>
+      </div>
+      <div class="count-unit">
+        <span class="count-num" id="cd-mins">—</span>
+        <span class="count-label">Minutes</span>
+      </div>
+      <div class="count-starts">Until cohort opens</div>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-red" href="#waitlist">
+        Secure My Spot <span class="arr">→</span>
+      </a>
+      <a class="btn-outline" href="#what">
+        See What's Inside
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MIRROR — ICP RECOGNITION ══ -->
+<section class="mirror">
+  <div class="mirror-eyebrow">This is for you if</div>
+  <h2 class="mirror-headline">You recognise yourself<br>in <em>any of these.</em></h2>
+  <p class="mirror-sub">These are not assumptions. They are the exact words of the people who have already walked through this programme — before they did.</p>
+
+  <div class="mirror-grid">
+    <div class="mirror-card active">
+      <p class="mirror-quote">"I post consistently and get great comments. But no one ever asks how to hire me."</p>
+      <div class="mirror-tag">Visibility without conversion</div>
+    </div>
+    <div class="mirror-card">
+      <p class="mirror-quote">"I know what I do. I just can't explain it in a way that makes people want to pay for it."</p>
+      <div class="mirror-tag">Translation gap — Identity</div>
+    </div>
+    <div class="mirror-card">
+      <p class="mirror-quote">"I have results. Real ones. But I don't know how to turn them into proof the market trusts."</p>
+      <div class="mirror-tag">Translation gap — Expertise</div>
+    </div>
+    <div class="mirror-card">
+      <p class="mirror-quote">"People with half my experience are getting clients I should be getting. I don't understand it."</p>
+      <div class="mirror-tag">The best-kept secret problem</div>
+    </div>
+    <div class="mirror-card">
+      <p class="mirror-quote">"My content is everywhere but it doesn't compound. Every week feels like starting from scratch."</p>
+      <div class="mirror-tag">Translation gap — Structure</div>
+    </div>
+    <div class="mirror-card">
+      <p class="mirror-quote">"I feel like I'm performing someone else's brand. It doesn't sound like me and I don't know how to fix it."</p>
+      <div class="mirror-tag">Identity not yet translated</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT THIS IS ══ -->
+<section class="what" id="what">
+  <div class="what-left">
+    <div class="what-eyebrow">What Identity to Income™ is</div>
+    <h2 class="what-headline">The programme that starts<br>with <em>who you are</em> —<br>and ends with clients finding you.</h2>
+    <p class="what-body">
+      Most brand programmes start with tactics. Content calendars. Hook formulas. Posting schedules.
+      They give you the tools to shout louder — without fixing why no one is listening.
+    </p>
+    <p class="what-body">
+      Identity to Income™ starts upstream. Before a single post is written, you excavate the
+      <strong>identity that makes your brand irreproducible.</strong> Before you build an offer,
+      you build the positioning that makes the right person feel immediately found.
+    </p>
+    <p class="what-body">
+      Then — and only then — do you build the content system, the lead magnet, and the
+      conversion architecture that turns clarity into income.
+      <strong>In sequence. No steps skipped.</strong>
+    </p>
+    <div class="promise-block">
+      <div class="promise-label">The Programme Promise</div>
+      <p class="promise-text">"The personal brand programme that starts with who you are — and ends with clients finding you. In 10 weeks. Built from who you actually are."</p>
+    </div>
+  </div>
+
+  <div class="what-right">
+    <div class="format-block">
+      <div class="format-label">Cohort Details · July 2026</div>
+      <div class="format-row">
+        <div class="format-key">Start Date</div>
+        <div class="format-val"><span class="accent">Sunday, July 27 · Week 0</span></div>
+      </div>
+      <div class="format-row">
+        <div class="format-key">Duration</div>
+        <div class="format-val">10 Weeks + Orientation</div>
+      </div>
+      <div class="format-row">
+        <div class="format-key">Teaching Day</div>
+        <div class="format-val">Every Tuesday — Live Session</div>
+      </div>
+      <div class="format-row">
+        <div class="format-key">Hot Seat Day</div>
+        <div class="format-val">Every Friday — 2 clients presented</div>
+      </div>
+      <div class="format-row">
+        <div class="format-key">Assignments</div>
+        <div class="format-val">Submitted Tue–Fri, reviewed in hot seat</div>
+      </div>
+      <div class="format-row">
+        <div class="format-key">Recordings</div>
+        <div class="format-val">Available within 24 hours</div>
+      </div>
+      <div class="format-row">
+        <div class="format-key">Community</div>
+        <div class="format-val">Group space + accountability pairs</div>
+      </div>
+      <div class="format-row">
+        <div class="format-key">Format</div>
+        <div class="format-val"><span class="red">Live cohort — fixed start, group delivery</span></div>
+      </div>
+    </div>
+
+    <div style="background:var(--charcoal);padding:1.8rem;border-top:2px solid rgba(217,4,41,0.3);">
+      <div class="format-label">Before the programme starts</div>
+      <p style="font-size:0.8rem;line-height:1.75;color:var(--grey);margin-bottom:0;">
+        Every client completes the <strong style="color:var(--cream)">IES Diagnostic</strong> in Week 0
+        — identifying their value state: Raw, Usable, Expressed, or Recognised.
+        That diagnosis tells Brenda exactly where your translation is breaking down
+        before the first teaching session begins.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHASES ══ -->
+<section class="phases">
+  <div class="phases-eyebrow">The 4-Phase System</div>
+  <h2 class="phases-headline">Identity → Alignment<br>→ Expression → <em>Monetisation.</em></h2>
+  <p class="phases-sub">Each phase builds on the one before. Skip a phase and the whole thing wobbles. This is a non-negotiable rule — taught and enforced throughout the 10 weeks.</p>
+
+  <div class="phases-grid">
+    <div class="phase-card">
+      <div class="phase-num">01</div>
+      <div class="phase-weeks">Weeks 1–2</div>
+      <div class="phase-name">Identity Blueprint</div>
+      <p class="phase-desc">Excavate the lens only you see through. Values, perspective, lived experience, convictions. The internal architecture that makes your brand irreproducible.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">02</div>
+      <div class="phase-weeks">Weeks 3–5</div>
+      <div class="phase-name">Market Alignment</div>
+      <p class="phase-desc">Deep audience architecture. Positioning precise enough that the wrong person self-selects out. The messaging toolkit that sounds the same everywhere you show up.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">03</div>
+      <div class="phase-weeks">Weeks 6–7</div>
+      <div class="phase-name">Content as Expression</div>
+      <p class="phase-desc">Content pillars built from your identity. A weekly system that produces posts with a job, not noise with a schedule. Lead magnet designed as free proof of your system.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">04</div>
+      <div class="phase-weeks">Weeks 8–10</div>
+      <div class="phase-name">Monetisation Architecture</div>
+      <p class="phase-desc">One product, fully designed. Lead generation playbook. Conversion system built on earned trust, not pitch energy. Your complete brand launched publicly in Week 10.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DELIVERABLES ══ -->
+<section class="deliverables">
+  <div class="del-eyebrow">What you leave with</div>
+  <h2 class="del-headline">Not notes. Not inspiration.<br>A complete working <em>system.</em></h2>
+  <p class="del-sub">Every client who completes Identity to Income™ leaves with 14 specific deliverables — built from who they are, for the market they're entering.</p>
+
+  <div class="del-grid">
+    <div class="del-item">
+      <div class="del-num">01</div>
+      <div class="del-text">IES Diagnostic<span>Value state identified. The gap is visible.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">02</div>
+      <div class="del-text">Identity Document<span>Values, perspective, convictions, enemy. The irreproducible blueprint.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">03</div>
+      <div class="del-text">Fusion Statement<span>The one sentence only you can own.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">04</div>
+      <div class="del-text">Complete Audience Profile<span>One person, mapped completely — FODS, language, friction points.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">05</div>
+      <div class="del-text">Positioning Statement<span>Precise enough for dual selection — the right person in, the wrong person out.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">06</div>
+      <div class="del-text">Messaging Toolkit<span>Brand statement, headlines, elevator pitch, voice guide.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">07</div>
+      <div class="del-text">Five-Stage Funnel Map<span>Awareness to Advocacy — friction points and trust triggers at every stage.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">08</div>
+      <div class="del-text">Optimised LinkedIn Profile<span>Live and converting. Every section built from your positioning.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">09</div>
+      <div class="del-text">Content Pillar Document<span>Five pillars named for your specific brand. Not generic. Yours.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">10</div>
+      <div class="del-text">Monthly Content Calendar<span>Built for your goal — reach, income, or event.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">11</div>
+      <div class="del-text">Live Lead Magnet<span>Solving one micro-problem so completely it points to the paid offer naturally.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">12</div>
+      <div class="del-text">One Product — Fully Designed<span>Scoped, named, priced, and ready to sell.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">13</div>
+      <div class="del-text">Lead Generation Playbook<span>Monthly system for filling the funnel without burning out.</span></div>
+    </div>
+    <div class="del-item">
+      <div class="del-num">14</div>
+      <div class="del-text">Conversion System<span>A diagnostic framework. Built on earned trust, not a sales script.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WAITLIST FORM ══ -->
+<section class="waitlist" id="waitlist">
+  <div class="waitlist-inner">
+    <div class="waitlist-eyebrow">July 2026 Cohort · Waitlist</div>
+    <h2 class="waitlist-headline">
+      The next cohort<br>
+      opens <em>July 27.</em>
+    </h2>
+    <div class="waitlist-rule"></div>
+    <p class="waitlist-body">
+      Waitlist members are the first to receive cohort details, pricing, and early access.
+      <strong>Spots are limited by design</strong> — this is a live programme with hot seats,
+      direct feedback, and real accountability. It cannot work at scale.
+    </p>
+
+    <div class="cohort-badge">
+      <div class="badge-item">
+        <span class="badge-val">July 27</span>
+        <span class="badge-label">Start Date</span>
+      </div>
+      <div class="badge-divider"></div>
+      <div class="badge-item">
+        <span class="badge-val">10</span>
+        <span class="badge-label">Weeks</span>
+      </div>
+      <div class="badge-divider"></div>
+      <div class="badge-item">
+        <span class="badge-val">Live</span>
+        <span class="badge-label">Format</span>
+      </div>
+      <div class="badge-divider"></div>
+      <div class="badge-item">
+        <span class="badge-val">Limited</span>
+        <span class="badge-label">Spots</span>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div id="form-wrap">
+      <div class="form-error" id="form-error">Fill in both fields correctly.</div>
+      <div class="form-fields">
+        <div class="form-field">
+          <div class="form-label">First Name</div>
+          <input type="text" id="wl-name" placeholder="Your first name" autocomplete="given-name">
+        </div>
+        <div class="form-field" style="margin-top:-1px">
+          <div class="form-label">Email Address</div>
+          <input type="email" id="wl-email" placeholder="your@email.com" autocomplete="email">
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-red" id="wl-submit" onclick="submitWaitlist()">
+          Join the Waitlist <span class="arr">→</span>
+          <span class="form-spinner" id="wl-spinner"></span>
+        </button>
+        <span class="form-privacy">No spam. First access when doors open.</span>
+      </div>
+    </div>
+
+    <!-- Success state -->
+    <div class="form-success" id="form-success">
+      <span class="success-icon">✓</span>
+      <div class="success-headline">You're on the list.</div>
+      <p class="success-body">
+        You'll be the first to know when the July cohort opens — pricing, format, and how to secure your spot.
+        In the meantime, if you have questions or want to talk through whether this is the right next step for you,
+        message Brenda directly on WhatsApp.
+      </p>
+      <a class="btn-whatsapp" id="success-wa" href="#" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.529 5.845L0 24l6.335-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.006-1.371l-.36-.213-3.728.888.94-3.63-.235-.375A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
+        </svg>
+        Message Brenda on WhatsApp →
+      </a>
+    </div>
+
+    <!-- WhatsApp alternative -->
+    <div class="wa-block">
+      <div class="wa-label">Prefer to talk first?</div>
+      <a class="btn-whatsapp" id="wa-main" href="https://wa.me/237672411155?text=Hi%20Brenda!%20I%27m%20interested%20in%20the%20Identity%20to%20Income%E2%84%A2%20July%20cohort.%20Can%20you%20tell%20me%20more%3F" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.529 5.845L0 24l6.335-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.006-1.371l-.36-.213-3.728.888.94-3.63-.235-.375A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
+        </svg>
+        Send Brenda a Message →
+      </a>
+      <p class="wa-sub">Message directly on WhatsApp — ask anything about the July cohort, the format, or whether this is the right next step for where you are right now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SCORECARD BRIDGE ══ -->
+<section class="scorecard-bridge">
+  <div class="sb-left">
+    <div class="sb-eyebrow">Not sure if you're ready?</div>
+    <p class="sb-text">
+      <strong>Start with the free Market Translation Scorecard™.</strong>
+      9 statements. 90 seconds. It will tell you exactly which pillar of your brand is breaking —
+      and give you one immediate move. Then you'll know exactly what Identity to Income™ is built to fix for you.
+    </p>
+  </div>
+  <a class="btn-outline" href="/" style="white-space:nowrap">
+    Take the Scorecard →
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Brenda.Blanche™ · The Unapologetics</div>
+  <div class="footer-note">Identity to Income™ · July 2026 · Confidential</div>
+</footer>
+
+<script>
+const WHATSAPP_NUM = '237672411155';
+
+// ── COUNTDOWN ──────────────────────────────────────────────
+function updateCountdown() {
+  const target = new Date('2026-07-27T00:00:00').getTime();
+  const now = Date.now();
+  const diff = target - now;
+
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '0';
+    document.getElementById('cd-hours').textContent = '0';
+    document.getElementById('cd-mins').textContent = '0';
+    return;
+  }
+
+  const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+  document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// ── WAITLIST SUBMIT ────────────────────────────────────────
+async function submitWaitlist() {
+  const name   = document.getElementById('wl-name').value.trim();
+  const email  = document.getElementById('wl-email').value.trim();
+  const errEl  = document.getElementById('form-error');
+  const btn    = document.getElementById('wl-submit');
+  const spin   = document.getElementById('wl-spinner');
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!name || !emailOk) { errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+  btn.disabled = true;
+  spin.style.display = 'inline-block';
+
+  try {
+    await fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        gap: '',
+        source: 'WAITLIST_JULY_2026'
+      })
+    });
+  } catch(e) {
+    console.warn('Subscribe error:', e);
+  }
+
+  btn.disabled = false;
+  spin.style.display = 'none';
+
+  // Show success state
+  document.getElementById('form-wrap').style.display = 'none';
+  const successEl = document.getElementById('form-success');
+  successEl.style.display = 'block';
+
+  // Set personalised WhatsApp link
+  const waMsg = encodeURIComponent(
+    'Hi Brenda! I just joined the waitlist for the Identity to Income™ July cohort. Looking forward to hearing more!'
+  );
+  document.getElementById('success-wa').href = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + waMsg;
+}
+
+// Enter key support
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const activeEl = document.activeElement;
+    if (activeEl && (activeEl.id === 'wl-name' || activeEl.id === 'wl-email')) {
+      submitWaitlist();
+    }
+  }
+});
+
+// ── NAV ACTIVE ─────────────────────────────────────────────
+document.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  if (window.scrollY > 80) {
+    nav.style.borderBottom = '1px solid rgba(217,4,41,0.2)';
+  } else {
+    nav.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
+  }
+});
+</script>
+</body>
+</html>
