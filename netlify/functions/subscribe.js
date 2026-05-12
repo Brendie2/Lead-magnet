@@ -1,5 +1,4 @@
 exports.handler = async function (event) {
-  // Only allow POST
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
@@ -11,13 +10,12 @@ exports.handler = async function (event) {
     return { statusCode: 400, body: 'Invalid JSON' };
   }
 
-  const { email, name, gap } = payload;
+  const { email, name, gap, source } = payload;
 
   if (!email || !name) {
     return { statusCode: 400, body: 'Missing fields' };
   }
 
-  // API key lives ONLY here — pulled from Netlify environment variable
   const BREVO_API_KEY = process.env.BREVO_API_KEY;
   const BREVO_LIST_ID = 3;
 
@@ -32,14 +30,14 @@ exports.handler = async function (event) {
         email: email,
         attributes: {
           FIRSTNAME: name,
-          SCORECARD_GAP: gap || ''
+          SCORECARD_GAP: gap || '',
+          LEAD_SOURCE: source || 'SCORECARD'
         },
         listIds: [BREVO_LIST_ID],
         updateEnabled: true
       })
     });
 
-    // 201 = created, 204 = already exists & updated — both are success
     if (response.status === 201 || response.status === 204) {
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
     }
