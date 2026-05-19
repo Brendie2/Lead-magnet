@@ -461,117 +461,422 @@ body::before{
 /* ══════════════════════════════════════
    EMAIL GATE
 ══════════════════════════════════════ */
-#screen-gate{justify-content:center;animation:fadeIn 0.5s ease}
+#screen-gate{
+  flex-direction:row;
+  min-height:100vh;
+  animation:fadeIn 0.6s ease;
+}
 
-.gate-wrap{
+/* LEFT PANEL — editorial / atmospheric */
+.gate-left{
+  flex:0 0 42%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:3rem 3rem 3rem 3.5rem;
+  background:var(--charcoal);
+  position:relative;
+  overflow:hidden;
+}
+
+/* layered atmospheric glow */
+.gate-left::before{
+  content:'';
+  position:absolute;
+  bottom:-80px;right:-80px;
+  width:380px;height:380px;
+  background:radial-gradient(ellipse,rgba(217,4,41,0.18) 0%,transparent 65%);
+  pointer-events:none;
+}
+.gate-left::after{
+  content:'';
+  position:absolute;
+  top:-60px;left:-60px;
+  width:300px;height:300px;
+  background:radial-gradient(ellipse,rgba(196,154,60,0.09) 0%,transparent 60%);
+  pointer-events:none;
+}
+
+/* decorative diagonal stripe */
+.gate-left-stripe{
+  position:absolute;
+  top:0;right:0;bottom:0;
+  width:1px;
+  background:linear-gradient(180deg,transparent,rgba(196,154,60,0.25) 40%,rgba(217,4,41,0.4) 70%,transparent);
+}
+
+.gate-left-top{}
+
+.gate-left-brand{
+  font-family:var(--mono);
+  font-size:0.5rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:3.5rem;
+}
+
+.gate-left-eyebrow{
+  font-family:var(--mono);
+  font-size:0.5rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:rgba(245,239,230,0.3);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:1.4rem;
+}
+.gate-left-eyebrow::before{content:'';width:20px;height:1px;background:var(--red)}
+
+.gate-left-heading{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1.0;
+  letter-spacing:-0.03em;
+  color:var(--cream);
+  margin-bottom:1.8rem;
+}
+.gate-left-heading em{font-style:italic;color:var(--red)}
+
+.gate-left-rule{
+  width:48px;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+  margin-bottom:1.8rem;
+}
+
+.gate-left-desc{
+  font-size:0.85rem;
+  line-height:1.9;
+  color:rgba(245,239,230,0.42);
+  max-width:320px;
+}
+
+/* score teaser pills */
+.gate-score-preview{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  position:relative;z-index:1;
+}
+
+.gate-score-label{
+  font-family:var(--mono);
+  font-size:0.46rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:rgba(245,239,230,0.25);
+  margin-bottom:4px;
+}
+
+.gate-score-bar-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.gate-score-name{
+  font-family:var(--mono);
+  font-size:0.5rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(245,239,230,0.3);
+  min-width:64px;
+}
+
+.gate-score-track{
+  flex:1;
+  height:2px;
+  background:rgba(245,239,230,0.06);
+  position:relative;
+  overflow:hidden;
+}
+
+.gate-score-fill{
+  height:100%;
+  background:rgba(245,239,230,0.12);
+  animation:shimmer 2.2s ease-in-out infinite;
+}
+.gate-score-fill.red{background:linear-gradient(90deg,var(--red),var(--gold))}
+
+.gate-score-val{
+  font-family:var(--mono);
+  font-size:0.5rem;
+  color:rgba(245,239,230,0.18);
+  min-width:20px;
+  text-align:right;
+}
+
+.gate-lock-note{
+  font-family:var(--mono);
+  font-size:0.46rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(245,239,230,0.15);
+  display:flex;align-items:center;gap:8px;
+  margin-top:6px;
+}
+.gate-lock-note::before{content:'⊘';font-size:0.6rem;color:rgba(245,239,230,0.1)}
+
+@keyframes shimmer{
+  0%,100%{opacity:0.6}
+  50%{opacity:1}
+}
+
+/* RIGHT PANEL — form */
+.gate-right{
   flex:1;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:3rem 3.5rem;
-  max-width:600px;
+  padding:4rem 4rem 3rem 4.5rem;
   position:relative;
+  overflow:hidden;
 }
 
-.gate-wrap::before{
+.gate-right::before{
   content:'';
   position:absolute;
-  left:-100px;top:50%;
+  top:50%;right:-100px;
   transform:translateY(-50%);
   width:400px;height:400px;
-  background:radial-gradient(ellipse,rgba(196,154,60,0.05) 0%,transparent 60%);
+  background:radial-gradient(ellipse,rgba(196,154,60,0.04) 0%,transparent 65%);
   pointer-events:none;
 }
 
-.gate-headline{
+.gate-form-eyebrow{
+  font-family:var(--mono);
+  font-size:0.5rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:2rem;
+  animation:fadeUp 0.5s ease both 0.15s;
+}
+.gate-form-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold)}
+
+.gate-form-title{
   font-family:var(--serif);
   font-weight:900;
-  font-size:clamp(2.2rem,5vw,3.8rem);
-  line-height:1.0;
-  letter-spacing:-0.025em;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  line-height:1.1;
+  letter-spacing:-0.02em;
   color:var(--cream);
-  margin-bottom:1rem;
+  margin-bottom:0.6rem;
+  animation:fadeUp 0.5s ease both 0.2s;
 }
-.gate-headline em{font-style:italic;color:var(--red)}
+.gate-form-title em{font-style:italic;color:var(--red)}
 
-.gate-sub{
-  font-size:0.88rem;
+.gate-form-sub{
+  font-size:0.82rem;
   line-height:1.85;
-  color:rgba(245,239,230,0.45);
-  margin-bottom:2.5rem;
-  max-width:420px;
+  color:rgba(245,239,230,0.38);
+  margin-bottom:2.8rem;
+  max-width:360px;
+  animation:fadeUp 0.5s ease both 0.25s;
 }
 
-.gate-divider{
-  width:60px;height:2px;
-  background:linear-gradient(90deg,var(--red),var(--gold));
-  margin-bottom:2.5rem;
+/* Floating-label input fields */
+.field-group{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin-bottom:2.2rem;
+  animation:fadeUp 0.5s ease both 0.3s;
 }
-
-.field-group{display:flex;flex-direction:column;gap:0;margin-bottom:1.8rem}
 
 .field-wrap{
   position:relative;
-  border-top:1px solid rgba(245,239,230,0.1);
-  padding-top:0.6rem;
-  transition:border-color 0.18s;
+  margin-bottom:0;
 }
-.field-wrap:last-child{border-bottom:1px solid rgba(245,239,230,0.1)}
-.field-wrap:focus-within{border-color:var(--gold)}
 
-.field-label{
-  font-family:var(--mono);
-  font-size:0.48rem;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--grey);
-  margin-bottom:4px;
-}
+.field-wrap + .field-wrap{margin-top:1.8rem}
 
 .field-wrap input{
   width:100%;
-  background:transparent;
-  border:none;outline:none;
+  background:rgba(245,239,230,0.03);
+  border:1px solid rgba(245,239,230,0.1);
+  border-radius:0;
+  outline:none;
   color:var(--cream);
   font-family:var(--sans);
-  font-size:0.95rem;
+  font-size:1rem;
   font-weight:300;
-  padding:10px 0 16px;
-  transition:all 0.15s;
+  padding:20px 18px 10px;
+  transition:border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   caret-color:var(--red);
+  letter-spacing:0.01em;
 }
-.field-wrap input::placeholder{color:rgba(245,239,230,0.2)}
 
-.gate-cta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.field-wrap input::placeholder{color:transparent}
 
-.gate-privacy{
+.field-wrap input:focus{
+  border-color:rgba(196,154,60,0.5);
+  background:rgba(245,239,230,0.05);
+  box-shadow:0 0 0 1px rgba(196,154,60,0.15), inset 0 1px 0 rgba(196,154,60,0.06);
+}
+
+.field-wrap input:not(:placeholder-shown),
+.field-wrap input:focus{
+  padding:24px 18px 8px;
+}
+
+/* floating label */
+.field-label{
+  position:absolute;
+  left:18px;top:50%;
+  transform:translateY(-50%);
   font-family:var(--mono);
-  font-size:0.48rem;
-  color:rgba(245,239,230,0.18);
+  font-size:0.58rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:rgba(245,239,230,0.3);
+  pointer-events:none;
+  transition:all 0.22s ease;
+  transform-origin:left center;
+}
+
+.field-wrap input:focus ~ .field-label,
+.field-wrap input:not(:placeholder-shown) ~ .field-label{
+  top:14px;
+  transform:translateY(0) scale(0.82);
+  color:var(--gold);
+  letter-spacing:0.22em;
+}
+
+/* animated bottom accent bar */
+.field-accent{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.3s ease;
+}
+.field-wrap input:focus ~ .field-label ~ .field-accent,
+.field-wrap:focus-within .field-accent{
+  transform:scaleX(1);
+}
+
+/* field icon */
+.field-icon{
+  position:absolute;
+  right:16px;top:50%;
+  transform:translateY(-50%);
+  font-family:var(--mono);
+  font-size:0.55rem;
+  color:rgba(245,239,230,0.12);
+  pointer-events:none;
+  transition:color 0.2s;
   letter-spacing:0.1em;
   text-transform:uppercase;
 }
+.field-wrap:focus-within .field-icon{color:rgba(196,154,60,0.4)}
+
+/* CTA row */
+.gate-cta-row{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  animation:fadeUp 0.5s ease both 0.35s;
+}
+
+.gate-submit-full{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  background:var(--red);
+  color:var(--cream);
+  font-family:var(--mono);
+  font-size:0.62rem;
+  font-weight:700;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  padding:18px 28px;
+  border:none;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  position:relative;
+  overflow:hidden;
+  width:100%;
+}
+.gate-submit-full::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,transparent 50%);
+  pointer-events:none;
+}
+.gate-submit-full::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,154,60,0.2));
+}
+.gate-submit-full:hover:not(:disabled){
+  opacity:.9;
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(217,4,41,0.35);
+}
+.gate-submit-full:disabled{opacity:.3;cursor:not-allowed;transform:none}
+
+.gate-submit-left{display:flex;align-items:center;gap:12px}
+.gate-submit-arrow{
+  font-size:1rem;
+  transition:transform 0.2s;
+}
+.gate-submit-full:hover:not(:disabled) .gate-submit-arrow{transform:translateX(4px)}
+
+.gate-meta-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.gate-privacy{
+  font-family:var(--mono);
+  font-size:0.46rem;
+  color:rgba(245,239,230,0.18);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  display:flex;align-items:center;gap:7px;
+}
+.gate-privacy::before{content:'🔒';font-size:0.6rem;opacity:0.4}
 
 .gate-error{
   font-family:var(--mono);
-  font-size:0.6rem;
+  font-size:0.56rem;
   color:var(--red);
   margin-bottom:1rem;
   display:none;
-  letter-spacing:0.08em;
+  letter-spacing:0.1em;
   text-transform:uppercase;
+  padding:10px 14px;
+  border-left:2px solid var(--red);
+  background:rgba(217,4,41,0.06);
+  animation:fadeUp 0.2s ease;
 }
 
 .gate-spinner{
   display:none;
   width:12px;height:12px;
-  border:2px solid rgba(245,239,230,0.2);
+  border:2px solid rgba(245,239,230,0.25);
   border-top-color:var(--cream);
   border-radius:50%;
   animation:spin 0.7s linear infinite;
 }
 
 @keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:780px){
+  #screen-gate{flex-direction:column}
+  .gate-left{flex:0 0 auto;padding:2rem 1.5rem}
+  .gate-score-preview{display:none}
+  .gate-right{padding:2.5rem 1.5rem}
+}
 
 /* ══════════════════════════════════════
    RESULTS
@@ -801,72 +1106,6 @@ body::before{
   letter-spacing:0.05em;
 }
 
-.bridge-block{
-  border:1px solid rgba(245,239,230,0.08);
-  padding:2.2rem;
-  margin-bottom:1.5rem;
-  background:rgba(196,154,60,0.03);
-  position:relative;
-}
-.bridge-block::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:2px;
-  background:linear-gradient(90deg,var(--red),var(--gold) 60%,transparent);
-}
-
-.bridge-eyebrow{
-  font-family:var(--mono);
-  font-size:0.5rem;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:rgba(245,239,230,0.3);
-  margin-bottom:1.4rem;
-}
-
-.bridge-pull{
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:1.1rem;
-  font-style:italic;
-  line-height:1.65;
-  color:rgba(245,239,230,0.6);
-  margin-bottom:1.4rem;
-  border-bottom:1px solid rgba(245,239,230,0.06);
-  padding-bottom:1.4rem;
-}
-
-.bridge-body{
-  font-size:0.88rem;
-  line-height:1.9;
-  color:rgba(245,239,230,0.45);
-  margin-bottom:1.8rem;
-}
-.bridge-body strong{color:var(--cream);font-weight:500}
-
-.btn-whatsapp{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  background:#128C7E;
-  color:#fff;
-  font-family:var(--mono);
-  font-size:0.6rem;
-  font-weight:700;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-  padding:16px 28px;
-  cursor:pointer;
-  transition:opacity 0.2s;
-  text-decoration:none;
-  width:100%;
-  border:none;
-}
-.btn-whatsapp:hover{opacity:.88}
-.btn-whatsapp svg{width:18px;height:18px;flex-shrink:0}
-
 .share-block{
   border:1px solid rgba(245,239,230,0.06);
   padding:1.8rem;
@@ -958,8 +1197,7 @@ body::before{
   .results-grid{grid-template-columns:1fr;gap:2rem}
   .cover-body,.quiz-body,.quiz-top,.quiz-nav,
   .cover-header,.cover-footer,.results-header,
-  .results-grid,.results-footer,.pillar-transition,
-  .gate-wrap{padding-left:1.5rem;padding-right:1.5rem}
+  .results-grid,.results-footer,.pillar-transition{padding-left:1.5rem;padding-right:1.5rem}
   .progress-bar-track{width:100px}
   .cover-headline{font-size:3rem}
 }
@@ -998,8 +1236,8 @@ body::before{
     </div>
   </div>
   <div class="cover-footer">
-    <div class="cover-meta">9 statements <span>·</span> One diagnosis</div>
-    <div class="cover-meta">One immediate move</div>
+    <div class="cover-meta">9 statements <span>·</span> 1 diagnosis</div>
+    <div class="cover-meta">1 immediate move</div>
     <div class="cover-meta">Identity <span>·</span> Expertise <span>·</span> Structure</div>
   </div>
 </div>
@@ -1061,30 +1299,81 @@ body::before{
 
 <!-- EMAIL GATE -->
 <div id="screen-gate" class="screen">
-  <div class="gate-wrap">
-    <div class="eyebrow">One step away</div>
-    <h2 class="gate-headline">Your diagnosis<br>is <em>ready.</em></h2>
-    <div class="gate-divider"></div>
-    <p class="gate-sub">Enter your name and email below. I'll send your full breakdown, your gap, the cost, and exactly what to do next.</p>
-    <div class="gate-error" id="gate-error">Fill in both fields correctly.</div>
-    <div class="field-group">
-      <div class="field-wrap">
-        <div class="field-label">First Name</div>
-        <input type="text" id="gate-name" placeholder="Your first name" autocomplete="given-name">
-      </div>
-      <div class="field-wrap" style="margin-top:-1px">
-        <div class="field-label">Email Address</div>
-        <input type="email" id="gate-email" placeholder="your@email.com" autocomplete="email">
-      </div>
+
+  <!-- LEFT: editorial panel -->
+  <div class="gate-left">
+    <div class="gate-left-stripe"></div>
+    <div class="gate-left-top">
+      <div class="gate-left-brand">Brenda.Blanche™ · The Unapologetics</div>
+      <div class="gate-left-eyebrow">Your results are waiting</div>
+      <h2 class="gate-left-heading">
+        9 statements.<br>
+        1 <em>diagnosis.</em><br>
+        Yours is ready.
+      </h2>
+      <div class="gate-left-rule"></div>
+      <p class="gate-left-desc">
+        You've answered every statement. The scorecard has calculated your Identity, Expertise, and Structure scores and identified exactly where your translation gap lives.
+      </p>
     </div>
-    <div class="gate-cta-row">
-      <button class="btn-primary" id="gate-submit-btn" onclick="submitGate()">
-        Show Me the Truth <span class="arrow">→</span>
-        <span class="gate-spinner" id="gate-spinner"></span>
-      </button>
-      <span class="gate-privacy">No spam, just your diagnosis.</span>
+    <div class="gate-score-preview" id="gate-score-preview">
+      <div class="gate-score-label">Your scores · Locked until you enter</div>
+      <div class="gate-score-bar-row">
+        <span class="gate-score-name">Identity</span>
+        <div class="gate-score-track"><div class="gate-score-fill" style="width:65%"></div></div>
+        <span class="gate-score-val">—</span>
+      </div>
+      <div class="gate-score-bar-row">
+        <span class="gate-score-name">Expertise</span>
+        <div class="gate-score-track"><div class="gate-score-fill red" style="width:40%"></div></div>
+        <span class="gate-score-val">—</span>
+      </div>
+      <div class="gate-score-bar-row">
+        <span class="gate-score-name">Structure</span>
+        <div class="gate-score-track"><div class="gate-score-fill" style="width:55%"></div></div>
+        <span class="gate-score-val">—</span>
+      </div>
+      <div class="gate-lock-note">1 gap is highlighted, unlock it below.</div>
     </div>
   </div>
+
+  <!-- RIGHT: form panel -->
+  <div class="gate-right">
+    <div class="gate-form-eyebrow">One step away</div>
+    <h3 class="gate-form-title">Where should I<br>send your <em>breakdown?</em></h3>
+    <p class="gate-form-sub">Enter your name and email. I'll send your full gap diagnosis the cost, the signs, and your immediate move.</p>
+
+    <div class="gate-error" id="gate-error">Fill in both fields correctly.</div>
+
+    <div class="field-group">
+      <div class="field-wrap">
+        <input type="text" id="gate-name" placeholder="name" autocomplete="given-name">
+        <label class="field-label" for="gate-name">First Name</label>
+        <div class="field-accent"></div>
+        <span class="field-icon">Name</span>
+      </div>
+      <div class="field-wrap">
+        <input type="email" id="gate-email" placeholder="email" autocomplete="email">
+        <label class="field-label" for="gate-email">Email Address</label>
+        <div class="field-accent"></div>
+        <span class="field-icon">Email</span>
+      </div>
+    </div>
+
+    <div class="gate-cta-row">
+      <button class="gate-submit-full" id="gate-submit-btn" onclick="submitGate()">
+        <span class="gate-submit-left">
+          Show Me the Truth
+          <span class="gate-spinner" id="gate-spinner"></span>
+        </span>
+        <span class="gate-submit-arrow">→</span>
+      </button>
+      <div class="gate-meta-row">
+        <span class="gate-privacy">No spam, just your diagnosis.</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- RESULTS -->
@@ -1119,26 +1408,9 @@ body::before{
       </div>
     </div>
     <div>
-      <div class="bridge-block">
-        <div class="bridge-eyebrow">The AI Solopreneur Toolkit™</div>
-        <p class="bridge-pull">"Your business looks smaller than your expertise. AI is your team, you just haven't learned to use it yet. Let's fix that live."</p>
-        <p class="bridge-body">
-          Now you know your gap. The next move is building the infrastructure that closes it, fast.<br><br>
-          <strong>The AI Solopreneur Toolkit™</strong> is a live implementation masterclass starting June 16. Build infographics, lead magnets, landing pages, content systems — live, with Brenda. No team. No tech skills. No expensive software.<br><br>
-          Starting at $14.5. Waitlist closes May 31. Secure your spot for $1.
-        </p>
-        <a class="btn-whatsapp" id="whatsapp-cta" href="#" target="_blank">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.529 5.845L0 24l6.335-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.006-1.371l-.36-.213-3.728.888.94-3.63-.235-.375A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
-          </svg>
-          DM "WAITLIST" — Secure My Spot →
-        </a>
-        <a href="/waitlist" style="display:block;text-align:center;margin-top:12px;font-family:'Space Mono',monospace;font-size:0.48rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,239,230,0.3);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='rgba(245,239,230,0.6)'" onmouseout="this.style.color='rgba(245,239,230,0.3)'">See everything inside the training →</a>
-      </div>
       <div class="share-block">
-        <div class="bridge-eyebrow">Declare your gap publicly</div>
-        <p class="share-body">Post your result. Tag me. When you name the gap out loud, you commit to closing it.</p>
+        <div class="bridge-eyebrow" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,239,230,0.3);margin-bottom:1.4rem;">Declare your gap publicly</div>
+        <p class="share-body">Post your result and ag me. When you name the gap out loud, you commit to closing it.</p>
         <p class="share-copy" id="share-copy"></p>
         <div class="share-actions">
           <button class="btn-share" onclick="shareLinkedIn()">LinkedIn</button>
@@ -1157,11 +1429,6 @@ body::before{
 </div>
 
 <script>
-// ─── ONLY safe config here — no API keys ───────────────────
-const WHATSAPP_NUM = '237672411155';
-// API key lives in Netlify environment variables only.
-// ──────────────────────────────────────────────────────────
-
 const questions = [
   { pillar:'Identity', sub:'· Signal', section:'Section 1 of 3', bgNum:'1', intro:'These statements diagnose the clarity of your signal — who you are, and how distinctly you come through to the market.', text:'If someone fed your last three posts to an AI and asked "Who wrote this?" — would it say your name, or just "a consultant"?', yes:'Yes — my voice is unmistakable.', somewhat:'Somewhat — sometimes me, sometimes generic.', no:'No — I\'m a ghost in my own content.' },
   { pillar:'Identity', sub:'· Signal', section:'Section 1 of 3', bgNum:'1', intro:'', text:'You\'re on a call with a dream client. They ask, "Why you, specifically?" Can you answer in one crisp sentence that makes them lean in, not lean back?', yes:'Yes — I can say it, and they get it.', somewhat:'Somewhat — the words still feel slippery when I say them aloud.', no:'No — I usually end up saying something vague about "quality" or "experience."' },
@@ -1284,14 +1551,12 @@ async function submitGate(){
   btn.disabled=true; spin.style.display='inline-block';
 
   try{
-    // Calls our Netlify function — API key never leaves the server
     await fetch('/.netlify/functions/subscribe',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({ name, email, gap: currentGap })
     });
   }catch(e){ console.warn('Subscribe error:',e); }
-  // Always show results — never block user on network failure
   btn.disabled=false; spin.style.display='none';
   showResults(name);
 }
@@ -1333,9 +1598,6 @@ function showResults(firstName){
     row.innerHTML=`<div class="score-label">${p}</div><div class="score-track"><div class="score-fill" style="width:0%" data-pct="${pct}"></div></div><div class="score-num">${s}/6</div>${isGap?'<div class="weak-tag" id="weak-tag">← gap</div>':''}`;
     block.appendChild(row);
   });
-
-  const waMsg=encodeURIComponent('WAITLIST — Hi Brenda! I just took the Market Translation Scorecard™. My gap is '+currentGap+'. I want to join the AI Solopreneur Toolkit waitlist.');
-  document.getElementById('whatsapp-cta').href='https://wa.me/'+WHATSAPP_NUM+'?text='+waMsg;
 
   const shareTxt='"I just took the Market Translation Scorecard™ by @BrendaBlanche and discovered my gap is '+currentGap+'. I\'ve been fixing the wrong thing for months. 90 seconds to the truth. #UnapologeticallyYou"';
   document.getElementById('share-copy').textContent=shareTxt;
