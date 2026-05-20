@@ -1129,10 +1129,11 @@ async function submitWaitlistForm(){
   btn.disabled=true; spin.style.display='inline-block'; arr.style.display='none';
 
   try{
-    await fetch('/.netlify/functions/subscribe',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ name, email, gap: tier, source:'TOOLKIT_WAITLIST' })
+  await fetch('/.netlify/functions/subscribe-toolkit',{
+  method:'POST',
+  headers:{'Content-Type':'application/json'},
+  body:JSON.stringify({ name, email, tier })
+});
     });
   }catch(e){ console.warn('Subscribe error:',e); }
 
