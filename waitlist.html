@@ -3,748 +3,361 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Identity to Income™ · July 2026 Cohort — Brenda Blanche</title>
-<meta name="description" content="The personal brand programme that starts with who you are and ends with clients finding you. 10 weeks. Live cohort. Starts July 27.">
+<title>The AI Solopreneur Toolkit™ Waitlist · Brenda Blanche</title>
+<meta name="description" content="A live implementation masterclass. Build premium business assets with AI — no team, no budget, no tech skills. Waitlist closes June 7.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --red:#D90429;
-  --black:#0F0C0D;
-  --charcoal:#1F1A1C;
-  --gold:#C49A3C;
-  --cream:#F5EFE6;
-  --grey:#6E6570;
+  --red:#D90429;--black:#0F0C0D;--charcoal:#1F1A1C;
+  --gold:#C49A3C;--cream:#F5EFE6;--grey:#6E6570;
   --serif:'Playfair Display',Georgia,serif;
   --sans:'DM Sans',sans-serif;
   --mono:'Space Mono',monospace;
 }
-
 html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.4;}
+.spine{position:fixed;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--red) 0%,var(--gold) 100%);z-index:200;}
 
-body{
-  background:var(--black);
-  color:var(--cream);
-  font-family:var(--sans);
-  font-weight:300;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-
-/* grain */
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:9999;opacity:.4;
-}
-
-/* spine */
-.spine{
-  position:fixed;top:0;left:0;
-  width:4px;height:100%;
-  background:linear-gradient(180deg,var(--red) 0%,var(--gold) 100%);
-  z-index:200;
-}
-
-/* ── NAV ── */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:0 3.5rem 0 calc(4px + 3.5rem);
-  display:flex;justify-content:space-between;align-items:center;
-  height:60px;
-  background:rgba(15,12,13,0.92);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(255,255,255,0.04);
-}
-
-.nav-brand{
-  font-family:var(--mono);
-  font-size:0.5rem;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--gold);
-}
-
-.nav-cta{
-  font-family:var(--mono);
-  font-size:0.52rem;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--cream);
-  background:var(--red);
-  padding:8px 20px;
-  border:none;
-  cursor:pointer;
-  text-decoration:none;
-  transition:opacity 0.2s;
-}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3.5rem 0 calc(4px + 3.5rem);display:flex;justify-content:space-between;align-items:center;height:60px;background:rgba(15,12,13,0.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.04);}
+.nav-brand{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+.nav-cta{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream);background:var(--red);padding:9px 22px;border:none;cursor:pointer;text-decoration:none;transition:opacity 0.2s;}
 .nav-cta:hover{opacity:.85}
 
-/* ── SECTIONS ── */
 section{padding-left:4px}
 
-/* ── HERO ── */
-.hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:calc(60px + 5rem) 3.5rem 5rem;
-  position:relative;overflow:hidden;
-  background:
-    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(217,4,41,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(196,154,60,0.06) 0%, transparent 55%),
-    linear-gradient(160deg,#2A0810 0%,#1A0507 25%,#0F0C0D 60%,#080507 100%);
-}
+/* SHARED */
+.eyebrow{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:0.8rem;margin-bottom:1.4rem;}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+.eyebrow.red{color:var(--red);}
+.eyebrow.red::before{background:var(--red)}
 
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
-  background-size:80px 80px;
-  pointer-events:none;
-}
-
-.hero-content{max-width:900px;position:relative;z-index:2}
-
-.hero-eyebrow{
-  font-family:var(--mono);
-  font-size:0.55rem;
-  letter-spacing:0.24em;
-  text-transform:uppercase;
-  color:var(--gold);
-  display:flex;align-items:center;gap:0.8rem;
-  margin-bottom:2rem;
-}
-.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
-
-.hero-headline{
-  font-family:var(--serif);
-  font-weight:900;
-  font-size:clamp(2.8rem,7vw,6.5rem);
-  line-height:0.93;
-  letter-spacing:-0.03em;
-  color:var(--cream);
-  margin-bottom:2rem;
-}
-.hero-headline em{color:var(--red);font-style:italic}
-
-.hero-rule{
-  width:80px;height:2px;
-  background:linear-gradient(90deg,var(--red),var(--gold),transparent);
-  margin-bottom:2rem;
-}
-
-.hero-sub{
-  font-size:clamp(0.9rem,1.8vw,1.1rem);
-  line-height:1.85;
-  color:rgba(245,239,230,0.6);
-  max-width:580px;
-  margin-bottom:3rem;
-}
-.hero-sub strong{color:var(--cream);font-weight:500}
-
-.hero-meta{
-  display:flex;gap:0;
-  flex-wrap:wrap;
-  margin-bottom:3rem;
-}
-
-.hero-meta-item{
-  padding:1rem 2rem;
-  border:1px solid rgba(255,255,255,0.06);
-  margin-right:-1px;
-}
-.hero-meta-label{
-  font-family:var(--mono);
-  font-size:0.44rem;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--grey);
-  margin-bottom:0.3rem;
-}
-.hero-meta-val{
-  font-size:0.88rem;
-  color:var(--cream);
-  font-weight:500;
-}
-.hero-meta-val.highlight{color:var(--gold)}
-
-/* countdown */
-.countdown-row{
-  display:flex;gap:0;
-  margin-bottom:3rem;
-  flex-wrap:wrap;
-}
-
-.count-unit{
-  padding:1.2rem 1.8rem;
-  background:rgba(217,4,41,0.08);
-  border:1px solid rgba(217,4,41,0.2);
-  text-align:center;
-  margin-right:-1px;
-}
-
-.count-num{
-  font-family:var(--serif);
-  font-weight:900;
-  font-size:2.8rem;
-  line-height:1;
-  color:var(--cream);
-  letter-spacing:-0.03em;
-  display:block;
-}
-
-.count-label{
-  font-family:var(--mono);
-  font-size:0.42rem;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--grey);
-  display:block;
-  margin-top:0.3rem;
-}
-
-.count-starts{
-  font-family:var(--mono);
-  font-size:0.5rem;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--red);
-  padding:1.2rem 1.5rem;
-  display:flex;align-items:center;
-}
-
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-
-.btn-red{
-  display:inline-flex;align-items:center;gap:12px;
-  background:var(--red);color:var(--cream);
-  font-family:var(--mono);font-size:0.6rem;font-weight:700;
-  letter-spacing:0.18em;text-transform:uppercase;
-  padding:16px 36px;border:none;cursor:pointer;
-  transition:all 0.2s;position:relative;overflow:hidden;
-  text-decoration:none;
-}
-.btn-red::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;
-  height:2px;background:linear-gradient(90deg,var(--gold),transparent);
-  transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
-}
+.btn-red{display:inline-flex;align-items:center;gap:12px;background:var(--red);color:var(--cream);font-family:var(--mono);font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:18px 40px;border:none;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;text-decoration:none;}
+.btn-red::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
 .btn-red:hover{opacity:.88;transform:translateY(-2px)}
 .btn-red:hover::after{transform:scaleX(1)}
 .btn-red .arr{transition:transform 0.2s}
 .btn-red:hover .arr{transform:translateX(5px)}
 
-.btn-outline{
-  display:inline-flex;align-items:center;gap:12px;
-  background:transparent;color:var(--cream);
-  font-family:var(--mono);font-size:0.6rem;font-weight:700;
-  letter-spacing:0.18em;text-transform:uppercase;
-  padding:16px 36px;border:1px solid rgba(245,239,230,0.2);
-  cursor:pointer;transition:all 0.2s;text-decoration:none;
-}
+.btn-outline{display:inline-flex;align-items:center;gap:12px;background:transparent;color:var(--cream);font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;padding:16px 36px;border:1px solid rgba(245,239,230,0.2);cursor:pointer;transition:all 0.2s;text-decoration:none;}
 .btn-outline:hover{border-color:var(--cream)}
 
-/* ── MIRROR ── */
-.mirror{
-  padding:6rem 3.5rem;
-  position:relative;
-  border-top:1px solid rgba(255,255,255,0.04);
+/* ═══════ HERO ═══════ */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(60px + 4rem) 3.5rem 5rem;position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 75% 10%,rgba(217,4,41,0.2) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 10% 85%,rgba(196,154,60,0.07) 0%,transparent 55%),linear-gradient(160deg,#2A0810 0%,#1A0507 20%,#0F0C0D 55%,#080507 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;}
+.hero-content{max-width:920px;position:relative;z-index:2}
+
+.live-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(217,4,41,0.4);padding:7px 16px;margin-bottom:2rem;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.live-text{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);}
+
+.hero-overline{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--grey);margin-bottom:0.8rem;}
+
+.hero-headline{font-family:var(--serif);font-weight:900;font-size:clamp(2.8rem,7vw,6.5rem);line-height:0.92;letter-spacing:-0.035em;color:var(--cream);margin-bottom:2rem;}
+.hero-headline em{color:var(--red);font-style:italic}
+.hero-headline .gold{color:var(--gold)}
+
+.hero-rule{width:80px;height:2px;background:linear-gradient(90deg,var(--red),var(--gold),transparent);margin-bottom:2rem;}
+
+.hero-sub{font-size:clamp(0.95rem,1.8vw,1.1rem);line-height:1.85;color:rgba(245,239,230,0.6);max-width:620px;margin-bottom:2.5rem;}
+.hero-sub strong{color:var(--cream);font-weight:500}
+
+/* countdown */
+.countdown-wrap{margin-bottom:3rem;}
+.countdown-label{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,239,230,0.3);margin-bottom:1rem;}
+.countdown-row{display:flex;gap:0;flex-wrap:wrap;}
+.count-box{padding:1.2rem 1.8rem;background:rgba(217,4,41,0.07);border:1px solid rgba(217,4,41,0.2);text-align:center;margin-right:-1px;}
+.count-num{font-family:var(--serif);font-weight:900;font-size:2.8rem;line-height:1;color:var(--cream);letter-spacing:-0.03em;display:block;}
+.count-unit{font-family:var(--mono);font-size:0.4rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);display:block;margin-top:0.3rem;}
+.count-sep{display:flex;align-items:center;padding:0 0.5rem;color:rgba(217,4,41,0.4);font-family:var(--mono);font-size:1.5rem;}
+
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.hero-note{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,239,230,0.2);margin-top:1.2rem;}
+.hero-note span{color:rgba(196,154,60,0.45);}
+
+/* ═══════ TIMELINE ═══════ */
+.timeline{padding:5rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg,rgba(217,4,41,0.03) 0%,transparent 100%);}
+.timeline-inner{max-width:800px;}
+.timeline-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem;}
+.tl-phase{background:var(--charcoal);padding:2rem;position:relative;}
+.tl-phase.active-phase{border:1px solid rgba(217,4,41,0.25);background:rgba(217,4,41,0.05);}
+.tl-phase.active-phase::before{content:'NOW';position:absolute;top:1rem;right:1rem;font-family:var(--mono);font-size:0.4rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);border:1px solid rgba(217,4,41,0.3);padding:3px 8px;}
+.tl-label{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);margin-bottom:0.5rem;}
+.tl-dates{font-family:var(--serif);font-weight:700;font-size:1.1rem;color:var(--cream);letter-spacing:-0.01em;margin-bottom:0.5rem;line-height:1.2;}
+.tl-desc{font-size:0.78rem;line-height:1.65;color:rgba(245,239,230,0.4);}
+.active-phase .tl-dates{color:var(--red);}
+.active-phase .tl-label{color:rgba(217,4,41,0.6);}
+
+/* ═══════ PROBLEM ═══════ */
+.problem{padding:7rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);}
+.problem-cols{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem;}
+.problem-body{font-size:0.95rem;line-height:1.95;color:rgba(245,239,230,0.55);margin-bottom:1.2rem;}
+.problem-body strong{color:var(--cream);font-weight:500}
+.stuck-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:1.5rem;}
+.stuck-list li{font-size:0.88rem;line-height:1.6;color:rgba(245,239,230,0.45);padding-left:20px;position:relative;}
+.stuck-list li::before{content:'→';position:absolute;left:0;color:rgba(217,4,41,0.5);font-size:0.75rem;top:1px;}
+.problem-pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.6;color:var(--cream);border-left:3px solid var(--red);padding:1.5rem 1.5rem 1.5rem 2rem;background:rgba(217,4,41,0.04);position:relative;}
+.problem-pull::before{content:'';position:absolute;top:0;left:-3px;width:3px;height:40%;background:var(--gold);}
+
+/* ═══════ PROMISE ═══════ */
+.promise{padding:7rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);text-align:center;background:linear-gradient(180deg,rgba(217,4,41,0.04) 0%,transparent 80%);}
+.promise .eyebrow{justify-content:center;}
+.promise .eyebrow::before{display:none}
+.promise-headline{font-family:var(--serif);font-weight:900;font-size:clamp(2rem,5vw,4rem);color:var(--cream);line-height:0.95;letter-spacing:-0.03em;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto;}
+.promise-headline em{color:var(--red);font-style:italic}
+.promise-sub{font-size:clamp(0.9rem,1.8vw,1.05rem);line-height:1.85;color:rgba(245,239,230,0.55);max-width:640px;margin:0 auto 3rem;}
+.promise-sub strong{color:var(--cream);font-weight:500}
+
+.transform-grid{display:flex;justify-content:center;gap:0;flex-wrap:wrap;max-width:720px;margin:0 auto 2rem;}
+.transform-item{padding:1.2rem 1.8rem;border:1px solid rgba(255,255,255,0.06);margin-right:-1px;text-align:center;}
+.transform-from{font-size:0.75rem;color:rgba(245,239,230,0.3);text-decoration:line-through;display:block;margin-bottom:0.3rem;}
+.transform-to{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);}
+
+/* ═══════ PROOF ═══════ */
+.proof{padding:7rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);}
+.proof-inner{max-width:680px;}
+.proof-body{font-size:0.95rem;line-height:1.95;color:rgba(245,239,230,0.55);margin-bottom:1.2rem;}
+.proof-body strong{color:var(--cream);font-weight:500}
+.proof-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:1.5rem 0;}
+.proof-list li{font-size:0.85rem;line-height:1.6;color:rgba(245,239,230,0.5);padding-left:20px;position:relative;}
+.proof-list li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-size:0.72rem;top:1px;}
+.proof-stamp{display:inline-flex;align-items:center;gap:1rem;border:1px solid rgba(196,154,60,0.25);padding:1rem 1.5rem;margin-top:1.5rem;}
+.proof-stamp-text{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,239,230,0.35);line-height:1.7;}
+.proof-stamp-text span{display:block;font-size:0.6rem;color:var(--gold);}
+
+/* ═══════ TIERS ═══════ */
+.tiers{padding:7rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);}
+.tiers-intro{max-width:640px;margin-bottom:4rem;}
+.tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+
+.tier-card{background:var(--charcoal);display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.tier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.tier-card.t1::before{background:rgba(196,154,60,0.4)}
+.tier-card.t2::before{background:linear-gradient(90deg,var(--red),var(--gold))}
+.tier-card.t3::before{background:var(--gold)}
+.tier-card.t2{border:1px solid rgba(217,4,41,0.2);}
+
+.tier-head{padding:2rem 2rem 0;}
+.tier-tag{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.18em;text-transform:uppercase;padding:4px 12px;border:1px solid;display:inline-block;margin-bottom:1rem;}
+.t1 .tier-tag{color:rgba(196,154,60,0.6);border-color:rgba(196,154,60,0.2);}
+.t2 .tier-tag{color:var(--red);border-color:rgba(217,4,41,0.3);}
+.t3 .tier-tag{color:var(--gold);border-color:rgba(196,154,60,0.3);}
+.tier-name{font-family:var(--serif);font-weight:900;font-size:1.4rem;color:var(--cream);letter-spacing:-0.02em;margin-bottom:0.4rem;}
+.tier-for{font-size:0.75rem;line-height:1.65;color:rgba(245,239,230,0.4);margin-bottom:1.5rem;}
+
+.tier-price-wrap{padding:1.2rem 2rem;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);}
+.tier-price{font-family:var(--serif);font-weight:900;font-size:2rem;line-height:1;letter-spacing:-0.03em;margin-bottom:0.2rem;}
+.t1 .tier-price{color:rgba(196,154,60,0.8)}
+.t2 .tier-price{color:var(--red)}
+.t3 .tier-price{color:var(--gold)}
+.tier-sessions{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);}
+
+.tier-del{padding:1.8rem 2rem;flex:1;}
+.tier-del-label{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);margin-bottom:1rem;}
+.tier-del-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.tier-del-list li{font-size:0.76rem;line-height:1.55;color:rgba(245,239,230,0.5);display:flex;gap:9px;align-items:flex-start;}
+.tier-del-list li .ck{flex-shrink:0;margin-top:1px;}
+.t1 .tier-del-list li .ck{color:rgba(196,154,60,0.5)}
+.t2 .tier-del-list li .ck{color:var(--red)}
+.t3 .tier-del-list li .ck{color:var(--gold)}
+
+.tier-cta{padding:1.5rem 2rem 2rem;}
+.tier-btn{display:flex;align-items:center;justify-content:center;width:100%;font-family:var(--mono);font-size:0.55rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;padding:14px 20px;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.t1 .tier-btn{background:transparent;color:var(--gold);border:1px solid rgba(196,154,60,0.25);}
+.t1 .tier-btn:hover{background:rgba(196,154,60,0.08)}
+.t2 .tier-btn{background:var(--red);color:var(--cream);}
+.t2 .tier-btn:hover{opacity:.88}
+.t3 .tier-btn{background:transparent;color:var(--gold);border:1px solid rgba(196,154,60,0.3);}
+.t3 .tier-btn:hover{background:rgba(196,154,60,0.08)}
+
+/* ═══════ THE $1 SECTION ═══════ */
+.commitment{padding:7rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg,rgba(196,154,60,0.04) 0%,transparent 100%);}
+.commitment-inner{max-width:760px;}
+.commitment-headline{font-family:var(--serif);font-weight:900;font-size:clamp(2rem,4.5vw,3.5rem);color:var(--cream);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;}
+.commitment-headline em{color:var(--gold);font-style:italic}
+.commitment-rule{width:60px;height:2px;background:linear-gradient(90deg,var(--gold),var(--red));margin-bottom:2rem;}
+.commitment-body{font-size:0.95rem;line-height:1.95;color:rgba(245,239,230,0.55);margin-bottom:1.5rem;}
+.commitment-body strong{color:var(--cream);font-weight:500}
+
+.dollar-display{display:inline-flex;align-items:baseline;gap:0.3rem;margin:1.5rem 0 2.5rem;}
+.dollar-sym{font-family:var(--serif);font-weight:900;font-size:3rem;color:var(--gold);line-height:1;}
+.dollar-num{font-family:var(--serif);font-weight:900;font-size:6rem;color:var(--gold);line-height:1;letter-spacing:-0.04em;}
+.dollar-label{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(196,154,60,0.5);align-self:flex-end;margin-bottom:0.8rem;}
+
+.waitlist-perks{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:3rem;}
+.perk-item{background:var(--charcoal);padding:1.5rem;}
+.perk-num{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.perk-title{font-size:0.88rem;color:var(--cream);font-weight:500;margin-bottom:0.3rem;}
+.perk-desc{font-size:0.75rem;line-height:1.65;color:rgba(245,239,230,0.4);}
+
+.commitment-note{font-size:0.8rem;line-height:1.75;color:rgba(245,239,230,0.3);margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:1.5rem;}
+
+/* ═══════ WAITLIST FORM ═══════ */
+.waitlist-section{padding:8rem 3.5rem;border-top:3px solid var(--red);position:relative;overflow:hidden;background:linear-gradient(160deg,#1A0507 0%,#0F0C0D 50%,#080507 100%);}
+.waitlist-section::before{content:'';position:absolute;top:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(ellipse,rgba(217,4,41,0.1) 0%,transparent 65%);pointer-events:none;}
+.waitlist-inner{max-width:680px;position:relative;z-index:2;}
+
+.wl-headline{font-family:var(--serif);font-weight:900;font-size:clamp(2.2rem,5vw,4rem);color:var(--cream);line-height:0.95;letter-spacing:-0.03em;margin-bottom:1.5rem;}
+.wl-headline em{color:var(--red);font-style:italic}
+.wl-rule{width:60px;height:2px;background:linear-gradient(90deg,var(--red),var(--gold));margin-bottom:2rem;}
+.wl-body{font-size:0.9rem;line-height:1.9;color:rgba(245,239,230,0.55);margin-bottom:2.5rem;}
+.wl-body strong{color:var(--cream);font-weight:500}
+
+/* steps */
+.steps-row{display:flex;flex-direction:column;gap:0;margin-bottom:3rem;}
+.step-item{display:flex;gap:1.5rem;align-items:flex-start;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.step-item:last-child{border-bottom:none}
+.step-num{font-family:var(--mono);font-size:0.55rem;color:var(--red);font-weight:700;flex-shrink:0;margin-top:2px;letter-spacing:0.05em;}
+.step-content{}
+.step-title{font-size:0.9rem;color:var(--cream);font-weight:500;margin-bottom:0.2rem;}
+.step-desc{font-size:0.78rem;line-height:1.65;color:rgba(245,239,230,0.4);}
+
+.wl-cta-block{margin-bottom:2rem;}
+
+.wl-cta-main{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  width:100%;background:var(--red);color:var(--cream);
+  font-family:var(--mono);font-size:0.65rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;
+  padding:20px 36px;border:none;cursor:pointer;
+  transition:all 0.2s;position:relative;overflow:hidden;
+  text-decoration:none;
 }
+.wl-cta-main::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.wl-cta-main:hover{opacity:.88;transform:translateY(-2px)}
+.wl-cta-main:hover::after{transform:scaleX(1)}
 
-.mirror-eyebrow{
-  font-family:var(--mono);
-  font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);display:flex;align-items:center;gap:0.8rem;
-  margin-bottom:3rem;
+.wl-cta-note{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,239,230,0.2);text-align:center;margin-top:1rem;line-height:1.8;}
+.wl-cta-note span{color:rgba(196,154,60,0.4);}
+
+/* deadline block */
+.deadline-block{border:1px solid rgba(217,4,41,0.25);padding:1.5rem;background:rgba(217,4,41,0.04);margin-bottom:2rem;}
+.deadline-eyebrow{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(217,4,41,0.6);margin-bottom:0.5rem;}
+.deadline-text{font-size:0.88rem;color:var(--cream);line-height:1.6;}
+.deadline-text strong{color:var(--red);}
+
+/* ═══════ SCORECARD BRIDGE ═══════ */
+.scorecard-bridge{padding:4rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
+.sb-eyebrow{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);margin-bottom:0.6rem;}
+.sb-text{font-family:var(--serif);font-style:italic;font-size:clamp(0.9rem,1.8vw,1.05rem);color:rgba(245,239,230,0.55);max-width:560px;line-height:1.65;}
+.sb-text strong{color:var(--cream);font-style:normal}
+
+/* FOOTER */
+.footer{padding:2.5rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.footer-brand{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);}
+/* ═══════ VISUALS ═══════ */
+.visuals{padding:7rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);}
+.visuals-intro{max-width:640px;margin-bottom:5rem;}
+.visuals-headline{font-family:var(--serif);font-weight:900;font-size:clamp(2rem,4.5vw,3.5rem);color:var(--cream);line-height:1;letter-spacing:-0.03em;margin-bottom:1rem;}
+.visuals-headline em{color:var(--red);font-style:italic}
+.visuals-sub{font-size:0.9rem;line-height:1.85;color:rgba(245,239,230,0.5);max-width:580px;}
+
+.visual-hero{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:4px;background:var(--charcoal);overflow:hidden;}
+.visual-hero-img{overflow:hidden;min-height:400px;}
+.visual-hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+.visual-hero:hover .visual-hero-img img{transform:scale(1.03)}
+.visual-hero-caption{padding:3rem;}
+.vc-tag{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+.vc-title{font-family:var(--serif);font-weight:900;font-size:clamp(1.4rem,2.5vw,2rem);color:var(--cream);letter-spacing:-0.02em;margin-bottom:0.8rem;line-height:1.1;}
+.vc-desc{font-size:0.82rem;line-height:1.8;color:rgba(245,239,230,0.5);margin-bottom:1.5rem;}
+.vc-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.vc-pill{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(196,154,60,0.25);color:rgba(196,154,60,0.6);padding:5px 12px;}
+
+.visual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;}
+.visual-card{background:var(--charcoal);display:flex;flex-direction:column;overflow:hidden;}
+.visual-card-img{position:relative;overflow:hidden;height:260px;}
+.visual-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+.visual-card:hover .visual-card-img img{transform:scale(1.04)}
+.visual-card-overlay{position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:linear-gradient(0deg,rgba(15,12,13,0.9) 0%,transparent 100%);}
+.overlay-tag{font-family:var(--mono);font-size:0.42rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);}
+.visual-card-body{padding:1.8rem;flex:1;display:flex;flex-direction:column;}
+.vcard-eyebrow{font-family:var(--mono);font-size:0.42rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(217,4,41,0.6);margin-bottom:0.5rem;}
+.vcard-title{font-family:var(--serif);font-weight:700;font-size:1.05rem;color:var(--cream);margin-bottom:0.6rem;letter-spacing:-0.01em;line-height:1.2;}
+.vcard-desc{font-size:0.76rem;line-height:1.75;color:rgba(245,239,230,0.45);flex:1;margin-bottom:1.2rem;}
+.vcard-tier{border-top:1px solid rgba(255,255,255,0.05);padding-top:1rem;margin-top:auto;}
+.vcard-tier-label{display:block;font-family:var(--mono);font-size:0.4rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey);margin-bottom:0.3rem;}
+.vcard-tier-val{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.1em;color:var(--gold);}
+
+.visuals-statement{background:rgba(217,4,41,0.04);border:1px solid rgba(217,4,41,0.12);padding:3rem;margin-top:2px;}
+.vs-inner{max-width:760px;}
+.vs-text{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2vw,1.3rem);line-height:1.65;color:rgba(245,239,230,0.65);margin-bottom:1rem;}
+.vs-text strong{color:var(--cream);font-style:normal;}
+.vs-sig{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey);}
+
+.footer-note{font-family:var(--mono);font-size:0.44rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,239,230,0.12);}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  .problem-cols,.tiers-grid,.waitlist-perks,.visual-grid{grid-template-columns:1fr}
+  .visual-hero{grid-template-columns:1fr}
+  .timeline-row{grid-template-columns:1fr}
 }
-.mirror-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
-
-.mirror-headline{
-  font-family:var(--serif);font-weight:900;
-  font-size:clamp(1.8rem,4vw,3rem);
-  color:var(--cream);line-height:1.1;letter-spacing:-0.02em;
-  margin-bottom:1rem;max-width:640px;
-}
-.mirror-headline em{color:var(--red);font-style:italic}
-
-.mirror-sub{
-  font-size:0.9rem;line-height:1.85;
-  color:rgba(245,239,230,0.5);
-  max-width:560px;margin-bottom:3.5rem;
-}
-
-.mirror-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:2px;
-  max-width:860px;
-}
-
-.mirror-card{
-  background:var(--charcoal);
-  padding:2rem;
-  position:relative;
-  overflow:hidden;
-  transition:background 0.2s;
-}
-.mirror-card:hover{background:#261F22}
-
-.mirror-card::before{
-  content:'';
-  position:absolute;top:0;left:0;right:0;
-  height:2px;
-  background:rgba(217,4,41,0.3);
-}
-
-.mirror-card.active::before{background:var(--red)}
-
-.mirror-quote{
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:clamp(0.9rem,1.6vw,1.05rem);
-  color:rgba(245,239,230,0.75);
-  line-height:1.65;
-  margin-bottom:0.8rem;
-}
-
-.mirror-tag{
-  font-family:var(--mono);
-  font-size:0.45rem;letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--grey);
-}
-
-/* ── WHAT THIS IS ── */
-.what{
-  padding:6rem 3.5rem;
-  border-top:1px solid rgba(255,255,255,0.04);
-  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;
-}
-
-.what-left{}
-
-.what-eyebrow{
-  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);display:flex;align-items:center;gap:0.8rem;margin-bottom:2rem;
-}
-.what-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
-
-.what-headline{
-  font-family:var(--serif);font-weight:900;
-  font-size:clamp(1.8rem,3.5vw,2.8rem);
-  color:var(--cream);line-height:1.05;letter-spacing:-0.02em;
-  margin-bottom:1.5rem;
-}
-.what-headline em{color:var(--red);font-style:italic}
-
-.what-body{
-  font-size:0.9rem;line-height:1.9;
-  color:rgba(245,239,230,0.55);
-  margin-bottom:1.5rem;
-}
-.what-body strong{color:var(--cream);font-weight:500}
-
-.promise-block{
-  border-left:3px solid var(--red);
-  padding:1.5rem 1.5rem 1.5rem 2rem;
-  background:rgba(217,4,41,0.04);
-  margin-top:2rem;
-  position:relative;
-}
-.promise-block::before{
-  content:'';position:absolute;top:0;left:-3px;
-  width:3px;height:35%;background:var(--gold);
-}
-
-.promise-label{
-  font-family:var(--mono);font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:0.8rem;
-}
-
-.promise-text{
-  font-family:var(--serif);font-style:italic;
-  font-size:clamp(0.95rem,1.8vw,1.1rem);
-  color:var(--cream);line-height:1.65;
-}
-
-.what-right{}
-
-.format-block{
-  background:var(--charcoal);
-  padding:2rem;
-  margin-bottom:1.5rem;
-  border-top:2px solid var(--gold);
-}
-
-.format-label{
-  font-family:var(--mono);font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.5rem;
-}
-
-.format-row{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  padding:0.85rem 0;
-  border-bottom:1px solid rgba(255,255,255,0.05);
-  gap:1rem;
-}
-.format-row:last-child{border-bottom:none}
-
-.format-key{
-  font-family:var(--mono);font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--grey);min-width:100px;padding-top:2px;
-}
-
-.format-val{
-  font-size:0.83rem;color:var(--cream);text-align:right;line-height:1.5;
-}
-
-.format-val .accent{color:var(--gold)}
-.format-val .red{color:var(--red)}
-
-/* ── PHASES ── */
-.phases{
-  padding:6rem 3.5rem;
-  border-top:1px solid rgba(255,255,255,0.04);
-}
-
-.phases-eyebrow{
-  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;
-}
-.phases-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
-
-.phases-headline{
-  font-family:var(--serif);font-weight:900;
-  font-size:clamp(1.8rem,3.5vw,2.8rem);
-  color:var(--cream);line-height:1.05;letter-spacing:-0.02em;
-  margin-bottom:0.8rem;max-width:640px;
-}
-.phases-headline em{color:var(--red);font-style:italic}
-
-.phases-sub{
-  font-size:0.88rem;line-height:1.85;color:rgba(245,239,230,0.45);
-  max-width:560px;margin-bottom:4rem;
-}
-
-.phases-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
-}
-
-.phase-card{
-  background:var(--charcoal);
-  padding:2rem 1.8rem;
-  position:relative;overflow:hidden;
-  transition:background 0.2s;
-}
-.phase-card:hover{background:#261F22}
-
-.phase-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-}
-.phase-card:nth-child(1)::before{background:var(--red)}
-.phase-card:nth-child(2)::before{background:linear-gradient(90deg,var(--red),var(--gold))}
-.phase-card:nth-child(3)::before{background:var(--gold)}
-.phase-card:nth-child(4)::before{background:rgba(196,154,60,0.4)}
-
-.phase-num{
-  font-family:var(--serif);font-weight:900;
-  font-size:3.5rem;color:rgba(245,239,230,0.04);
-  line-height:1;letter-spacing:-0.04em;
-  margin-bottom:1rem;
-}
-
-.phase-weeks{
-  font-family:var(--mono);font-size:0.44rem;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:0.5rem;
-}
-
-.phase-name{
-  font-family:var(--serif);font-weight:700;
-  font-size:1.15rem;color:var(--cream);
-  margin-bottom:0.8rem;line-height:1.2;
-}
-
-.phase-desc{
-  font-size:0.78rem;line-height:1.7;color:var(--grey);
-}
-
-/* ── DELIVERABLES ── */
-.deliverables{
-  padding:6rem 3.5rem;
-  border-top:1px solid rgba(255,255,255,0.04);
-}
-
-.del-eyebrow{
-  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;
-}
-.del-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
-
-.del-headline{
-  font-family:var(--serif);font-weight:900;
-  font-size:clamp(1.8rem,3.5vw,2.8rem);
-  color:var(--cream);line-height:1.05;letter-spacing:-0.02em;
-  margin-bottom:0.8rem;
-}
-.del-headline em{color:var(--red);font-style:italic}
-
-.del-sub{
-  font-size:0.88rem;line-height:1.85;color:rgba(245,239,230,0.45);
-  max-width:560px;margin-bottom:3.5rem;
-}
-
-.del-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
-}
-
-.del-item{
-  background:var(--charcoal);
-  padding:1.6rem;
-  display:flex;gap:1.2rem;
-  align-items:flex-start;
-  transition:background 0.2s;
-}
-.del-item:hover{background:#261F22}
-
-.del-num{
-  font-family:var(--mono);font-size:0.55rem;color:rgba(217,4,41,0.5);
-  font-weight:700;margin-top:2px;flex-shrink:0;letter-spacing:0.05em;
-}
-
-.del-text{
-  font-size:0.8rem;color:var(--cream);line-height:1.55;
-}
-
-.del-text span{display:block;font-size:0.72rem;color:var(--grey);margin-top:0.2rem;}
-
-/* ── WAITLIST FORM ── */
-.waitlist{
-  padding:7rem 3.5rem;
-  border-top:3px solid var(--red);
-  position:relative;overflow:hidden;
-  background:linear-gradient(160deg,#1A0507 0%,#0F0C0D 50%,#080507 100%);
-}
-
-.waitlist::before{
-  content:'';
-  position:absolute;top:-30%;right:-10%;
-  width:600px;height:600px;
-  background:radial-gradient(ellipse,rgba(217,4,41,0.1) 0%,transparent 65%);
-  pointer-events:none;
-}
-
-.waitlist-inner{
-  max-width:680px;
-  position:relative;z-index:2;
-}
-
-.waitlist-eyebrow{
-  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--red);display:flex;align-items:center;gap:0.8rem;margin-bottom:2rem;
-}
-.waitlist-eyebrow::before{content:'';width:28px;height:1px;background:var(--red)}
-
-.waitlist-headline{
-  font-family:var(--serif);font-weight:900;
-  font-size:clamp(2rem,5vw,4rem);
-  color:var(--cream);line-height:0.95;letter-spacing:-0.03em;
-  margin-bottom:1.5rem;
-}
-.waitlist-headline em{color:var(--red);font-style:italic}
-
-.waitlist-rule{
-  width:60px;height:2px;
-  background:linear-gradient(90deg,var(--red),var(--gold));
-  margin-bottom:1.8rem;
-}
-
-.waitlist-body{
-  font-size:0.9rem;line-height:1.9;
-  color:rgba(245,239,230,0.55);
-  margin-bottom:2.5rem;max-width:520px;
-}
-.waitlist-body strong{color:var(--cream);font-weight:500}
-
-/* cohort badge */
-.cohort-badge{
-  display:inline-flex;align-items:center;gap:1.5rem;
-  border:1px solid rgba(196,154,60,0.3);
-  padding:1rem 1.5rem;
-  margin-bottom:3rem;
-  flex-wrap:wrap;
-}
-
-.badge-item{
-  text-align:center;
-}
-
-.badge-val{
-  font-family:var(--serif);font-weight:900;
-  font-size:1.4rem;color:var(--gold);
-  line-height:1;letter-spacing:-0.02em;
-  display:block;
-}
-
-.badge-label{
-  font-family:var(--mono);font-size:0.4rem;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--grey);display:block;margin-top:0.2rem;
-}
-
-.badge-divider{
-  width:1px;height:40px;
-  background:rgba(196,154,60,0.2);
-}
-
-/* form */
-.form-fields{display:flex;flex-direction:column;margin-bottom:1.5rem}
-
-.form-field{
-  border-top:1px solid rgba(245,239,230,0.1);
-  padding-top:0.6rem;
-  transition:border-color 0.18s;
-}
-.form-field:last-child{border-bottom:1px solid rgba(245,239,230,0.1)}
-.form-field:focus-within{border-color:var(--gold)}
-
-.form-label{
-  font-family:var(--mono);font-size:0.44rem;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--grey);margin-bottom:4px;
-}
-
-.form-field input{
-  width:100%;background:transparent;border:none;outline:none;
-  color:var(--cream);font-family:var(--sans);font-size:0.95rem;font-weight:300;
-  padding:10px 0 16px;caret-color:var(--red);
-}
-.form-field input::placeholder{color:rgba(245,239,230,0.2)}
-
-.form-error{
-  font-family:var(--mono);font-size:0.55rem;color:var(--red);
-  margin-bottom:1rem;display:none;letter-spacing:0.08em;text-transform:uppercase;
-}
-
-.form-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:1.5rem}
-
-.form-privacy{
-  font-family:var(--mono);font-size:0.44rem;color:rgba(245,239,230,0.18);
-  letter-spacing:0.1em;text-transform:uppercase;
-}
-
-.form-spinner{
-  display:none;width:12px;height:12px;
-  border:2px solid rgba(245,239,230,0.2);border-top-color:var(--cream);
-  border-radius:50%;animation:spin 0.7s linear infinite;
+@media(max-width:580px){
+  .hero,.timeline,.problem,.promise,.proof,.tiers,.visuals,.commitment,.waitlist-section,.scorecard-bridge,.footer{padding-left:1.5rem;padding-right:1.5rem}
+  .nav{padding-left:calc(4px + 1.5rem);padding-right:1.5rem}
+  .hero-headline{font-size:2.8rem}
+  .transform-grid{flex-direction:column}
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* success state */
-.form-success{
-  display:none;
-  padding:2rem;background:rgba(196,154,60,0.05);
-  border:1px solid rgba(196,154,60,0.2);
-}
+/* ── FAQ ── */
+.faq-section{padding:7rem 3.5rem;border-top:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg,rgba(196,154,60,0.02) 0%,transparent 60%);}
+.faq-inner{max-width:780px;margin:0 auto;}
+.faq-headline{font-family:var(--serif);font-weight:900;font-size:clamp(2rem,4vw,3rem);color:var(--cream);line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.5rem;text-align:center;}
+.faq-headline em{color:var(--gold);font-style:italic;}
+.faq-rule{width:48px;height:2px;background:linear-gradient(90deg,var(--gold),var(--red));margin:0 auto 3.5rem;}
+.faq-list{display:flex;flex-direction:column;}
+.faq-item{border-top:1px solid rgba(255,255,255,0.06);}
+.faq-item:last-child{border-bottom:1px solid rgba(255,255,255,0.06);}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;background:none;border:none;cursor:pointer;padding:1.6rem 0;text-align:left;color:var(--cream);font-family:var(--sans);font-size:0.95rem;font-weight:500;line-height:1.45;transition:color 0.2s;}
+.faq-q:hover{color:var(--gold);}
+.faq-q[aria-expanded="true"]{color:var(--gold);}
+.faq-icon{flex-shrink:0;width:28px;height:28px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s;}
+.faq-q[aria-expanded="true"] .faq-icon{border-color:rgba(217,4,41,0.4);background:rgba(217,4,41,0.06);}
+.faq-plus{font-family:var(--mono);font-size:1rem;color:var(--grey);line-height:1;transition:transform 0.32s cubic-bezier(0.4,0,0.2,1),color 0.2s;display:block;}
+.faq-q[aria-expanded="true"] .faq-plus{transform:rotate(45deg);color:var(--red);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.38s cubic-bezier(0.4,0,0.2,1);}
+.faq-a.open{grid-template-rows:1fr;}
+.faq-a-inner{overflow:hidden;font-size:0.875rem;line-height:1.95;color:rgba(245,239,230,0.55);padding-bottom:0;transition:padding-bottom 0.38s;}
+.faq-a.open .faq-a-inner{padding-bottom:2rem;}
+.faq-a-inner strong{color:var(--cream);font-weight:500;}
+.faq-wa-btn{display:inline-flex;align-items:center;gap:8px;margin-top:1rem;font-family:var(--mono);font-size:0.48rem;letter-spacing:0.16em;text-transform:uppercase;padding:10px 22px;background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.22);color:rgba(37,211,102,0.75);text-decoration:none;transition:all 0.2s;}
+.faq-wa-btn:hover{background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.38);color:#25d366;}
 
-.success-icon{
-  font-family:var(--mono);font-size:1.2rem;color:var(--gold);
-  margin-bottom:0.8rem;display:block;
-}
+/* ── ENHANCED FORM ── */
+.wl-field-wrap{margin-bottom:1.5rem;border:1px solid rgba(255,255,255,0.08);transition:border-color 0.2s;}
+.wl-field-wrap:focus-within{border-color:rgba(196,154,60,0.35);}
+.wl-field-row{display:grid;grid-template-columns:1fr 1fr;}
+.wl-field-inner{padding:1rem 1.4rem 1.1rem;position:relative;}
+.wl-field-inner+.wl-field-inner{border-left:1px solid rgba(255,255,255,0.08);}
+.wl-field-label{font-family:var(--mono);font-size:0.4rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--grey);margin-bottom:6px;display:block;transition:color 0.2s;}
+.wl-field-inner:focus-within .wl-field-label{color:var(--gold);}
+.wl-input{width:100%;background:transparent;border:none;outline:none;color:var(--cream);font-family:var(--sans);font-size:0.95rem;font-weight:300;padding:2px 0 0;caret-color:var(--red);}
+.wl-input::placeholder{color:rgba(245,239,230,0.18);}
+.wl-tier-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid rgba(255,255,255,0.08);}
+.wl-tier-opt{position:relative;}
+.wl-tier-opt input[type="radio"]{position:absolute;opacity:0;width:0;height:0;}
+.wl-tier-opt+.wl-tier-opt{border-left:1px solid rgba(255,255,255,0.08);}
+.wl-tier-label{display:flex;flex-direction:column;padding:0.9rem 1rem 0.85rem;cursor:pointer;transition:background 0.18s;}
+.wl-tier-opt input:checked + .wl-tier-label{background:rgba(217,4,41,0.07);}
+.wl-tier-name{font-family:var(--mono);font-size:0.38rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(245,239,230,0.3);transition:color 0.18s;}
+.wl-tier-opt input:checked + .wl-tier-label .wl-tier-name{color:var(--red);}
+.wl-tier-price{font-size:0.78rem;color:rgba(245,239,230,0.35);margin-top:3px;font-weight:500;transition:color 0.18s;}
+.wl-tier-opt input:checked + .wl-tier-label .wl-tier-price{color:var(--cream);}
+.wl-tier-dot{width:7px;height:7px;border:1px solid rgba(255,255,255,0.12);border-radius:50%;margin-top:8px;transition:all 0.18s;}
+.wl-tier-opt input:checked + .wl-tier-label .wl-tier-dot{background:var(--red);border-color:var(--red);box-shadow:0 0 6px rgba(217,4,41,0.5);}
 
-.success-headline{
-  font-family:var(--serif);font-weight:700;
-  font-size:1.3rem;color:var(--cream);
-  margin-bottom:0.5rem;
-}
-
-.success-body{
-  font-size:0.85rem;line-height:1.75;color:rgba(245,239,230,0.55);
-  margin-bottom:1.5rem;
-}
-
-/* whatsapp */
-.wa-block{margin-top:2.5rem}
-
-.wa-label{
-  font-family:var(--mono);font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;
-  color:rgba(245,239,230,0.3);margin-bottom:1rem;
-  display:flex;align-items:center;gap:0.8rem;
-}
-.wa-label::before{content:'';width:28px;height:1px;background:rgba(245,239,230,0.1)}
-
-.btn-whatsapp{
-  display:inline-flex;align-items:center;gap:12px;
-  background:#128C7E;color:#fff;
-  font-family:var(--mono);font-size:0.58rem;font-weight:700;
-  letter-spacing:0.14em;text-transform:uppercase;
-  padding:15px 28px;cursor:pointer;
-  transition:opacity 0.2s;text-decoration:none;border:none;
-}
-.btn-whatsapp:hover{opacity:.88}
-.btn-whatsapp svg{width:18px;height:18px;flex-shrink:0}
-
-.wa-sub{
-  font-size:0.75rem;color:rgba(245,239,230,0.25);
-  margin-top:0.8rem;line-height:1.6;
-}
-
-/* ── SCORECAARD BRIDGE ── */
-.scorecard-bridge{
-  padding:4rem 3.5rem;
-  border-top:1px solid rgba(255,255,255,0.04);
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:2rem;
-}
-
-.sb-left{}
-.sb-eyebrow{
-  font-family:var(--mono);font-size:0.48rem;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--grey);margin-bottom:0.6rem;
-}
-.sb-text{
-  font-family:var(--serif);font-style:italic;
-  font-size:clamp(0.95rem,1.8vw,1.1rem);
-  color:rgba(245,239,230,0.6);
-  max-width:520px;line-height:1.6;
-}
-.sb-text strong{color:var(--cream);font-style:normal}
-
-/* ── FOOTER ── */
-.footer{
-  padding:2.5rem 3.5rem;
-  border-top:1px solid rgba(255,255,255,0.04);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;
-}
-
-.footer-brand{
-  font-family:var(--mono);font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--gold);
-}
-
-.footer-note{
-  font-family:var(--mono);font-size:0.44rem;letter-spacing:0.1em;text-transform:uppercase;
-  color:rgba(245,239,230,0.12);
-}
-
-/* ── RESPONSIVE ── */
-@media(max-width:860px){
-  .phases-grid{grid-template-columns:1fr 1fr}
-  .del-grid{grid-template-columns:1fr 1fr}
-  .what{grid-template-columns:1fr;gap:3rem}
-  .mirror-grid{grid-template-columns:1fr}
-}
-
-@media(max-width:580px){
-  .hero,.mirror,.what,.phases,.deliverables,.waitlist,
-  .scorecard-bridge,.footer{padding-left:1.5rem;padding-right:1.5rem}
-  .nav{padding-left:calc(4px + 1.5rem);padding-right:1.5rem}
-  .phases-grid{grid-template-columns:1fr}
-  .del-grid{grid-template-columns:1fr}
-  .countdown-row{gap:2px}
-  .hero-meta{flex-direction:column;gap:2px}
-  .hero-meta-item{margin-right:0}
+@media(max-width:600px){
+  .wl-field-row{grid-template-columns:1fr;}
+  .wl-field-inner+.wl-field-inner{border-left:none;border-top:1px solid rgba(255,255,255,0.08);}
+  .wl-tier-row{grid-template-columns:1fr;}
+  .wl-tier-opt+.wl-tier-opt{border-left:none;border-top:1px solid rgba(255,255,255,0.08);}
+  .faq-section{padding-left:1.5rem;padding-right:1.5rem;}
 }
 </style>
 </head>
@@ -753,485 +366,797 @@ section{padding-left:4px}
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-brand">Brenda.Blanche™ · Identity to Income</div>
-  <a class="nav-cta" href="#waitlist">Join the Waitlist →</a>
+  <div class="nav-brand">Brenda.Blanche™ · The Unapologetics</div>
+  <a class="nav-cta" href="#join">Join the Waitlist — $1 →</a>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Identity to Income™ · July 2026 Cohort</div>
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      <span class="live-text">Waitlist closes June 7 · Training starts July 6</span>
+    </div>
+    <div class="hero-overline">The AI Solopreneur Toolkit™ — First Edition</div>
     <h1 class="hero-headline">
-      Stop being the<br>
-      best-kept secret<br>
-      in your <em>industry.</em>
+      Stop looking<br>
+      smaller than<br>
+      your <em>expertise.</em>
     </h1>
     <div class="hero-rule"></div>
     <p class="hero-sub">
-      You've done the work. You have the skill. You show up. And still, the market doesn't see you.
+      A live implementation masterclass that teaches solopreneurs how to build
+      premium business assets with AI — <strong>no team, no tech skills, no expensive software.</strong>
       <br><br>
-      That is not a visibility problem. It's a <strong>translation problem.</strong>
-      The market can't find the language for who you are. In 10 weeks, we fix that — completely, in order.
+      Infographics, lead magnets, flyers, landing pages, content systems, client documents.
+      All built live. All yours to keep.
     </p>
 
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Cohort Start</div>
-        <div class="hero-meta-val highlight">July 27, 2026</div>
+    <div class="countdown-wrap">
+      <div class="countdown-label">Waitlist closes in — June 7</div>
+      <div class="countdown-row">
+        <div class="count-box"><span class="count-num" id="cd-d">—</span><span class="count-unit">Days</span></div>
+        <div class="count-sep">:</div>
+        <div class="count-box"><span class="count-num" id="cd-h">—</span><span class="count-unit">Hours</span></div>
+        <div class="count-sep">:</div>
+        <div class="count-box"><span class="count-num" id="cd-m">—</span><span class="count-unit">Minutes</span></div>
+        <div class="count-sep">:</div>
+        <div class="count-box"><span class="count-num" id="cd-s">—</span><span class="count-unit">Seconds</span></div>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Duration</div>
-        <div class="hero-meta-val">10 Weeks</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Format</div>
-        <div class="hero-meta-val">Live Cohort</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Weekly Rhythm</div>
-        <div class="hero-meta-val">Tue Teaching · Fri Hot Seat</div>
-      </div>
-    </div>
-
-    <div class="countdown-row">
-      <div class="count-unit">
-        <span class="count-num" id="cd-days">—</span>
-        <span class="count-label">Days</span>
-      </div>
-      <div class="count-unit">
-        <span class="count-num" id="cd-hours">—</span>
-        <span class="count-label">Hours</span>
-      </div>
-      <div class="count-unit">
-        <span class="count-num" id="cd-mins">—</span>
-        <span class="count-label">Minutes</span>
-      </div>
-      <div class="count-starts">Until cohort opens</div>
     </div>
 
     <div class="hero-actions">
-      <a class="btn-red" href="#waitlist">
-        Secure My Spot <span class="arr">→</span>
+      <a class="btn-red" href="#join">
+        Secure My Spot — $1 <span class="arr">→</span>
       </a>
-      <a class="btn-outline" href="#what">
-        See What's Inside
-      </a>
+      <a class="btn-outline" href="#tiers">See What's Inside</a>
+    </div>
+    <div class="hero-note">Starting at <span>$14.5 · 8,000 XAF · 19k NGN</span> · Live cohort · July 6 start · Limited spots</div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section class="timeline">
+  <div class="timeline-inner">
+    <div class="eyebrow">Important dates</div>
+    <h2 style="font-family:var(--serif);font-weight:900;font-size:clamp(1.6rem,3.5vw,2.5rem);color:var(--cream);letter-spacing:-0.02em;line-height:1.1;margin-bottom:0.5rem;">3 phases, 1 clear path.</h2>
+    <p style="font-size:0.85rem;color:rgba(245,239,230,0.4);line-height:1.7;">Here's exactly what happens between now and July 6.</p>
+
+    <div class="timeline-row">
+      <div class="tl-phase active-phase">
+        <div class="tl-label">Phase 1 · Waitlist</div>
+        <div class="tl-dates">May 20 — June 7</div>
+        <p class="tl-desc">Secure your spot for $1. Choose your tier. Get early access materials and implementation prep. Price locked at founding rate.</p>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-label">Phase 2 · Enrollment</div>
+        <div class="tl-dates">June 8 — July 6</div>
+        <p class="tl-desc">Full enrollment opens. Waitlist members get first access and founding prices. Public spots open to all with less bonuses.</p>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-label">Phase 3 · Live Training</div>
+        <div class="tl-dates">Starts July 6</div>
+        <p class="tl-desc">Training begins. 3–12 live sessions depending on tier. Build your assets live with Brenda. Walk away with a complete business infrastructure.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ MIRROR — ICP RECOGNITION ══ -->
-<section class="mirror">
-  <div class="mirror-eyebrow">This is for you if</div>
-  <h2 class="mirror-headline">You recognise yourself<br>in <em>any of these.</em></h2>
-  <p class="mirror-sub">These are not assumptions. They are the exact words of the people who have already walked through this programme — before they did.</p>
+<!-- ═══ PROBLEM ═══ -->
+<section class="problem">
+  <div class="eyebrow">The real problem</div>
+  <h2 style="font-family:var(--serif);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);color:var(--cream);letter-spacing:-0.025em;line-height:1.05;max-width:640px;margin-bottom:3rem;">Your business still looks like a <em style="color:var(--red);font-style:italic">hobby.</em> Not because you're not skilled.</h2>
 
-  <div class="mirror-grid">
-    <div class="mirror-card active">
-      <p class="mirror-quote">"I post consistently and get great comments. But no one ever asks how to hire me."</p>
-      <div class="mirror-tag">Visibility without conversion</div>
+  <div class="problem-cols">
+    <div>
+      <p class="problem-body">Because every time you need something done, a graphic, a landing page, a lead magnet, a client document. You're stuck between <strong>depending on expensive people you can't afford</strong> and <strong>spending hours trying to DIY something that looks amateur anyway.</strong></p>
+      <p class="problem-body">So you stay in this painful gap between "I know I'm good at what I do" and "why does my business still look unfinished?"</p>
+
+      <ul class="stuck-list" style="margin-top:2rem">
+        <li>Flyers that look like a 5-year old designed it.</li>
+        <li>Graphics that look inconsistent and unprofessional</li>
+        <li>Landing pages you've been "finishing" for three months</li>
+        <li>Content that takes hours and gets forgotten in two days</li>
+        <li>A lead magnet that lives in your notes, not on the internet</li>
+        <li>Ideas trapped in your head because building feels too hard</li>
+        <li>Watching others with less skill look more established than you</li>
+      </ul>
     </div>
-    <div class="mirror-card">
-      <p class="mirror-quote">"I know what I do. I just can't explain it in a way that makes people want to pay for it."</p>
-      <div class="mirror-tag">Translation gap — Identity</div>
-    </div>
-    <div class="mirror-card">
-      <p class="mirror-quote">"I have results. Real ones. But I don't know how to turn them into proof the market trusts."</p>
-      <div class="mirror-tag">Translation gap — Expertise</div>
-    </div>
-    <div class="mirror-card">
-      <p class="mirror-quote">"People with half my experience are getting clients I should be getting. I don't understand it."</p>
-      <div class="mirror-tag">The best-kept secret problem</div>
-    </div>
-    <div class="mirror-card">
-      <p class="mirror-quote">"My content is everywhere but it doesn't compound. Every week feels like starting from scratch."</p>
-      <div class="mirror-tag">Translation gap — Structure</div>
-    </div>
-    <div class="mirror-card">
-      <p class="mirror-quote">"I feel like I'm performing someone else's brand. It doesn't sound like me and I don't know how to fix it."</p>
-      <div class="mirror-tag">Identity not yet translated</div>
+
+    <div>
+      <div class="problem-pull">
+        "You don't have an expertise problem, you have an infrastructure problem. And infrastructure is no longer something you have to outsource or save up for. AI is your team, you just haven't learned to use it yet."
+      </div>
+
+      <div style="margin-top:2rem;background:var(--charcoal);padding:2rem;">
+        <div style="font-family:var(--mono);font-size:0.44rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--grey);margin-bottom:1.2rem;">The real cost of staying stuck</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-size:0.78rem;color:rgba(245,239,230,0.5)">Client lost because brand looks amateur</span>
+            <span style="font-family:var(--serif);font-weight:700;color:var(--red);font-size:1rem">$500+</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-size:0.78rem;color:rgba(245,239,230,0.5)">Designer fee for one graphic set</span>
+            <span style="font-family:var(--serif);font-weight:700;color:var(--red);font-size:1rem">$50–150</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-size:0.78rem;color:rgba(245,239,230,0.5)">Landing page developer fee</span>
+            <span style="font-family:var(--serif);font-weight:700;color:var(--red);font-size:1rem">$300+</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.8rem 0;">
+            <span style="font-size:0.78rem;color:rgba(245,239,230,0.5)">Hours spent on DIY confusion per week</span>
+            <span style="font-family:var(--serif);font-weight:700;color:var(--red);font-size:1rem">5–10 hrs</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ WHAT THIS IS ══ -->
-<section class="what" id="what">
-  <div class="what-left">
-    <div class="what-eyebrow">What Identity to Income™ is</div>
-    <h2 class="what-headline">The programme that starts<br>with <em>who you are</em> —<br>and ends with clients finding you.</h2>
-    <p class="what-body">
-      Most brand programmes start with tactics. Content calendars. Hook formulas. Posting schedules.
-      They give you the tools to shout louder — without fixing why no one is listening.
-    </p>
-    <p class="what-body">
-      Identity to Income™ starts upstream. Before a single post is written, you excavate the
-      <strong>identity that makes your brand irreproducible.</strong> Before you build an offer,
-      you build the positioning that makes the right person feel immediately found.
-    </p>
-    <p class="what-body">
-      Then — and only then — do you build the content system, the lead magnet, and the
-      conversion architecture that turns clarity into income.
-      <strong>In sequence. No steps skipped.</strong>
-    </p>
-    <div class="promise-block">
-      <div class="promise-label">The Programme Promise</div>
-      <p class="promise-text">"The personal brand programme that starts with who you are — and ends with clients finding you. In 10 weeks. Built from who you actually are."</p>
+<!-- ═══ PROMISE ═══ -->
+<section class="promise">
+  <div class="eyebrow">The transformation</div>
+  <h2 class="promise-headline">By the end of this training,<br>you don't just <em>"know AI."</em><br>You build with it.</h2>
+  <p class="promise-sub">Not theory, not hacks, not tutorials you watch and forget. <strong>Live implementation sessions where you build real business assets; infographics, lead magnets, flyer, landing pages, content systems during the training itself.</strong> You leave with assets, not notes.</p>
+
+  <div class="transform-grid">
+    <div class="transform-item"><span class="transform-from">Overwhelmed</span><span class="transform-to">Operational</span></div>
+    <div class="transform-item"><span class="transform-from">Inconsistent</span><span class="transform-to">Structured</span></div>
+    <div class="transform-item"><span class="transform-from">Dependent</span><span class="transform-to">Self-sufficient</span></div>
+    <div class="transform-item"><span class="transform-from">Scattered</span><span class="transform-to">Organised</span></div>
+    <div class="transform-item"><span class="transform-from">Trying things</span><span class="transform-to">Building systems</span></div>
+  </div>
+</section>
+
+<!-- ═══ PROOF ═══ -->
+<section class="proof">
+  <div class="proof-inner">
+    <div class="eyebrow">The proof</div>
+    <h2 style="font-family:var(--serif);font-weight:900;font-size:clamp(1.8rem,3.8vw,3rem);color:var(--cream);letter-spacing:-0.025em;line-height:1.05;margin-bottom:1.5rem;">I am the case study.<br><em style="color:var(--red);font-style:italic">Not a reference.</em></h2>
+
+    <p class="proof-body">Every framework in this training was built by me without a design team, without a developer, without expensive software, and without a client list or testimonials to lean on.</p>
+
+    <p class="proof-body">I started with the same problem you have right now. <strong>Real expertise, no infrastructure.</strong> A business that looked smaller than my ability.</p>
+
+    <p class="proof-body">I deleted 800 contacts and rebuilt from scratch using AI as my team. Here's what that looks like now:</p>
+
+    <ul class="proof-list">
+      <li>I have not written a post manually in over 2 years. AI does it in my voice.</li>
+      <li>Every infographic, lead magnet, flyer, landing page, and client document built with AI. No designer. No developer.</li>
+      <li>A fully operational brand system built that the market can read, trust, and pay for.</li>
+      <li>Ranked top #2 female personal branding in Cameroon, where LinkedIn barely exists.</li>
+    </ul>
+
+    <div class="proof-stamp">
+      <div class="proof-stamp-text">
+        <span>Everything I teach in this training</span>
+        I built first for myself.
+        No testimonials needed.
+        <span>I am the proof.</span>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="what-right">
-    <div class="format-block">
-      <div class="format-label">Cohort Details · July 2026</div>
-      <div class="format-row">
-        <div class="format-key">Start Date</div>
-        <div class="format-val"><span class="accent">Sunday, July 27 · Week 0</span></div>
-      </div>
-      <div class="format-row">
-        <div class="format-key">Duration</div>
-        <div class="format-val">10 Weeks + Orientation</div>
-      </div>
-      <div class="format-row">
-        <div class="format-key">Teaching Day</div>
-        <div class="format-val">Every Tuesday — Live Session</div>
-      </div>
-      <div class="format-row">
-        <div class="format-key">Hot Seat Day</div>
-        <div class="format-val">Every Friday — 2 clients presented</div>
-      </div>
-      <div class="format-row">
-        <div class="format-key">Assignments</div>
-        <div class="format-val">Submitted Tue–Fri, reviewed in hot seat</div>
-      </div>
-      <div class="format-row">
-        <div class="format-key">Recordings</div>
-        <div class="format-val">Available within 24 hours</div>
-      </div>
-      <div class="format-row">
-        <div class="format-key">Community</div>
-        <div class="format-val">Group space + accountability pairs</div>
-      </div>
-      <div class="format-row">
-        <div class="format-key">Format</div>
-        <div class="format-val"><span class="red">Live cohort — fixed start, group delivery</span></div>
-      </div>
+<!-- ═══ VISUALS ═══ -->
+<section class="visuals">
+  <div class="visuals-intro">
+    <div class="eyebrow">What you'll actually build</div>
+    <h2 class="visuals-headline">Stop imagining it.<br><em>See it.</em></h2>
+    <p class="visuals-sub">Every asset below was built with AI without a designer, without a team, without expensive software. Inside this training, you learn to build all of it yourself.</p>
+  </div>
+
+  <!-- Book cover — hero -->
+  <div class="visual-hero">
+    <div class="visual-hero-img">
+      <img src="images/mockup.jpg" alt="The AI Solopreneur Toolkit™">
     </div>
-
-    <div style="background:var(--charcoal);padding:1.8rem;border-top:2px solid rgba(217,4,41,0.3);">
-      <div class="format-label">Before the programme starts</div>
-      <p style="font-size:0.8rem;line-height:1.75;color:var(--grey);margin-bottom:0;">
-        Every client completes the <strong style="color:var(--cream)">IES Diagnostic</strong> in Week 0
-        — identifying their value state: Raw, Usable, Expressed, or Recognised.
-        That diagnosis tells Brenda exactly where your translation is breaking down
-        before the first teaching session begins.
+    <div class="visual-hero-caption">
+      <div class="vc-tag">The Training · First Edition</div>
+      <div class="vc-title">The AI Solopreneur Toolkit™</div>
+      <p class="vc-desc">
+        A live implementation masterclass, not recorded theory.
+        You show up, you build in real time, you leave each session with a finished asset your business can use immediately.
+        No team. No tech skills. No expensive tools.
       </p>
+      <div class="vc-pills">
+        <span class="vc-pill">Live sessions</span>
+        <span class="vc-pill">3 tiers</span>
+        <span class="vc-pill">Starts July 6</span>
+        <span class="vc-pill">From $14.5 / 8,000 XAF</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three asset showcases -->
+  <div class="visual-grid">
+
+    <div class="visual-card">
+      <div class="visual-card-img">
+        <img src="images/infographics.jpg" alt="AI Infographics built with Brenda Blanche">
+        <div class="visual-card-overlay">
+          <span class="overlay-tag">Real infographics built with AI · No designer</span>
+        </div>
+      </div>
+      <div class="visual-card-body">
+        <div class="vcard-eyebrow">You'll build this</div>
+        <div class="vcard-title">Scroll-Stopping Infographics</div>
+        <p class="vcard-desc">
+          The exact infographics your audience saves, shares, and DMs you about. Built live in the training — no Canva struggle, no designer bill. Just your content, made premium with AI.
+        </p>
+        <div class="vcard-tier">
+          <span class="vcard-tier-label">Available from</span>
+          <span class="vcard-tier-val">Tier 1 — The Builder · $14.5 / 8,000 XAF / 19k NGN</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <div class="visual-card-img">
+        <img src="images/lead-magnet.jpg" alt="AI Lead Magnets built with Brenda Blanche">
+        <div class="visual-card-overlay">
+          <span class="overlay-tag">Live + gated + ready to convert</span>
+        </div>
+      </div>
+      <div class="visual-card-body">
+        <div class="vcard-eyebrow">You'll build this</div>
+        <div class="vcard-title">Premium Lead Magnets</div>
+        <p class="vcard-desc">
+          Lead magnets that attract the right people, build trust before they buy, and convert attention into clients. Formatted. Gated. Deployed — built live inside the training from day one.
+        </p>
+        <div class="vcard-tier">
+          <span class="vcard-tier-label">Available from</span>
+          <span class="vcard-tier-val">Tier 2 — The Architect · $27 / 15,000 XAF / 36k NGN</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <div class="visual-card-img">
+        <img src="images/business-structure.jpg" alt="AI Business Systems built with Brenda Blanche">
+        <div class="visual-card-overlay">
+          <span class="overlay-tag">Your complete brand OS · Powered by AI</span>
+        </div>
+      </div>
+      <div class="visual-card-body">
+        <div class="vcard-eyebrow">You'll build this</div>
+        <div class="vcard-title">Your Complete Business System</div>
+        <p class="vcard-desc">
+          Brand Brief, ICP, content OS, voice Guide, story Bank. The full infrastructure that makes your business look professional, structured, and premium — all in one place, all powered by AI.
+        </p>
+        <div class="vcard-tier">
+          <span class="vcard-tier-label">Available from</span>
+          <span class="vcard-tier-val">Tier 3 — The Agency · $45 / 25,000 XAF / 60k NGN</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Statement -->
+  <div class="visuals-statement">
+    <div class="vs-inner">
+      <p class="vs-text">"Everything you just saw was built without a designer, without a developer, without expensive tools. Just AI, the right systems, and the willingness to execute. <strong>That is exactly what I am going to teach you to do.</strong>"</p>
+      <div class="vs-sig">— Brenda Blanche · Personal Branding Strategist</div>
     </div>
   </div>
 </section>
 
-<!-- ══ PHASES ══ -->
-<section class="phases">
-  <div class="phases-eyebrow">The 4-Phase System</div>
-  <h2 class="phases-headline">Identity → Alignment<br>→ Expression → <em>Monetisation.</em></h2>
-  <p class="phases-sub">Each phase builds on the one before. Skip a phase and the whole thing wobbles. This is a non-negotiable rule — taught and enforced throughout the 10 weeks.</p>
+<!-- ═══ TIERS ═══ -->
+<section class="tiers" id="tiers">
+  <div class="tiers-intro">
+    <div class="eyebrow">Three ways in</div>
+    <h2 style="font-family:var(--serif);font-weight:900;font-size:clamp(1.8rem,3.8vw,3rem);color:var(--cream);letter-spacing:-0.025em;line-height:1.05;margin-bottom:1rem;">Choose your level<br>of <em style="color:var(--red);font-style:italic">implementation.</em></h2>
+    <p style="font-size:0.9rem;line-height:1.85;color:rgba(245,239,230,0.5);">Same live training. Same Brenda. Same AI systems. The difference is how deep you go and what you walk away with.</p>
+  </div>
 
-  <div class="phases-grid">
-    <div class="phase-card">
-      <div class="phase-num">01</div>
-      <div class="phase-weeks">Weeks 1–2</div>
-      <div class="phase-name">Identity Blueprint</div>
-      <p class="phase-desc">Excavate the lens only you see through. Values, perspective, lived experience, convictions. The internal architecture that makes your brand irreproducible.</p>
+  <div class="tiers-grid">
+
+    <!-- T1 -->
+    <div class="tier-card t1">
+      <div class="tier-head">
+        <div class="tier-tag">Tier 1 · Builder</div>
+        <div class="tier-name">The Builder</div>
+        <p class="tier-for">For the solopreneur who wants their business to finally look as professional as their expertise.</p>
+      </div>
+      <div class="tier-price-wrap">
+        <div class="tier-price">$14.5 <span style="font-size:1rem;color:rgba(196,154,60,0.5);font-family:var(--mono);font-weight:400;letter-spacing:0.05em;">/ 8,000 XAF / 19k NGN</span></div>
+        <div class="tier-sessions">3 Live Sessions · Lifetime recordings · 70 spots only</div>
+      </div>
+      <div class="tier-del">
+        <div class="tier-del-label">You'll build and walk away with</div>
+        <ul class="tier-del-list">
+          <li><span class="ck">✓</span> A finished scroll-stopping infographic</li>
+          <li><span class="ck">✓</span> A trained AI voice system (writes like you)</li>
+          <li><span class="ck">✓</span> Brand Identity Documents</li>
+          <li><span class="ck">✓</span> ICP/IFP templates</li>
+          <li><span class="ck">✓</span> Story Bank frameworks</li>
+          <li><span class="ck">✓</span> Foundational business infrastructure</li>
+          <li><span class="ck">✓</span> Private community access</li>
+        </ul>
+      </div>
+      <div class="tier-cta">
+        <a class="tier-btn" href="#join">Join Waitlist — $1 →</a>
+      </div>
     </div>
-    <div class="phase-card">
-      <div class="phase-num">02</div>
-      <div class="phase-weeks">Weeks 3–5</div>
-      <div class="phase-name">Market Alignment</div>
-      <p class="phase-desc">Deep audience architecture. Positioning precise enough that the wrong person self-selects out. The messaging toolkit that sounds the same everywhere you show up.</p>
+
+    <!-- T2 -->
+    <div class="tier-card t2">
+      <div class="tier-head">
+        <div class="tier-tag">Tier 2 · Architect</div>
+        <div class="tier-name">The Architect</div>
+        <p class="tier-for">For the solopreneur who wants a real content and audience-building system — not random posting.</p>
+      </div>
+      <div class="tier-price-wrap">
+        <div class="tier-price">$27 <span style="font-size:1rem;color:rgba(217,4,41,0.5);font-family:var(--mono);font-weight:400;letter-spacing:0.05em;">/ 15,000 XAF / 36k NGN</span></div>
+        <div class="tier-sessions">7 Live Sessions · Full bonuses · 50 spots only</div>
+      </div>
+      <div class="tier-del">
+        <div class="tier-del-label">Everything in Tier 1, plus</div>
+        <ul class="tier-del-list">
+          <li><span class="ck">✓</span> A lead magnet ready to capture emails</li>
+          <li><span class="ck">✓</span> A complete Content Operating System</li>
+          <li><span class="ck">✓</span> Social proof templates</li>
+          <li><span class="ck">✓</span> A 5-email nurture sequence</li>
+          <li><span class="ck">✓</span> Complete AI Prompt Library</li>
+          <li><span class="ck">✓</span> AI Infographics Template Pack</li>
+          <li><span class="ck">✓</span> AI Monetization Mini Guide</li>
+          <li><span class="ck">✓</span> Private Q&A support during training</li>
+        </ul>
+      </div>
+      <div class="tier-cta">
+        <a class="tier-btn" href="#join">Join Waitlist — $1 →</a>
+      </div>
     </div>
-    <div class="phase-card">
-      <div class="phase-num">03</div>
-      <div class="phase-weeks">Weeks 6–7</div>
-      <div class="phase-name">Content as Expression</div>
-      <p class="phase-desc">Content pillars built from your identity. A weekly system that produces posts with a job, not noise with a schedule. Lead magnet designed as free proof of your system.</p>
+
+    <!-- T3 -->
+    <div class="tier-card t3">
+      <div class="tier-head">
+        <div class="tier-tag">Tier 3 · Agency</div>
+        <div class="tier-name">The Agency</div>
+        <p class="tier-for">For the solopreneur who wants to operate like a premium digital business — and monetise these AI skills as services.</p>
+      </div>
+      <div class="tier-price-wrap">
+        <div class="tier-price">$45 <span style="font-size:1rem;color:rgba(196,154,60,0.5);font-family:var(--mono);font-weight:400;letter-spacing:0.05em;">/ 25,000 XAF / 60k NGN</span></div>
+        <div class="tier-sessions">12 Live Sessions · All exclusives · 30 spots only</div>
+      </div>
+      <div class="tier-del">
+        <div class="tier-del-label">Everything in Tier 2, plus</div>
+        <ul class="tier-del-list">
+          <li><span class="ck">✓</span> Flyer design with AI</li>
+          <li><span class="ck">✓</span> A live landing page (built + hosted)</li>
+          <li><span class="ck">✓</span> Premium client documents</li>
+          <li><span class="ck">✓</span> A complete business operating system (Notion)</li>
+          <li><span class="ck">✓</span> Sales page structures built with AI</li>
+          <li><span class="ck">✓</span> Monetizable AI service packages</li>
+          <li><span class="ck">✓</span> 1-on-1 Strategy Call with Brenda</li>
+          <li><span class="ck">✓</span> Done-for-you AI infographic</li>
+          <li><span class="ck">✓</span> AI Agency Starter Kit</li>
+          <li><span class="ck">✓</span> Done-for-you AI flyer</li>
+          <li><span class="ck">✓</span> Priority DM access for 30 days</li>
+        </ul>
+      </div>
+      <div class="tier-cta">
+        <a class="tier-btn" href="#join">Join Waitlist — $1 →</a>
+      </div>
     </div>
-    <div class="phase-card">
-      <div class="phase-num">04</div>
-      <div class="phase-weeks">Weeks 8–10</div>
-      <div class="phase-name">Monetisation Architecture</div>
-      <p class="phase-desc">One product, fully designed. Lead generation playbook. Conversion system built on earned trust, not pitch energy. Your complete brand launched publicly in Week 10.</p>
+
+  </div>
+</section>
+
+<!-- ═══ THE $1 SECTION ═══ -->
+<section class="commitment">
+  <div class="commitment-inner">
+    <div class="eyebrow">Why $1?</div>
+    <h2 class="commitment-headline">This isn't a<br>"notify me" list.<br>It's a <em>commitment.</em></h2>
+    <div class="commitment-rule"></div>
+
+    <p class="commitment-body">
+      I could make this waitlist free. A quick form, an email, a spot reserved.
+      And 70% of the people on it would ghost when it mattered.
+    </p>
+    <p class="commitment-body">
+      This training requires live sessions. Real implementation. Templates, systems, and active support.
+      <strong>It cannot work for passive people.</strong>
+    </p>
+    <p class="commitment-body">
+      The $1 is not about revenue.
+      It's about identifying the people who are serious enough to invest, even a single dollar — in their own execution.
+      That person is who this training was built for.
+    </p>
+
+    <div class="dollar-display">
+      <span class="dollar-sym">$</span>
+      <span class="dollar-num">1</span>
+      <span class="dollar-label">Commitment fee<br>to join waitlist</span>
+    </div>
+
+    <div style="font-family:var(--mono);font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;">What you get for your $1</div>
+
+    <div class="waitlist-perks">
+      <div class="perk-item">
+        <div class="perk-num">Perk 01</div>
+        <div class="perk-title">Founding price locked</div>
+        <p class="perk-desc">Your tier price is guaranteed at today's rate, no matter what enrollment prices are when June 1 arrives. First in, all bonuses.</p>
+      </div>
+      <div class="perk-item">
+        <div class="perk-num">Perk 02</div>
+        <div class="perk-title">Priority access on June 1</div>
+        <p class="perk-desc">Waitlist members get first access when full enrollment opens, before public spots are announced. Your tier is reserved.</p>
+        <div class="perk-title">Implementation prep materials</div>
+        <p class="perk-desc">Receive preparation resources before the training starts so you show up to Session 1 ready to build — not just ready to watch.</p>
+      </div>
+      <div class="perk-item">
+        <div class="perk-num">Perk 04</div>
+        <div class="perk-title">Early-bird bonuses</div>
+        <p class="perk-desc">Waitlist members receive bonuses that won't be available during public enrollment — including resources specific to your chosen tier.</p>
+      </div>
+    </div>
+
+    <div class="commitment-note">
+      Your $1 will be deducted from your full tier payment when enrollment opens June 8.
+      If you choose not to enroll, the $1 is non-refundable. That's the commitment.
+      If you do enroll, it costs you nothing extra.
     </div>
   </div>
 </section>
 
-<!-- ══ DELIVERABLES ══ -->
-<section class="deliverables">
-  <div class="del-eyebrow">What you leave with</div>
-  <h2 class="del-headline">Not notes. Not inspiration.<br>A complete working <em>system.</em></h2>
-  <p class="del-sub">Every client who completes Identity to Income™ leaves with 14 specific deliverables — built from who they are, for the market they're entering.</p>
-
-  <div class="del-grid">
-    <div class="del-item">
-      <div class="del-num">01</div>
-      <div class="del-text">IES Diagnostic<span>Value state identified. The gap is visible.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">02</div>
-      <div class="del-text">Identity Document<span>Values, perspective, convictions, enemy. The irreproducible blueprint.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">03</div>
-      <div class="del-text">Fusion Statement<span>The one sentence only you can own.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">04</div>
-      <div class="del-text">Complete Audience Profile<span>One person, mapped completely — FODS, language, friction points.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">05</div>
-      <div class="del-text">Positioning Statement<span>Precise enough for dual selection — the right person in, the wrong person out.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">06</div>
-      <div class="del-text">Messaging Toolkit<span>Brand statement, headlines, elevator pitch, voice guide.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">07</div>
-      <div class="del-text">Five-Stage Funnel Map<span>Awareness to Advocacy, friction points and trust triggers at every stage.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">08</div>
-      <div class="del-text">Optimised LinkedIn Profile<span>Live and converting. Every section built from your positioning.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">09</div>
-      <div class="del-text">Content Pillar Document<span>Five pillars named for your specific brand. Not generic. Yours.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">10</div>
-      <div class="del-text">Monthly Content Calendar<span>Built for your goal — reach, income, or event.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">11</div>
-      <div class="del-text">Live Lead Magnet<span>Solving one micro-problem so completely it points to the paid offer naturally.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">12</div>
-      <div class="del-text">One Product — Fully Designed<span>Scoped, named, priced, and ready to sell.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">13</div>
-      <div class="del-text">Lead Generation Playbook<span>Monthly system for filling the funnel without burning out.</span></div>
-    </div>
-    <div class="del-item">
-      <div class="del-num">14</div>
-      <div class="del-text">Conversion System<span>A diagnostic framework. Built on earned trust, not a sales script.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ WAITLIST FORM ══ -->
-<section class="waitlist" id="waitlist">
+<!-- ═══ JOIN THE WAITLIST ═══ -->
+<section class="waitlist-section" id="join">
   <div class="waitlist-inner">
-    <div class="waitlist-eyebrow">July 2026 Cohort · Waitlist</div>
-    <h2 class="waitlist-headline">
-      The next cohort<br>
-      opens <em>July 27.</em>
+    <div class="eyebrow red">Join the waitlist</div>
+    <h2 class="wl-headline">
+      Secure your spot<br>before <em>June 7.</em>
     </h2>
-    <div class="waitlist-rule"></div>
-    <p class="waitlist-body">
-      Waitlist members are the first to receive cohort details, pricing, and early access.
-      <strong>Spots are limited by design</strong>, this is a live programme with hot seats,
-      direct feedback, and real accountability. It cannot work at scale.
+    <div class="wl-rule"></div>
+    <p class="wl-body">
+      After June 7, the waitlist closes. Full enrollment opens June 8, and spots are limited by the number of people Brenda can actively support during live sessions.
+      <strong>The people who waited longest pay more for fewer options.</strong>
+      Don't be that person.
     </p>
 
-    <div class="cohort-badge">
-      <div class="badge-item">
-        <span class="badge-val">July 27</span>
-        <span class="badge-label">Start Date</span>
-      </div>
-      <div class="badge-divider"></div>
-      <div class="badge-item">
-        <span class="badge-val">10</span>
-        <span class="badge-label">Weeks</span>
-      </div>
-      <div class="badge-divider"></div>
-      <div class="badge-item">
-        <span class="badge-val">Live</span>
-        <span class="badge-label">Format</span>
-      </div>
-      <div class="badge-divider"></div>
-      <div class="badge-item">
-        <span class="badge-val">Limited</span>
-        <span class="badge-label">Spots</span>
-      </div>
+    <div class="deadline-block">
+      <div class="deadline-eyebrow">Waitlist deadline</div>
+      <p class="deadline-text"><strong>Saturday, June 7, 2026 at midnight.</strong> After this date, the waitlist closes and you join the public queue for June 8 enrollment — at higher prices and without priority access.</p>
     </div>
 
-    <!-- Form -->
-    <div id="form-wrap">
-      <div class="form-error" id="form-error">Fill in both fields correctly.</div>
-      <div class="form-fields">
-        <div class="form-field">
-          <div class="form-label">First Name</div>
-          <input type="text" id="wl-name" placeholder="Your first name" autocomplete="given-name">
+    <!-- STEP 1: FORM — captures email before payment -->
+    <div id="wl-form-wrap">
+      <div class="steps-row" style="margin-bottom:2rem;">
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Enter your name and email</div>
+            <p class="step-desc">So I can add you to the waitlist list and send you your prep materials and June 1 priority access details directly.</p>
+          </div>
         </div>
-        <div class="form-field" style="margin-top:-1px">
-          <div class="form-label">Email Address</div>
-          <input type="email" id="wl-email" placeholder="your@email.com" autocomplete="email">
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Complete your $1 commitment fee</div>
+            <p class="step-desc">You'll be taken directly to the payment page after submitting your details. Takes under 2 minutes.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">DM Brenda "WAITLIST" + payment proof</div>
+            <p class="step-desc">After payment, send a screenshot to Brenda on WhatsApp with your chosen tier — Builder, Architect, or Agency. Confirmed within 24 hours.</p>
+          </div>
         </div>
       </div>
-      <div class="form-actions">
-        <button class="btn-red" id="wl-submit" onclick="submitWaitlist()">
-          Join the Waitlist <span class="arr">→</span>
-          <span class="form-spinner" id="wl-spinner"></span>
+
+      <div class="wl-form-error" id="wl-error" style="display:none;font-family:var(--mono);font-size:0.52rem;color:var(--red);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;"></div>
+
+      <!-- Form fields -->
+      <div class="wl-field-wrap">
+        <div class="wl-field-row">
+          <div class="wl-field-inner">
+            <label class="wl-field-label" for="wl-name">First Name</label>
+            <input class="wl-input" type="text" id="wl-name" placeholder="Your first name" autocomplete="given-name">
+          </div>
+          <div class="wl-field-inner">
+            <label class="wl-field-label" for="wl-email">Email Address</label>
+            <input class="wl-input" type="email" id="wl-email" placeholder="your@email.com" autocomplete="email">
+          </div>
+        </div>
+        <div class="wl-tier-row">
+          <div class="wl-tier-opt">
+            <input type="radio" name="wl-tier" id="tier-1" value="Builder">
+            <label class="wl-tier-label" for="tier-1">
+              <span class="wl-tier-name">Builder</span>
+              <span class="wl-tier-price">$14.5 · 8k XAF</span>
+              <span class="wl-tier-dot"></span>
+            </label>
+          </div>
+          <div class="wl-tier-opt">
+            <input type="radio" name="wl-tier" id="tier-2" value="Architect">
+            <label class="wl-tier-label" for="tier-2">
+              <span class="wl-tier-name">Architect</span>
+              <span class="wl-tier-price">$27 · 15k XAF</span>
+              <span class="wl-tier-dot"></span>
+            </label>
+          </div>
+          <div class="wl-tier-opt">
+            <input type="radio" name="wl-tier" id="tier-3" value="Agency">
+            <label class="wl-tier-label" for="tier-3">
+              <span class="wl-tier-name">Agency</span>
+              <span class="wl-tier-price">$45 · 25k XAF</span>
+              <span class="wl-tier-dot"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="wl-cta-block">
+        <button class="wl-cta-main" id="wl-submit-btn" onclick="submitWaitlistForm()">
+          Reserve My Spot · Pay $1 <span id="wl-arrow" style="margin-left:8px">→</span>
+          <span id="wl-spinner" style="display:none;width:14px;height:14px;border:2px solid rgba(245,239,230,0.2);border-top-color:var(--cream);border-radius:50%;animation:spin 0.7s linear infinite;margin-left:8px;"></span>
         </button>
-        <span class="form-privacy">No spam. First access when doors open.</span>
+        <div class="wl-cta-note">
+          Your email is saved, you'll go straight to the payment page · Then DM <span>"WAITLIST"</span> + proof to <a href="https://wa.me/237672411155?text=WAITLIST" target="_blank" style="color:rgba(196,154,60,0.5);text-decoration:none;">wa.me/237672411155</a>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;padding:1.5rem;background:rgba(196,154,60,0.04);border:1px solid rgba(196,154,60,0.15);">
+        <div style="font-family:var(--mono);font-size:0.44rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;">Not sure which tier yet?</div>
+        <p style="font-size:0.8rem;line-height:1.75;color:rgba(245,239,230,0.4);">Fill the form and pay the $1 to secure your spot. Tell Brenda your budget in your WhatsApp message and she'll help you choose the right tier before June 8.</p>
       </div>
     </div>
 
-    <!-- Success state -->
-    <div class="form-success" id="form-success">
-      <span class="success-icon">✓</span>
-      <div class="success-headline">You're on the list.</div>
-      <p class="success-body">
-        You'll be the first to know when the July cohort opens — pricing, format, and how to secure your spot.
-        In the meantime, if you have questions or want to talk through whether this is the right next step for you,
-        message Brenda directly on WhatsApp.
-      </p>
-      <a class="btn-whatsapp" id="success-wa" href="#" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.529 5.845L0 24l6.335-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.006-1.371l-.36-.213-3.728.888.94-3.63-.235-.375A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
-        </svg>
-        Message Brenda on WhatsApp →
-      </a>
+    <!-- SUCCESS STATE (shown after form submit) -->
+    <div id="wl-success" style="display:none;">
+      <div style="background:rgba(196,154,60,0.05);border:1px solid rgba(196,154,60,0.2);padding:2.5rem;margin-bottom:2rem;">
+        <div style="font-family:var(--mono);font-size:1rem;color:var(--gold);margin-bottom:0.8rem;">✓</div>
+        <div style="font-family:var(--serif);font-weight:700;font-size:1.3rem;color:var(--cream);margin-bottom:0.6rem;">You're on the list.</div>
+        <p style="font-size:0.85rem;line-height:1.8;color:rgba(245,239,230,0.55);margin-bottom:1.5rem;">
+          Your spot is being held. Complete your $1 payment on the next page — then DM Brenda on WhatsApp with "WAITLIST" + your payment screenshot and your chosen tier.
+        </p>
+        <a href="https://selar.com/c519676n7l" target="_blank"
+          style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:var(--red);color:var(--cream);font-family:var(--mono);font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:18px 36px;text-decoration:none;transition:opacity 0.2s;"
+          onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+          Complete $1 Payment Now →
+        </a>
+        
+      </div>
     </div>
 
-    <!-- WhatsApp alternative -->
-    <div class="wa-block">
-      <div class="wa-label">Prefer to talk first?</div>
-      <a class="btn-whatsapp" id="wa-main" href="https://wa.me/237672411155?text=Hi%20Brenda!%20I%27m%20interested%20in%20the%20Identity%20to%20Income%E2%84%A2%20July%20cohort.%20Can%20you%20tell%20me%20more%3F" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.529 5.845L0 24l6.335-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.006-1.371l-.36-.213-3.728.888.94-3.63-.235-.375A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
-        </svg>
-        Send Brenda a Message →
-      </a>
-      <p class="wa-sub">Message directly on WhatsApp — ask anything about the July cohort, the format, or whether this is the right next step for where you are right now.</p>
-    </div>
   </div>
 </section>
 
-<!-- ══ SCORECARD BRIDGE ══ -->
-<section class="scorecard-bridge">
-  <div class="sb-left">
-    <div class="sb-eyebrow">Not sure if you're ready?</div>
-    <p class="sb-text">
-      <strong>Start with the free Market Translation Scorecard™.</strong>
-      9 statements. 90 seconds. It will tell you exactly which pillar of your brand is breaking —
-      and give you one immediate move. Then you'll know exactly what Identity to Income™ is built to fix for you.
-    </p>
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="eyebrow" style="justify-content:center;">Still have questions?</div>
+    <h2 class="faq-headline">Everything you need<br>to <em>decide with confidence.</em></h2>
+    <div class="faq-rule"></div>
+
+    <div class="faq-list" id="faq-list">
+
+      <div class="faq-item" data-i="0">
+        <button class="faq-q" onclick="toggleFaq(0)" aria-expanded="false">
+          <span>Do I need to know anything about AI or tech to join?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">No. This training was built specifically for people who are not technical. You don't need to know how to code, set up automations, or use any specific AI tool before you arrive. Everything is done live, step by step, with you. The only requirement is that you can follow instructions and you want the result bad enough to show up. That's it.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="1">
+        <button class="faq-q" onclick="toggleFaq(1)" aria-expanded="false">
+          <span>What if I miss a live session?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">All sessions are recorded and sent to you within 24 hours. You'll have lifetime access to all recordings. Meaning you can rewatch, reuse, and rebuild at any point. Missing a session is not missing the asset. That said, live attendance is where the implementation happens in real time, so wherever possible, show up live.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="2">
+        <button class="faq-q" onclick="toggleFaq(2)" aria-expanded="false">
+          <span>What platform are the live sessions on?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Sessions run on Google Meet, your link will be sent before each session. The private community and ongoing support live on WhatsApp, which you likely already have. No new apps to download, no complicated platforms to navigate.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="3">
+        <button class="faq-q" onclick="toggleFaq(3)" aria-expanded="false">
+          <span>Do I need to buy expensive AI tools or software?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">No. Everything taught in this training uses tools that are free or have a free tier — the kind of free that actually works, not the kind that asks for your credit card after three days. The goal is a fully operational business infrastructure built at near-zero cost. If there's any tool with an optional paid upgrade, I'll tell you exactly what the free version gives you and whether the upgrade is worth it.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="4">
+        <button class="faq-q" onclick="toggleFaq(4)" aria-expanded="false">
+          <span>How long are the sessions?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Each session runs between 60 and 90 minutes. That's enough time to build something real without losing people. Sessions are structured to move fast — demonstration, then you build alongside me, then you leave with a finished asset. No padding, no filler, no replaying the same slide for twenty minutes.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="5">
+        <button class="faq-q" onclick="toggleFaq(5)" aria-expanded="false">
+          <span>What's the actual difference between Tier 1, 2, and 3?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Think of it as depth, not quality. Every tier gets real, usable assets — there's no "starter" version that's intentionally worse.<br><br>
+            <strong>Tier 1 — The Builder ($14.5 / 8k XAF / 19k NGN):</strong> 3 sessions. Brand infrastructure, AI voice system, infographic, community access. The foundation.<br><br>
+            <strong>Tier 2 — The Architect ($27 / 15k XAF / 36k NGN):</strong> 7 sessions. Everything in Tier 1, plus a lead magnet, content operating system, email sequences, prompt library, Q&A support. The full audience-building system.<br><br>
+            <strong>Tier 3 — The Agency ($45 / 25k XAF / 60k NGN):</strong> 12 sessions. Everything in Tier 2, plus a live hosted landing page, client documents, Notion business OS, monetisable AI services, 1-on-1 call with Brenda, done-for-you infographic, 30 days of priority DM access, and lifetime access to future editions.<br><br>
+            If you're unsure, DM Brenda on WhatsApp and she'll tell you honestly which tier makes sense for where you are.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="6">
+        <button class="faq-q" onclick="toggleFaq(6)" aria-expanded="false">
+          <span>Is this only for people in Africa?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">No. The training is open to anyone, anywhere. The founder is based in Cameroon and the pricing reflects African market accessibility — which means it's significantly more affordable for everyone, including people in Europe, North America, or anywhere else. The tools, frameworks, and systems work regardless of your location. What's taught is global.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="7">
+        <button class="faq-q" onclick="toggleFaq(7)" aria-expanded="false">
+          <span>I can watch YouTube for free. Why would I pay for this?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">YouTube gives you information. This gives you implementation. There is a real and important difference. After watching YouTube, you have notes. After attending this training, you have a finished infographic, a working AI voice system, an actual lead magnet — assets your business uses the next day. You also have Brenda in the room, in real time, answering your specific situation, not a general case study. If information were enough, you'd have already built everything you need. You haven't — not because you're lazy, but because information without structure and accountability rarely turns into execution.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="8">
+        <button class="faq-q" onclick="toggleFaq(8)" aria-expanded="false">
+          <span>I'm a complete beginner. Is this too advanced for me?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Actually, beginners tend to get the most from this training — because you're not unlearning bad habits or rebuilding broken systems. You're building correctly from the start. The sessions are designed to be followed in real time, not studied later. If you can open a laptop and follow instructions, you can do this. The only people who don't benefit are people who don't show up.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="9">
+        <button class="faq-q" onclick="toggleFaq(9)" aria-expanded="false">
+          <span>What's the refund policy?</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">The $1 waitlist commitment fee is non-refundable. That's stated clearly and it's intentional — it's a filter, not a revenue strategy. For the full tier payment: if you attend the first session and decide within 48 hours that this is not for you, contact Brenda directly on WhatsApp and she'll work something out. There's no elaborate returns process or asterisked policy. This is a small cohort with direct access to the person running it — issues are handled like adults, not through a ticketing system.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-i="10">
+        <button class="faq-q" onclick="toggleFaq(10)" aria-expanded="false">
+          <span>I still have a question that's not answered here.</span>
+          <span class="faq-icon"><span class="faq-plus">+</span></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            DM Brenda directly on WhatsApp, that's the fastest way to get an honest answer for your specific situation. No bot, no support form, no 3–5 business day wait. Just send your question and she'll respond.<br><br>
+            <a href="https://wa.me/237672411155" target="_blank" class="faq-wa-btn">Send a WhatsApp message →</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /faq-list -->
   </div>
-  <a class="btn-outline" href="/" style="white-space:nowrap">
-    Take the Scorecard →
-  </a>
+</section>
+
+<!-- ═══ SCORECARD BRIDGE ═══ -->
+<section class="scorecard-bridge">
+  <div>
+    <div class="sb-eyebrow">First time here?</div>
+    <p class="sb-text"><strong>Start with the free Market Translation Scorecard™.</strong> 9 statements. 90 seconds. It will show you exactly where your brand is breaking — and why building your business infrastructure with AI is the most important move you can make right now.</p>
+  </div>
+  <a class="btn-outline" href="/" style="white-space:nowrap">Take the Free Scorecard →</a>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-brand">Brenda.Blanche™ · The Unapologetics</div>
-  <div class="footer-note">Identity to Income™ · July 2026 · Confidential</div>
+  <div class="footer-note">The AI Solopreneur Toolkit™ · First Edition · July 2026</div>
 </footer>
 
 <script>
-const WHATSAPP_NUM = '237672411155';
-
-// ── COUNTDOWN ──────────────────────────────────────────────
-function updateCountdown() {
-  const target = new Date('2026-07-27T00:00:00').getTime();
+// Countdown to June 7, 2026 midnight
+function updateCountdown(){
+  const target = new Date('2026-06-07T23:59:59').getTime();
   const now = Date.now();
   const diff = target - now;
-
-  if (diff <= 0) {
-    document.getElementById('cd-days').textContent = '0';
-    document.getElementById('cd-hours').textContent = '0';
-    document.getElementById('cd-mins').textContent = '0';
+  if(diff <= 0){
+    ['cd-d','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent = '00');
     return;
   }
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((diff%(1000*60*60))/(1000*60));
+  const s = Math.floor((diff%(1000*60))/1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-  const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-  document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-  document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+// FAQ accordion — one open at a time
+function toggleFaq(i){
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach((item, idx) => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    if(idx === i){
+      const isOpen = ans.classList.contains('open');
+      ans.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen);
+    } else {
+      ans.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
 }
 
-updateCountdown();
-setInterval(updateCountdown, 60000);
-
-// ── WAITLIST SUBMIT ────────────────────────────────────────
-async function submitWaitlist() {
-  const name   = document.getElementById('wl-name').value.trim();
-  const email  = document.getElementById('wl-email').value.trim();
-  const errEl  = document.getElementById('form-error');
-  const btn    = document.getElementById('wl-submit');
-  const spin   = document.getElementById('wl-spinner');
+// Waitlist form — captures email → Brevo → opens Selar
+async function submitWaitlistForm(){
+  const name  = document.getElementById('wl-name').value.trim();
+  const email = document.getElementById('wl-email').value.trim();
+  const tierEl = document.querySelector('input[name="wl-tier"]:checked');
+  const tier   = tierEl ? tierEl.value : '';
+  const errEl = document.getElementById('wl-error');
+  const btn   = document.getElementById('wl-submit-btn');
+  const spin  = document.getElementById('wl-spinner');
+  const arr   = document.getElementById('wl-arrow');
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  if (!name || !emailOk) { errEl.style.display = 'block'; return; }
-  errEl.style.display = 'none';
-  btn.disabled = true;
-  spin.style.display = 'inline-block';
+  if(!name){ errEl.textContent='Please enter your first name.'; errEl.style.display='block'; return; }
+  if(!emailOk){ errEl.textContent='Please enter a valid email address.'; errEl.style.display='block'; return; }
+  errEl.style.display='none';
+  btn.disabled=true; spin.style.display='inline-block'; arr.style.display='none';
 
-  try {
-    await fetch('/.netlify/functions/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name,
-        email,
-        gap: '',
-        source: 'WAITLIST_JULY_2026'
-      })
+  try{
+    await fetch('/.netlify/functions/subscribe',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ name, email, gap: tier, source:'TOOLKIT_WAITLIST' })
     });
-  } catch(e) {
-    console.warn('Subscribe error:', e);
-  }
+  }catch(e){ console.warn('Subscribe error:',e); }
 
-  btn.disabled = false;
-  spin.style.display = 'none';
+  // Show success state — never block on network failure
+  btn.disabled=false; spin.style.display='none'; arr.style.display='inline';
+  document.getElementById('wl-form-wrap').style.display='none';
+  document.getElementById('wl-success').style.display='block';
 
-  // Show success state
-  document.getElementById('form-wrap').style.display = 'none';
-  const successEl = document.getElementById('form-success');
-  successEl.style.display = 'block';
-
-  // Set personalised WhatsApp link
-  const waMsg = encodeURIComponent(
-    'Hi Brenda! I just joined the waitlist for the Identity to Income™ July cohort. Looking forward to hearing more!'
-  );
-  document.getElementById('success-wa').href = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + waMsg;
+  // Auto-open Selar after 1.5s
+  setTimeout(()=>{ window.open('https://selar.com/c519676n7l','_blank'); }, 1500);
 }
 
 // Enter key support
-document.addEventListener('keydown', e => {
-  if (e.key === 'Enter') {
-    const activeEl = document.activeElement;
-    if (activeEl && (activeEl.id === 'wl-name' || activeEl.id === 'wl-email')) {
-      submitWaitlist();
-    }
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+    const a=document.activeElement;
+    if(a && (a.id==='wl-name'||a.id==='wl-email')) submitWaitlistForm();
   }
 });
-
-// ── NAV ACTIVE ─────────────────────────────────────────────
-document.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
   const nav = document.querySelector('.nav');
-  if (window.scrollY > 80) {
-    nav.style.borderBottom = '1px solid rgba(217,4,41,0.2)';
-  } else {
-    nav.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
-  }
+  nav.style.borderBottom = window.scrollY > 80
+    ? '1px solid rgba(217,4,41,0.2)'
+    : '1px solid rgba(255,255,255,0.04)';
 });
 </script>
 </body>
