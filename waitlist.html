@@ -1129,7 +1129,7 @@ async function submitWaitlistForm(){
   btn.disabled=true; spin.style.display='inline-block'; arr.style.display='none';
 
   try{
-  await fetch('/.netlify/functions/subscribe-toolkit',{
+ await fetch('/api/subscribe-toolkit',{
   method:'POST',
   headers:{'Content-Type':'application/json'},
   body:JSON.stringify({ name, email, tier })
